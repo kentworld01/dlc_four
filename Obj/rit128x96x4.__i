@@ -1,0 +1,1 @@
+-c --device DLM -g -O3 --apcs=interwork -I..\Library -I "C:\Keil\\ARM\INC\Luminary" -o ".\Obj\rit128x96x4.o" --omf_browse ".\Obj\rit128x96x4.crf" --depend ".\Obj\rit128x96x4.d" "..\..\..\rit128x96x4.c"

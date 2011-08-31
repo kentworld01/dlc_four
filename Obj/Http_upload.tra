@@ -1,0 +1,32 @@
+*** Creating Trace Output File '.\Obj\Http_upload.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\obj\http_cgi.o"'
+### List of Objects: adding '".\obj\http_upload.o"'
+### List of Objects: adding '".\obj\web.o"'
+### List of Objects: adding '".\obj\retarget.o"'
+### List of Objects: adding '".\obj\file_config.o"'
+### List of Objects: adding '".\obj\http_uif.o"'
+### List of Objects: adding '".\obj\net_config.o"'
+### List of Objects: adding '".\obj\startup.o"'
+### List of Objects: adding '"C:\Keil\ARM\RV31\LIB\TCP_CM3.lib"'
+### List of Objects: adding '"C:\Keil\ARM\RV31\LIB\FS_CM3.lib"'
+### List of Objects: adding '"C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib"'
+### List of Objects: adding '".\obj\lm3s_emac.o"'
+### List of Objects: adding '".\obj\lcd.o"'
+### List of Objects: adding '".\obj\spi_lm3s8962.o"'
+### ADS-LD Command completed:
+--device DLM ".\obj\http_cgi.o" ".\obj\http_upload.o" ".\obj\web.o" ".\obj\retarget.o" ".\obj\file_config.o" ".\obj\http_uif.o" ".\obj\net_config.o" ".\obj\startup.o" "C:\Keil\ARM\RV31\LIB\TCP_CM3.lib" "C:\Keil\ARM\RV31\LIB\FS_CM3.lib" "C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib" ".\obj\lm3s_emac.o" ".\obj\lcd.o" ".\obj\spi_lm3s8962.o" --strict --scatter ".\Obj\Http_upload.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Lst\Http_upload.map" -o ".\Obj\Http_upload.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\Obj\Http_upload.axf'
+### ADS-LD Command File: '.\Obj\Http_upload.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\Obj\Http_upload.lnp', Handle=0x000002D0
+### Writing '.lnp' file
+### ADS-LD Command file '.\Obj\Http_upload.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
