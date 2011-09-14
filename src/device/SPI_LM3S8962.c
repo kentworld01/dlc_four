@@ -22,10 +22,13 @@
 
 /* Peripheral definitions for EK-LM3S8962 board */
 #define SSI_PORT_PERI   SYSCTL_PERIPH_GPIOA
+#define SD_CS_PORT_PERI    SYSCTL_PERIPH_GPIOC
 #define CS_PORT_PERI    SYSCTL_PERIPH_GPIOA
 #define SSI_PORT        GPIO_PORTA_BASE
 #define CS_PORT         GPIO_PORTA_BASE
+#define SD_CS_PORT         GPIO_PORTC_BASE
 
+#define SD_SSI_CS          GPIO_PIN_4
 #define SSI_CS          GPIO_PIN_3
 #define SSI_CLK         GPIO_PIN_2
 #define SSI_RX          GPIO_PIN_4
@@ -51,15 +54,19 @@ void spi_init (void) {
    /* Enable the SSI peripherals. */
    SysCtlPeripheralEnable(SSIx_PERI);
    SysCtlPeripheralEnable(SSI_PORT_PERI);
+   SysCtlPeripheralEnable(SD_CS_PORT_PERI);
    SysCtlPeripheralEnable(CS_PORT_PERI);
 
    /* Configure the appropriate pins to be SSI instead of GPIO */
    GPIODirModeSet(SSI_PORT, SSI_PINS, GPIO_DIR_MODE_HW);
+   GPIODirModeSet(SD_CS_PORT,  SD_SSI_CS,   GPIO_DIR_MODE_OUT);
    GPIODirModeSet(CS_PORT,  SSI_CS,   GPIO_DIR_MODE_OUT);
    GPIOPadConfigSet(SSI_PORT, SSI_PINS, GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPU);
+   GPIOPadConfigSet(SD_CS_PORT,  SD_SSI_CS,   GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPU);
    GPIOPadConfigSet(CS_PORT,  SSI_CS,   GPIO_STRENGTH_4MA, GPIO_PIN_TYPE_STD_WPU);
 
    /* Deassert the SSIx chip select */
+   GPIOPinWrite(SD_CS_PORT, SD_SSI_CS, SD_SSI_CS);
    GPIOPinWrite(CS_PORT, SSI_CS, SSI_CS);
 
    /* Configure the SSIx port */
@@ -93,6 +100,7 @@ void spi_hi_speed (BOOL on) {
 void spi_ss (U32 ss) {
    /* Enable/Disable SPI Chip Select */
 
+   //HWREG(SD_CS_PORT + (GPIO_O_DATA + (SD_SSI_CS << 2))) = ss ? SD_SSI_CS : 0;
    HWREG(CS_PORT + (GPIO_O_DATA + (SSI_CS << 2))) = ss ? SSI_CS : 0;
 }
 

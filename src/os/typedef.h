@@ -26,6 +26,7 @@ typedef unsigned short		WORD;
 typedef unsigned char		BYTE;
 typedef unsigned char		BINARY;               // Data type used for microcontroller
 //typedef unsigned char		BOOL;
+typedef unsigned char		bool;
 typedef unsigned short		WCHAR;
 typedef unsigned short		wchar;
 //typedef DWORD				BIT;

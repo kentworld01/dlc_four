@@ -42,6 +42,9 @@ typedef unsigned DWORD;
 
 
 void delay(unsigned int i);
+static void init_io3 ();
+static void init_io2 ();
+
 
 
 /*--------------------------- init ------------------------------------------*/
@@ -49,8 +52,13 @@ void delay(unsigned int i);
 static void init () {
    /* Add System initialisation code here */ 
 
-   init_io ();
-   //init_display ();
+   init_io2 ();
+#if 0   
+   //init_io3 ();
+   while( 1 ){
+   	 sendchar( 'A' );
+   }
+#endif   
    init_TcpNet ();
 
    /* Setup and enable the SysTick timer for 100ms. */
@@ -74,11 +82,15 @@ static void timer_poll () {
 
 /*--------------------------- init_io ---------------------------------------*/
 
-static void init_io () {
+static void init_io2 ()
+{
 
    /* Set the clocking to run from the PLL at 50 MHz */
-   SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_8MHZ);
+   //SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_8MHZ);
+   SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_6MHZ);
+   //SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_6MHZ);
 
+	
    SysCtlPeripheralEnable (SYSCTL_PERIPH_GPIOE);
    GPIOPadConfigSet (GPIO_PORTE_BASE, 0xff, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
    GPIODirModeSet (GPIO_PORTE_BASE, 0xff, GPIO_DIR_MODE_IN);
@@ -94,17 +106,59 @@ static void init_io () {
 
    /* Configure the GPIO for the LED. */
    SysCtlPeripheralEnable (SYSCTL_PERIPH_GPIOF);
-   GPIOPadConfigSet (GPIO_PORTF_BASE, GPIO_PIN_0, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD);
-   GPIODirModeSet (GPIO_PORTF_BASE, GPIO_PIN_0, GPIO_DIR_MODE_OUT);
+   GPIOPadConfigSet (GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_2  | GPIO_PIN_3 , GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD);
+   GPIODirModeSet (GPIO_PORTF_BASE, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_3 , GPIO_DIR_MODE_OUT);
+   GPIOPinWrite (GPIO_PORTF_BASE, GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_2|GPIO_PIN_3);
 
    /* Configure UART0 for 115200 baud. */
-   SysCtlPeripheralEnable (SYSCTL_PERIPH_GPIOA);
-   SysCtlPeripheralEnable (SYSCTL_PERIPH_UART0);
-   GPIOPinTypeUART (GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-   UARTConfigSet(UART0_BASE, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
-   UARTEnable(UART0_BASE);
+   SysCtlPeripheralEnable (SYSCTL_PERIPH_GPIOD);
+   SysCtlPeripheralEnable (SYSCTL_PERIPH_UART1);
+
+   IntMasterEnable();
+   
+   GPIOPinTypeUART (GPIO_PORTD_BASE, GPIO_PIN_2 | GPIO_PIN_3);
+   UARTConfigSet(UART1_BASE, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
+   UARTEnable(UART1_BASE);
+
+
+    IntEnable(INT_UART1);
+    UARTIntEnable(UART1_BASE, UART_INT_RX | UART_INT_RT);
+
+   	 sendchar( 'A' );
 
 }
+
+
+void
+UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
+{
+    while(ulCount--)
+    {
+        UARTCharPut(UART1_BASE, *pucBuffer++);
+    }
+}
+
+static void init_io3 () 
+{
+	SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_6MHZ);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    IntMasterEnable();
+    GPIOPinTypeUART(GPIO_PORTD_BASE, GPIO_PIN_2 | GPIO_PIN_3);
+    UARTConfigSet(UART1_BASE, 115200,
+                        (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                         UART_CONFIG_PAR_NONE));
+    IntEnable(INT_UART1);
+    UARTIntEnable(UART1_BASE, UART_INT_RX | UART_INT_RT);
+    UARTSend((unsigned char *)"Enter text: ", 12);
+    while(1)
+    {
+    		//UARTSend((unsigned char *)"A", 1);
+    }
+}
+
+
+#if 0
 
 /*--------------------------- sendchar --------------------------------------*/
 
@@ -119,6 +173,88 @@ int getkey (void) {
    /* A dummy function for 'retarget.c' */
    return (0);
 }
+
+#else
+
+#define CR     0x0D
+
+
+void
+UARTIntHandler(void)
+{
+    unsigned long ulStatus;
+
+    //
+    // Get the interrrupt status.
+    //
+    ulStatus = UARTIntStatus(UART1_BASE, true);
+
+    //
+    // Clear the asserted interrupts.
+    //
+    UARTIntClear(UART1_BASE, ulStatus);
+
+    //
+    // Loop while there are characters in the receive FIFO.
+    //
+   while(UARTCharsAvail(UART1_BASE))
+   // {
+        //
+        // Read the next character from the UART and write it back to the UART.
+        //
+        UARTCharPut(UART1_BASE, UARTCharGet(UART1_BASE)+1 );
+   // }
+}
+
+
+/*----------------------------------------------------------------------------
+ *       init_serial:  Initialize Serial Interface
+ *---------------------------------------------------------------------------*/
+void init_serial (void) {
+}
+
+/*----------------------------------------------------------------------------
+ *       sendchar:  Write a character to Serial Port
+ *---------------------------------------------------------------------------*/
+int sendchar (int ch) {
+	UARTCharPut( UART1_BASE, ch );
+	return 0;
+}
+
+/*----------------------------------------------------------------------------
+ *       getkey:  Read a character from Serial Port
+ *---------------------------------------------------------------------------*/
+int getkey (void) 
+{
+    unsigned long ulStatus;
+    ulStatus = UARTIntStatus(UART1_BASE, true);
+    UARTIntClear(UART1_BASE, ulStatus);
+    //UARTCharPut(UART0_BASE, UARTCharGet(UART0_BASE));
+    return UARTCharGet(UART1_BASE);
+}
+
+#if 0
+void
+UARTSend(const unsigned char *pucBuffer, unsigned long ulCount)
+{
+    //
+    // Loop while there are more characters to send.
+    //
+    while(ulCount--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        UARTCharPut(UART0_BASE, *pucBuffer++);
+    }
+}
+#endif
+
+
+
+#endif
+
+
 
 /*--------------------------- LED_out ---------------------------------------*/
 
@@ -194,8 +330,10 @@ int main (void) {
 
    init ();
 
+
    dhcp_tout = DHCP_TOUT;
    while (1) {
+   	 //sendchar( 'A' );
       timer_poll ();
       main_TcpNet ();
       dhcp_check ();

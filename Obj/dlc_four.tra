@@ -15,15 +15,20 @@
 ### List of Objects: adding '".\obj\lm3s_emac.o"'
 ### List of Objects: adding '".\obj\lcd.o"'
 ### List of Objects: adding '".\obj\spi_lm3s8962.o"'
+### List of Objects: adding '".\obj\w25x32.o"'
+### List of Objects: adding '".\obj\device.o"'
+### List of Objects: adding '".\obj\fs_spi_flashprg.o"'
+### List of Objects: adding '".\obj\trace.o"'
+### List of Objects: adding '".\obj\datatran.o"'
 ### ADS-LD Command completed:
---device DLM ".\obj\http_cgi.o" ".\obj\http_upload.o" ".\obj\web.o" ".\obj\retarget.o" ".\obj\file_config.o" ".\obj\http_uif.o" ".\obj\net_config.o" ".\obj\startup.o" "C:\Keil\ARM\RV31\LIB\TCP_CM3.lib" "C:\Keil\ARM\RV31\LIB\FS_CM3.lib" "C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib" ".\obj\lm3s_emac.o" ".\obj\lcd.o" ".\obj\spi_lm3s8962.o" --strict --scatter ".\Obj\dlc_four.sct" 
+--device DLM ".\obj\http_cgi.o" ".\obj\http_upload.o" ".\obj\web.o" ".\obj\retarget.o" ".\obj\file_config.o" ".\obj\http_uif.o" ".\obj\net_config.o" ".\obj\startup.o" "C:\Keil\ARM\RV31\LIB\TCP_CM3.lib" "C:\Keil\ARM\RV31\LIB\FS_CM3.lib" "C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib" ".\obj\lm3s_emac.o" ".\obj\lcd.o" ".\obj\spi_lm3s8962.o" ".\obj\w25x32.o" ".\obj\device.o" ".\obj\fs_spi_flashprg.o" ".\obj\trace.o" ".\obj\datatran.o" --strict --scatter ".\Obj\dlc_four.sct" 
 --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\Lst\dlc_four.map" -o ".\Obj\dlc_four.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: '.\Obj\dlc_four.axf'
 ### ADS-LD Command File: '.\Obj\dlc_four.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x00000314
+### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x000008A0
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Obj\dlc_four.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

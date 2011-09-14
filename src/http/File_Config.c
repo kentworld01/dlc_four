@@ -48,7 +48,7 @@
 // <e>SPI Flash Drive
 // ==================
 // <i> Enable support SPI Flash Drive [S:]
-#define SF_DEV      0
+#define SF_DEV      1
 
 //   <o>Initial Content of Erased Memory <0=> 0x00 <0xFF=> 0xFF
 //   <i> Define the initial value for erased Flash data
@@ -85,7 +85,7 @@
 // <e>Memory Card Drive
 // ====================
 // <i> Enable support for Memory Card Drive  [M:]
-#define MC_DEV      1
+#define MC_DEV      0
 
 //   <o>File Data Cache  <0=> OFF  <2=> 1KB  <4=>  2KB <8=> 4KB 
 //                       <16=> 8KB  <32=> 16KB  <64=> 32KB
@@ -165,6 +165,14 @@ U32 const _CPU_CLK      = CPU_CLK;
  struct DevConf const SpiDev [SF_NSECT] =  { SPI_FLASH_DEVICE };
  U16 const _SpiNumSect   = SF_NSECT;
  U32 const _SpiBlFREE    = (U32)SF_INITV<<24 | SF_INITV<<16 | SF_INITV<<8 | SF_INITV;
+
+
+ // for system fs module use.
+ #define __AT_MC_CADR
+ U32 mc_cache[128 * (MC_CSIZE + 2)] __AT_MC_CADR;
+ U16 const _MC_CSIZE = MC_CSIZE;
+
+
 #else
  DEVCONF const SpiDev [1] = {0,0};
  U16 const _SpiNumSect   = 0;
@@ -226,6 +234,9 @@ U32 const _CPU_CLK      = CPU_CLK;
  U32 mc_cache[128 * (MC_CSIZE + 2)] __AT_MC_CADR;
  U16 const _MC_CSIZE = MC_CSIZE;
 #else
+
+
+#if 1
 /* Provide empty functions to reduce code size when MC not used. */
 
 int fat_init (void) {
@@ -308,6 +319,10 @@ BOOL fat_ffind (const char *fn, FINFO *info, IOB *fcb) {
    fcb  = fcb;
    return (__FALSE);
 }
+
+
+#endif
+
 
 #endif
 

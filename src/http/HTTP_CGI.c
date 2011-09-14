@@ -15,6 +15,8 @@
 #include <ctype.h>
 #include <RTL.h>
 
+#include "os.h"
+
 /* ---------------------------------------------------------------------------
  * The HTTP server provides a small scripting language.
  *
@@ -58,7 +60,10 @@ void cgi_process_var (U8 *qs) {
    /* This function is called by HTTP server to process the Querry_String   */
    /* for the CGI Form GET method. It is called on SUBMIT from the browser. */
    /*.The Querry_String.is SPACE terminated.                                */
-
+	_d_line();
+	_d_str( qs );
+	switch( qs[0] ){
+	}
 }
 
 

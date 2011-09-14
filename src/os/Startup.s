@@ -79,6 +79,8 @@ __heap_limit
 ;******************************************************************************
         AREA    RESET, CODE, READONLY
         THUMB
+        
+        EXTERN  UARTIntHandler
 
 ;******************************************************************************
 ;
@@ -109,7 +111,8 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port D
         DCD     IntDefaultHandler           ; GPIO Port E
         DCD     IntDefaultHandler           ; UART0
-        DCD     IntDefaultHandler           ; UART1
+        ;DCD     IntDefaultHandler           ; UART1
+        DCD     UARTIntHandler
         DCD     IntDefaultHandler           ; SSI
         DCD     IntDefaultHandler           ; I2C
         DCD     IntDefaultHandler           ; PWM Fault
