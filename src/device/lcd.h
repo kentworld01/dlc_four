@@ -6,8 +6,8 @@
 #include <RTL.h>
 
 
-#define LCD_INTERFACE_8080 1
-#define LCD_INTERFACE_6800 0
+//#define LCD_INTERFACE_8080 1
+//#define LCD_INTERFACE_6800 0
 
 #define LCD_SEL() LCD_CS1_SEL()
 #define LCD_BL_SET() LCD_BL1_SET()
@@ -86,6 +86,34 @@ void delay(unsigned int i);
 void delayms (unsigned int i) ;
 void	delay1s(unsigned char i);
 int lcd_init(void);
+
+
+
+
+#define LCDS_BUSY					(1 << 7)
+#define LCDS_DISPLAYOFF			(1 << 5)
+#define LCDS_RESET					(1 << 4)
+
+
+#define __LCD_WIDTH_LIMIT				(132)
+#define __LCD_HEIGHT_LIMIT			(64)
+#define __LCD_FB_X_BYTES				((__LCD_WIDTH_LIMIT / 8) + ((__LCD_WIDTH_LIMIT % 8) ? 1 : 0))
+#define __LCD_FB_Y_PAGES				((__LCD_HEIGHT_LIMIT / 8) + ((__LCD_HEIGHT_LIMIT % 8) ? 1 : 0))
+#define __LCD_FRAME_BUFFER_SIZE		(__LCD_FB_X_BYTES * __LCD_HEIGHT_LIMIT)
+
+#define LCD_WIDTH_LIMIT				(128)
+#define LCD_HEIGHT_LIMIT				(64)
+#define LCD_FB_X_BYTES					((LCD_WIDTH_LIMIT / 8) + ((LCD_WIDTH_LIMIT % 8) ? 1 : 0))
+#define LCD_FB_Y_PAGES					((LCD_HEIGHT_LIMIT / 8) + ((LCD_HEIGHT_LIMIT % 8) ? 1 : 0))
+#define LCD_FRAME_BUFFER_SIZE			(LCD_FB_X_BYTES * LCD_HEIGHT_LIMIT)
+
+extern BYTE *FrameBuffer;
+
+#define LCD_GETFBPOINTER(x, yp)		(FrameBuffer + (DWORD)__LCD_WIDTH_LIMIT * (DWORD)yp + (DWORD)x)
+
+
+void delays( int i );
+
 
 
 #endif

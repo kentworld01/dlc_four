@@ -1,13 +1,36 @@
-FCARM file converter V2.11                                                              09/14/2011  17:22:14  PAGE 1
+FCARM file converter V2.11                                                              09/28/2011  16:31:12  PAGE 1
 
 
 FCARM file converter V2.11, INVOKED BY:
-C:\KEIL\ARM\BIN\FCARM.EXE web.inp
+C:\KEIL\ARM\BIN\FCARM.EXE index.htm, logo.gif, lmi_logo.gif, llblue.jpg, pabb.gif, upload.cgi, dir.cgi, format.cgi, stat
+>> e.cgi, t.cgi, main_page.txt, web_main_page.html, white_name.txt, time_area.txt, week_table.txt, holiday.txt, holiday_
+>> week_table.txt, pg_header.inc, pg_footer.inc, home.png to Web.c print root (Web) 
 
 
 INPUT FILES:
-  web.inp (155 BYTES)
+  index.htm (2384 BYTES)
+  logo.gif (448 BYTES)
+  lmi_logo.gif (4387 BYTES)
+  llblue.jpg (3008 BYTES)
+  pabb.gif (121 BYTES)
+  upload.cgi (709 BYTES)
+  dir.cgi (352 BYTES)
+  format.cgi (996 BYTES)
+  state.cgi (198 BYTES)
+  t.cgi (187 BYTES)
+  main_page.txt (0 BYTES)
+  web_main_page.html (0 BYTES)
+  white_name.txt (0 BYTES)
+  time_area.txt (0 BYTES)
+  week_table.txt (0 BYTES)
+  holiday.txt (0 BYTES)
+  holiday_week_table.txt (0 BYTES)
+  pg_header.inc (1145 BYTES)
+  pg_footer.inc (390 BYTES)
+  home.png (1389 BYTES)
 
 
+ROOT: Web
 
-Converted 1 File(s), Compression 100%
+
+Converted 20 File(s), Compression 94%

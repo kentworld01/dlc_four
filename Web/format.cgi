@@ -5,7 +5,6 @@ t   if(!confirm('Are you sure you want to format SD Card?')) return;
 t   f.submit();
 t  }
 t </script></head>
-i pg_header.inc
 t <h2 align=center><br>Format SD Card</h2>
 t <p><font size="3"><br>Before the first usage or when the FAT file system
 t  is corrupted, you need to format SD memory card.<br><br>
@@ -20,5 +19,4 @@ t <input type=hidden value="yes" name=format>
 t <p align="center">
 t  <input type=button value="Format SD Card" onclick="formatConfirm(this.form)">
 t </p></form>
-i pg_footer.inc
 . End of script must be closed with period.

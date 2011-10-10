@@ -70,7 +70,9 @@ void spi_init (void) {
    GPIOPinWrite(CS_PORT, SSI_CS, SSI_CS);
 
    /* Configure the SSIx port */
-   SSIConfig(SSIx_BASE, SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 400000, 8);
+   //SSIConfig(SSIx_BASE, SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 400000, 8);
+   //SSIConfig(SSIx_BASE, SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 400000, 8);
+   SSIConfig(SSIx_BASE, SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 200000, 8);
    SSIEnable(SSIx_BASE);
 }
 
@@ -100,8 +102,15 @@ void spi_hi_speed (BOOL on) {
 void spi_ss (U32 ss) {
    /* Enable/Disable SPI Chip Select */
 
-   //HWREG(SD_CS_PORT + (GPIO_O_DATA + (SD_SSI_CS << 2))) = ss ? SD_SSI_CS : 0;
-   HWREG(CS_PORT + (GPIO_O_DATA + (SSI_CS << 2))) = ss ? SSI_CS : 0;
+	if( ss == 0 || ss == 1 ){
+		HWREG(CS_PORT + (GPIO_O_DATA + (SSI_CS << 2))) = 0 ? SSI_CS : 0;
+		HWREG(SD_CS_PORT + (GPIO_O_DATA + (SD_SSI_CS << 2))) = ss ? SD_SSI_CS : 0;
+	}
+	else if( ss == 2 || ss == 3 ){
+		ss %= 2;
+		HWREG(SD_CS_PORT + (GPIO_O_DATA + (SD_SSI_CS << 2))) = 0 ? SD_SSI_CS : 0;
+		HWREG(CS_PORT + (GPIO_O_DATA + (SSI_CS << 2))) = ss ? SSI_CS : 0;
+	}
 }
 
 

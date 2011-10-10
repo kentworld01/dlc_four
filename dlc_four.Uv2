@@ -13,6 +13,11 @@ Group (device)
 Group (flashfs)
 Group (os)
 Group (lib)
+Group (gui)
+Group (gui4)
+Group (flashfs)
+Group (obj)
+Group (uffs)
 
 File 1,5,<.\Web\upload.cgi><upload.cgi>
 File 1,7,<.\Web\Web.inp><Web.inp>
@@ -21,9 +26,11 @@ File 1,5,<.\Web\format.cgi><format.cgi>
 File 1,5,<.\Web\index.htm><index.htm>
 File 1,5,<.\Web\pg_footer.inc><pg_footer.inc>
 File 1,5,<.\Web\pg_header.inc><pg_header.inc>
+File 1,5,<.\Web\state.cgi><state.cgi>
+File 1,5,<.\Web\t.cgi><t.cgi>
 File 2,1,<.\src\http\HTTP_CGI.c><HTTP_CGI.c>
 File 2,1,<.\src\http\HTTP_upload.c><HTTP_upload.c>
-File 2,1,<.\src\http\Web\Web.c><Web.c>
+File 2,1,<.\Web\Web.c><Web.c>
 File 3,1,<.\src\http\Retarget.c><Retarget.c>
 File 3,1,<.\src\http\File_Config.c><File_Config.c>
 File 3,1,<.\src\http\HTTP_uif.c><HTTP_uif.c>
@@ -39,8 +46,74 @@ File 6,1,<.\src\device\SPI_LM3S8962.c><SPI_LM3S8962.c>
 File 6,1,<.\src\device\W25X32.c><W25X32.c>
 File 6,1,<.\src\device\Device.c><Device.c>
 File 6,1,<.\src\device\FS_SPI_FlashPrg.c><FS_SPI_FlashPrg.c>
+File 6,1,<.\src\device\RTC.c><RTC.c>
 File 8,1,<.\src\os\Trace.c><Trace.c>
+File 8,1,<.\src\os\test.c><test.c>
+File 8,1,<.\src\os\t_cmd\t_cmd.c><t_cmd.c>
+File 8,1,<.\src\os\app_main.c><app_main.c>
+File 8,1,<.\src\os\access_main.c><access_main.c>
+File 8,1,<.\src\os\system_value.c><system_value.c>
+File 8,1,<.\src\os\vfs\txt_file_index.c><txt_file_index.c>
 File 9,1,<.\src\lib\DataTran.c><DataTran.c>
+File 9,1,<.\src\lib\mp_misc.c><mp_misc.c>
+File 10,1,<.\src\gui\TextTools.c><TextTools.c>
+File 10,1,<.\src\gui\Font.c><Font.c>
+File 10,1,<.\src\gui\GraphTools.c><GraphTools.c>
+File 10,1,<.\src\gui\Bitmap.c><Bitmap.c>
+File 10,1,<.\src\gui\fnt_U0612.c><fnt_U0612.c>
+File 10,1,<.\src\gui\fnt_fonts_arial_bold_8x12.c><fnt_fonts_arial_bold_8x12.c>
+File 10,1,<.\src\gui\fnt_fonts_arial_bold_12x16.c><fnt_fonts_arial_bold_12x16.c>
+File 10,1,<.\src\gui\fnt_fonts_vt100_5x7.c><fnt_fonts_vt100_5x7.c>
+File 10,1,<.\data\bmp_dlc.c><bmp_dlc.c>
+File 11,1,<.\src\gui4\gui_if.c><gui_if.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_fclose.c><_fs_fclose.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_fcreate.c><_fs_fcreate.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_fdelete.c><_fs_fdelete.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_ffind.c><_fs_ffind.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_FlashIO.c><_fs_FlashIO.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_flushbuf.c><_fs_flushbuf.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_fopen.c><_fs_fopen.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_frename.c><_fs_frename.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_getfsize.c><_fs_getfsize.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_read.c><_fs_read.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_setfpos.c><_fs_setfpos.c>
+File 12,1,<.\src\os\FlashFS\SRC\_fs_write.c><_fs_write.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fanalyse.c><fs_fanalyse.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fat.c><fs_fat.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fcheck.c><fs_fcheck.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fdefrag.c><fs_fdefrag.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fdelete.c><fs_fdelete.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_ffind.c><fs_ffind.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_fformat.c><fs_fformat.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_ffree.c><fs_ffree.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_finit.c><fs_finit.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_FlashPrg.c><fs_FlashPrg.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_frename.c><fs_frename.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_lib.c><fs_lib.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_mmc.c><fs_mmc.c>
+File 12,1,<.\src\os\FlashFS\SRC\fs_time.c><fs_time.c>
+File 14,1,<.\src\uffs\uffs_version.c><uffs_version.c>
+File 14,1,<.\src\uffs\uffs_badblock.c><uffs_badblock.c>
+File 14,1,<.\src\uffs\uffs_blockinfo.c><uffs_blockinfo.c>
+File 14,1,<.\src\uffs\uffs_buf.c><uffs_buf.c>
+File 14,1,<.\src\uffs\uffs_debug.c><uffs_debug.c>
+File 14,1,<.\src\uffs\uffs_device.c><uffs_device.c>
+File 14,1,<.\src\uffs\uffs_ecc.c><uffs_ecc.c>
+File 14,1,<.\src\uffs\uffs_fd.c><uffs_fd.c>
+File 14,1,<.\src\uffs\uffs_find.c><uffs_find.c>
+File 14,1,<.\src\uffs\uffs_flash.c><uffs_flash.c>
+File 14,1,<.\src\uffs\uffs_fs.c><uffs_fs.c>
+File 14,1,<.\src\uffs\uffs_init.c><uffs_init.c>
+File 14,1,<.\src\uffs\uffs_mem.c><uffs_mem.c>
+File 14,1,<.\src\uffs\uffs_mtb.c><uffs_mtb.c>
+File 14,1,<.\src\uffs\uffs_pool.c><uffs_pool.c>
+File 14,1,<.\src\uffs\uffs_public.c><uffs_public.c>
+File 14,1,<.\src\uffs\uffs_tree.c><uffs_tree.c>
+File 14,1,<.\src\uffs\uffs_utils.c><uffs_utils.c>
+File 14,1,<.\src\uffs\emu\uffs_os_posix.c><uffs_os_posix.c>
+File 14,1,<.\src\uffs\example\flash-interface-example.c><flash-interface-example.c>
+File 14,1,<.\src\uffs\emu\test_cmds.c><test_cmds.c>
+File 14,1,<.\src\uffs\emu\cmdline.c><cmdline.c>
 
 
 Options 1,0,0  // Target 'LM3S6911 ISP'
@@ -162,7 +235,7 @@ Options 2,0,0  // Target 'DEBUG JLINK'
  OutName (dlc_four)
  GenApp=1
  GenLib=0
- GenHex=0
+ GenHex=1
  Debug=1
  Browse=1
  LstDir (.\Lst\)
@@ -191,7 +264,7 @@ Options 2,0,0  // Target 'DEBUG JLINK'
  ADSCMISC ()
  ADSCDEFN ()
  ADSCUDEF ()
- ADSCINCD (.\src\lib;.\src\device;.\src\os)
+ ADSCINCD (.\src;.\src\lib;.\src\device;.\src\os;.\src\uffs\inc)
  ADSASFLG { 65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  ADSAMISC ()
  ADSADEFN ()
@@ -216,10 +289,22 @@ Options 2,0,0  // Target 'DEBUG JLINK'
  ADSLDIF ()
  ADSLDDW ()
   OPTDL (SARMCM3.DLL)()(DLM.DLL)(-pLM3S8962)(SARMCM3.DLL)()(TLM.DLL)(-pLM3S8962)
-  OPTDBG 49150,7,()()()()()()()()()() (Segger\JL2CM3.dll)()()()
+  OPTDBG 48126,6,()()()()()()()()()() (Segger\JLTAgdi.dll)()()()
  FLASH1 { 9,0,0,0,1,0,0,0,4,16,0,0,0,0,0,0,0,0,0,0 }
  FLASH2 (Segger\JLTAgdi.dll)
  FLASH3 ("" ())
  FLASH4 ()
+EndOpt
+
+Options 2,1,2  // File 'Web.inp'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs (C:\Keil\ARM\bin\fcarm @@Web\Web.inp)
+ LibMods ()
 EndOpt
 

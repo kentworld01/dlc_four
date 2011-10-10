@@ -2,7 +2,6 @@ t <html>
 t <head>
 t <title>File upload</title>
 t </head>
-i pg_header.inc
 t <h2 align=center><br>WEB Server File Upload</h2>
 t <p><font size="3"><br>You can select files from your local PC
 t  and upload them to an SD Card connected to the evaluation board.
@@ -14,5 +13,4 @@ t </p>
 t <p align="center">
 t  <input type=button value="Send" OnClick="this.form.submit()">
 t </p>
-i pg_footer.inc
 . End of script must be closed with period.

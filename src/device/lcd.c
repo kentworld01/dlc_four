@@ -195,26 +195,6 @@ BYTE LCD_Status(void)
 }
 
 
-#define LCDS_BUSY					(1 << 7)
-#define LCDS_DISPLAYOFF			(1 << 5)
-#define LCDS_RESET					(1 << 4)
-
-
-#define __LCD_WIDTH_LIMIT				(132)
-#define __LCD_HEIGHT_LIMIT			(64)
-#define __LCD_FB_X_BYTES				((__LCD_WIDTH_LIMIT / 8) + ((__LCD_WIDTH_LIMIT % 8) ? 1 : 0))
-#define __LCD_FB_Y_PAGES				((__LCD_HEIGHT_LIMIT / 8) + ((__LCD_HEIGHT_LIMIT % 8) ? 1 : 0))
-#define __LCD_FRAME_BUFFER_SIZE		(__LCD_FB_X_BYTES * __LCD_HEIGHT_LIMIT)
-
-#define LCD_WIDTH_LIMIT				(128)
-#define LCD_HEIGHT_LIMIT				(64)
-#define LCD_FB_X_BYTES					((LCD_WIDTH_LIMIT / 8) + ((LCD_WIDTH_LIMIT % 8) ? 1 : 0))
-#define LCD_FB_Y_PAGES					((LCD_HEIGHT_LIMIT / 8) + ((LCD_HEIGHT_LIMIT % 8) ? 1 : 0))
-#define LCD_FRAME_BUFFER_SIZE			(LCD_FB_X_BYTES * LCD_HEIGHT_LIMIT)
-
-extern BYTE *FrameBuffer;
-
-#define LCD_GETFBPOINTER(x, yp)		(FrameBuffer + (DWORD)__LCD_WIDTH_LIMIT * (DWORD)yp + (DWORD)x)
 
 
 
@@ -520,6 +500,10 @@ void delay(unsigned int i)
 	}
 	while(k>1)k--;
 }
+void delays( int i )
+{
+	delay( 15000000 );
+}
 
 
 void delayms (unsigned int i) {                        /* Delay function */
@@ -560,8 +544,11 @@ int lcd_init()
 	//LCD_Status();
 
 	LCD_Init(0xaa);
-	LCD_CLS( 0xa5 );
-	LCD_Refresh();
+	//LCD_CLS( 0 );
+	_LCD_FBClear(0);
+	show_logo();
+	//LCD_CLS( 0xa5 );
+	//LCD_Refresh();
 	LCD_Status();
 	return 0;
 }

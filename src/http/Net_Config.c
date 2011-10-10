@@ -562,7 +562,7 @@
 //     <i> When enabled, the user will have to authenticate
 //     <i> himself by username and password before accessing
 //     <i> any page on this Embedded WEB server.
-#define HTTP_ENAUTH    1
+#define HTTP_ENAUTH    0
 
 //     <s.20>Authentication Realm string
 //     <i> Default: "Embedded WEB Server"
