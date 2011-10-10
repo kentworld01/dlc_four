@@ -376,7 +376,8 @@ static uffs_MountTable demo_mount_table[] = {
 static int static_buffer_par1[UFFS_STATIC_BUFF_SIZE(PAGES_PER_BLOCK, PAGE_SIZE, PAR_1_BLOCKS) / sizeof(int)];
 static int static_buffer_par2[UFFS_STATIC_BUFF_SIZE(PAGES_PER_BLOCK, PAGE_SIZE, PAR_2_BLOCKS) / sizeof(int)];;
 #else
-#define TOTAL_BLOCKS    (4*1024/64)
+
+#define TOTAL_BLOCKS    (3*1024/64)	// use header 3 m space.
 #define PAGE_SPARE_SIZE 16
 #define PAGE_DATA_SIZE  (256-PAGE_SPARE_SIZE)
 #define PAGES_PER_BLOCK (64*1024/256)

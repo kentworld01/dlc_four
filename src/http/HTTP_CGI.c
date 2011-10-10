@@ -1,3 +1,6 @@
+#define _d_sd		0
+#define _d_uufs		1
+
 /*----------------------------------------------------------------------------
  *      R T L  -  T C P N E T
  *----------------------------------------------------------------------------
@@ -128,12 +131,26 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 				return;
 			}
 			/* Filename is OK, initialize the card. */
+#if _d_sd
 			if (finit() != 0) {
 				f = NULL;
 				return;
 			}
 			/* Files will be stored to the root directory of SD card. */
 			f = fopen ((const char *)var,"w");
+#elif _d_uffs
+			if( strcmp( (char*)var, "fonts.dat" ) == 0 ){
+				f = (FILE*) 3*1024*1024; // set 3 m address
+				// erase 3m - 4m block
+				for( n=0; n<16; n++ ){
+					W25X_BlockErase( 3*1024*1024 + 64*1024*n );
+				}
+			}
+			else
+				f = (FILE*)uffs_open( (const char *)var, UO_RDWR|UO_CREATE);
+#else
+			f = NULL;
+#endif
 			return;
 
 		case 2:
@@ -141,13 +158,31 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 			/* This function will be called several times with   */
 			/* code 2 when a big file is being uploaded.         */
 
-			if (f != NULL) {
+#if _d_sd
+			if (f != NULL) 
+#elif _d_uffs
+			if ( f != (FILE*)-1 ) 
+#else
+			return;
+#endif
+			{
 				/* Write in 512 byte blocks. This is the optimal way for */
 				/* the FAT FS with caching enabled. For cache buffer     */
 				/* size of 4KB the file write speed is 1.2 MByte/sec.    */
 				while ((n = len) > 0) {
 					if (n > 512) n = 512;
+#if _d_sd
 					fwrite (dat,1,n,f);
+#elif _d_uffs
+					if( 3*1024*1024 <= (u32)f && (u32)f >= 4*1024*1024 ){
+						// in 3m - 4m 
+						w25x_program( (u32)f, dat, n );
+						f = (FILE*)( (u32)f + n );
+					}
+					else{
+						uffs_write ((int)f,dat,n);
+					}
+#endif
 					dat += n;
 					len -= n;
 				}
@@ -156,9 +191,14 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 
 		case 3:
 			/* File upload finished. Close a file. */
+#if _d_sd
 			if (f != NULL) {
 				fclose (f);
 			}
+#elif _d_uffs
+			if( f != (FILE*)-1 )
+				uffs_close( (int)f );
+#endif
 			return;
 
 		default:
@@ -272,6 +312,7 @@ U16 cgi_func (U8 *env, U8 *buf, U16 buflen, U32 *pcgi)
 			break;
 
 		case 'D':
+#if _d_sd
 			/* Directory of SD Card - file 'dir.cgi' */
 			if (MYBUF(pcgi)->xcnt == 0) {
 				/* First Call, set initial value for 'ffind' function. */
@@ -289,8 +330,30 @@ U16 cgi_func (U8 *env, U8 *buf, U16 buflen, U32 *pcgi)
 				/* Hi bit is a repeat flag. */
 				len |= 0x8000;
 			}
+#elif _d_uffs
+			// uffs_readdir
+			//struct uffs_dirent * uffs_readdir(uffs_DIR *dirp)
+			{
+				static uffs_DIR *d;
+				int i;
+				struct uffs_dirent *ud;
+				d = uffs_opendir( "/" );
+				for( i=0; i<= MYBUF(pcgi)->xcnt; i++ ){
+					ud = uffs_readdir( d );
+					if( ud == NULL )
+						break;
+				}
+				if( ud ){
+					len += sprintf( (char*)buf, "%s\n", ud.d_name );
+					len |= 0x8000;
+				}
+				uffs_closedir( d );
+				MYBUF(pcgi)->xcnt++;
+			}
+#endif
 			break;
 		case 'd':
+#if _d_sd
 			/* Directory of SD Card - file 'dir.cgi' */
 			if (MYBUF(pcgi)->xcnt == 0) {
 				/* First Call, set initial value for 'ffind' function. */
@@ -314,6 +377,8 @@ U16 cgi_func (U8 *env, U8 *buf, U16 buflen, U32 *pcgi)
 				/* Hi bit is a repeat flag. */
 				len |= 0x8000;
 			}
+#elif _d_uffs
+#endif
 			break;
 	}
 	return ((U16)len);
