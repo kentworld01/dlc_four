@@ -12,7 +12,7 @@ char* get_card_group(void);
 
 
 
-char *_s_date_time[] = {
+char *_s_date_time2[] = {
 "y"
 ,"m"
 ,"d"
@@ -28,7 +28,7 @@ char *_s_date_time[] = {
 ,"5"
 ,"6"
 };
-char *_s_date_time2[] = {
+char *_s_date_time[] = {
 "年"
 ,"月"
 ,"日"

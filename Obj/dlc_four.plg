@@ -7,6 +7,1742 @@ D:\pro\termial4\dlc_four\dlc_four.uv2
 Project File Date:  10/10/2011
 
 <h2>Output:</h2>
-Clean started: Project: 'dlc_four'
-   deleting intermediate output files for target 'LM3S6911 ISP'
-   deleting intermediate output files for target 'DEBUG JLINK'
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(172): warning:  #128-D: loop is not reachable from preceding code
+src\http\HTTP_CGI.c(110): warning:  #550-D: variable "f" was set but never used
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(390): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling HTTP_upload.c...
+src\http\HTTP_upload.c(74): warning:  #223-D: function "spi_init" declared implicitly
+src\http\HTTP_upload.c(83): warning:  #223-D: function "uffs_flash_interface_init" declared implicitly
+src\http\HTTP_upload.c(85): warning:  #223-D: function "cmdTest2" declared implicitly
+src\http\HTTP_upload.c(87): warning:  #223-D: function "rtc_init" declared implicitly
+src\http\HTTP_upload.c(90): warning:  #223-D: function "access_init" declared implicitly
+src\http\HTTP_upload.c(418): warning:  #223-D: function "main_loop" declared implicitly
+compiling Web.c...
+compiling Retarget.c...
+compiling File_Config.c...
+compiling HTTP_uif.c...
+compiling Net_Config.c...
+assembling Startup.s...
+compiling LM3S_EMAC.c...
+src\lib\LM3S_EMAC.c(219): warning: C3419W: dynamic stack alignment veneer inserted in EthernetIntHandler
+compiling lcd.c...
+src\device\lcd.c(549): warning:  #223-D: function "show_logo" declared implicitly
+compiling SPI_LM3S8962.c...
+compiling W25X32.c...
+src\device\W25X32.c(399): warning:  #223-D: function "spi_ss" declared implicitly
+src\device\W25X32.c(404): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(409): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(415): warning:  #223-D: function "spi_ss" declared implicitly
+compiling Device.c...
+compiling FS_SPI_FlashPrg.c...
+compiling RTC.c...
+compiling Trace.c...
+src\os\Trace.c(68): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(96): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(101): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(121): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(139): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(140): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(142): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(156): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(160): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(163): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(173): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(194): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(198): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(200): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(212): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(223): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(233): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(358): warning:  #940-D: missing return statement at end of non-void function "Uart1_GetChar"
+src\os\Trace.c(363): warning:  #223-D: function "Uart1_PutByte" declared implicitly
+src\os\Trace.c(366): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutChar"
+src\os\Trace.c(372): warning:  #940-D: missing return statement at end of non-void function "Uart1_Print"
+src\os\Trace.c(380): warning:  #223-D: function "sendchar" declared implicitly
+src\os\Trace.c(381): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutByte"
+src\os\Trace.c(385): warning:  #177-D: variable "e" was declared but never referenced
+compiling test.c...
+src\os\test.c(84): warning:  #117-D: non-void function "file_test" should return a value
+src\os\test.c(90): warning:  #940-D: missing return statement at end of non-void function "file_test"
+src\os\test.c(105): warning:  #111-D: statement is unreachable
+src\os\test.c(176): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(178): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(179): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(186): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(188): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(189): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(196): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(198): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(199): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(205): warning:  #111-D: statement is unreachable
+src\os\test.c(207): warning:  #111-D: statement is unreachable
+src\os\test.c(133): warning:  #550-D: variable "st" was set but never used
+compiling t_cmd.c...
+src\os\t_cmd\t_cmd.c(25): warning:  #223-D: function "atoi" declared implicitly
+src\os\t_cmd\t_cmd.c(71): warning:  #550-D: variable "kc" was set but never used
+src\os\t_cmd\t_cmd.c(73): warning:  #177-D: variable "skc" was declared but never referenced
+src\os\t_cmd\t_cmd.c(74): warning:  #177-D: variable "ski" was declared but never referenced
+compiling app_main.c...
+src\os\app_main.c(12): warning:  #223-D: function "access_loop" declared implicitly
+src\os\app_main.c(13): warning:  #940-D: missing return statement at end of non-void function "main_loop"
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(545): warning:  #117-D: non-void function "read_file" should return a value
+src\os\access_main.c(557): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(648): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+compiling system_value.c...
+src\os\system_value.c(32): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+compiling txt_file_index.c...
+src\os\vfs\txt_file_index.c(26): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+src\os\vfs\txt_file_index.c(20): warning:  #550-D: variable "uc" was set but never used
+src\os\vfs\txt_file_index.c(76): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(94): warning:  #223-D: function "memcpy" declared implicitly
+src\os\vfs\txt_file_index.c(111): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(120): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(149): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(158): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(165): warning:  #223-D: function "strlen" declared implicitly
+src\os\vfs\txt_file_index.c(263): warning:  #177-D: variable "line_pointer_size" was declared but never referenced
+src\os\vfs\txt_file_index.c(463): warning:  #223-D: function "rand" declared implicitly
+src\os\vfs\txt_file_index.c(468): warning:  #940-D: missing return statement at end of non-void function "test_create_index"
+compiling DataTran.c...
+src\lib\DataTran.c(272): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(330): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(331): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(333): warning:  #223-D: function "strcat" declared implicitly
+src\lib\DataTran.c(546): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(547): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(572): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(591): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(654): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(760): warning:  #223-D: function "atoi" declared implicitly
+src\lib\DataTran.c(779): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(780): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(783): warning:  #223-D: function "strcat" declared implicitly
+src\lib\DataTran.c(785): warning:  #223-D: function "atoi" declared implicitly
+src\lib\DataTran.c(857): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(866): warning:  #223-D: function "strlen" declared implicitly
+compiling mp_misc.c...
+src\lib\mp_misc.c(29): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\lib\mp_misc.c(298): warning:  #223-D: function "strcmp" declared implicitly
+src\lib\mp_misc.c(307): warning:  #223-D: function "strcmp" declared implicitly
+src\lib\mp_misc.c(308): warning:  #223-D: function "atoi" declared implicitly
+src\lib\mp_misc.c(316): warning:  #223-D: function "strcmp" declared implicitly
+src\lib\mp_misc.c(317): warning:  #223-D: function "atol" declared implicitly
+src\lib\mp_misc.c(332): warning:  #223-D: function "strlen" declared implicitly
+src\lib\mp_misc.c(542): warning:  #111-D: statement is unreachable
+src\lib\mp_misc.c(563): warning:  #223-D: function "strlen" declared implicitly
+src\lib\mp_misc.c(597): warning:  #223-D: function "memset" declared implicitly
+compiling TextTools.c...
+compiling Font.c...
+src\gui\Font.c(80): warning:  #223-D: function "memcpy" declared implicitly
+src\gui\Font.c(120): warning:  #223-D: function "memset" declared implicitly
+src\gui\Font.c(190): warning:  #223-D: function "memcpy" declared implicitly
+src\gui\Font.c(205): warning:  #223-D: function "memset" declared implicitly
+compiling GraphTools.c...
+compiling Bitmap.c...
+compiling fnt_U0612.c...
+compiling fnt_fonts_arial_bold_8x12.c...
+compiling fnt_fonts_arial_bold_12x16.c...
+compiling fnt_fonts_vt100_5x7.c...
+compiling bmp_dlc.c...
+compiling gui_if.c...
+src\gui4\gui_if.c(23): warning:  #223-D: function "s_chop" declared implicitly
+src\gui4\gui_if.c(10): warning:  #177-D: variable "pos" was declared but never referenced
+src\gui4\gui_if.c(50): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(54): warning:  #223-D: function "system_string_value" declared implicitly
+src\gui4\gui_if.c(62): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(31): warning:  #550-D: variable "kc" was set but never used
+src\gui4\gui_if.c(33): warning:  #550-D: variable "skc" was set but never used
+compiling _fs_fclose.c...
+compiling _fs_fcreate.c...
+compiling _fs_fdelete.c...
+compiling _fs_ffind.c...
+compiling _fs_FlashIO.c...
+compiling _fs_flushbuf.c...
+compiling _fs_fopen.c...
+compiling _fs_frename.c...
+compiling _fs_getfsize.c...
+compiling _fs_read.c...
+compiling _fs_setfpos.c...
+compiling _fs_write.c...
+compiling fs_fanalyse.c...
+compiling fs_fat.c...
+compiling fs_fcheck.c...
+compiling fs_fdefrag.c...
+compiling fs_fdelete.c...
+compiling fs_ffind.c...
+compiling fs_fformat.c...
+compiling fs_ffree.c...
+compiling fs_finit.c...
+compiling fs_FlashPrg.c...
+compiling fs_frename.c...
+compiling fs_lib.c...
+compiling fs_mmc.c...
+compiling fs_time.c...
+compiling uffs_version.c...
+compiling uffs_badblock.c...
+src\uffs\uffs_badblock.c(93): warning:  #550-D: variable "type" was set but never used
+compiling uffs_blockinfo.c...
+compiling uffs_buf.c...
+compiling uffs_debug.c...
+compiling uffs_device.c...
+compiling uffs_ecc.c...
+compiling uffs_fd.c...
+compiling uffs_find.c...
+compiling uffs_flash.c...
+src\uffs\uffs_flash.c(350): warning:  #177-D: variable "attr" was declared but never referenced
+src\uffs\uffs_flash.c(596): warning:  #177-D: variable "verify_buf" was declared but never referenced
+src\uffs\uffs_flash.c(755): warning:  #177-D: variable "status" was declared but never referenced
+src\uffs\uffs_flash.c(757): warning:  #177-D: variable "spare" was declared but never referenced
+compiling uffs_fs.c...
+src\uffs\uffs_fs.c(296): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(402): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(476): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(491): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(519): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(609): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(682): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(687): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(674): warning:  #550-D: variable "dev" was set but never used
+src\uffs\uffs_fs.c(713): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(740): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(701): warning:  #550-D: variable "dev" was set but never used
+src\uffs\uffs_fs.c(942): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1004): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1056): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1117): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1138): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1170): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1343): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1346): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1490): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1547): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1580): warning:  #174-D: expression has no effect
+src\uffs\uffs_fs.c(1628): warning:  #174-D: expression has no effect
+compiling uffs_init.c...
+compiling uffs_mem.c...
+src\uffs\uffs_mem.c(906): warning:  #513-D: a value of type "unsigned char *" cannot be assigned to an entity of type "char *"
+compiling uffs_mtb.c...
+compiling uffs_pool.c...
+src\uffs\uffs_pool.c(235): warning:  #186-D: pointless comparison of unsigned integer with zero
+compiling uffs_public.c...
+compiling uffs_tree.c...
+src\uffs\uffs_tree.c(1047): warning:  #177-D: variable "tree" was declared but never referenced
+compiling uffs_utils.c...
+src\uffs\uffs_utils.c(382): warning:  #111-D: statement is unreachable
+src\uffs\uffs_utils.c(393): warning:  #1-D: last line of file ends without a newline
+compiling uffs_os_posix.c...
+src\uffs\emu\uffs_os_posix.c(102): warning:  #223-D: function "RTC_Get" declared implicitly
+compiling flash-interface-example.c...
+src\uffs\example\flash-interface-example.c(75): warning:  #940-D: missing return statement at end of non-void function "write_data_addr"
+src\uffs\example\flash-interface-example.c(78): warning:  #940-D: missing return statement at end of non-void function "write_erase_addr"
+src\uffs\example\flash-interface-example.c(81): warning:  #940-D: missing return statement at end of non-void function "write_data"
+src\uffs\example\flash-interface-example.c(84): warning:  #940-D: missing return statement at end of non-void function "read_data"
+src\uffs\example\flash-interface-example.c(124): warning:  #223-D: function "W25X_ReadData" declared implicitly
+src\uffs\example\flash-interface-example.c(141): warning:  #223-D: function "W25X_ReadData" declared implicitly
+src\uffs\example\flash-interface-example.c(158): warning:  #223-D: function "W25X_ReadData" declared implicitly
+src\uffs\example\flash-interface-example.c(119): warning:  #177-D: variable "chip" was declared but never referenced
+src\uffs\example\flash-interface-example.c(193): warning:  #223-D: function "W25X_PageProgram" declared implicitly
+src\uffs\example\flash-interface-example.c(227): warning:  #223-D: function "W25X_PageProgram" declared implicitly
+src\uffs\example\flash-interface-example.c(254): warning:  #223-D: function "W25X_PageProgram" declared implicitly
+src\uffs\example\flash-interface-example.c(186): warning:  #550-D: variable "fall_through" was set but never used
+src\uffs\example\flash-interface-example.c(187): warning:  #177-D: variable "chip" was declared but never referenced
+src\uffs\example\flash-interface-example.c(292): warning:  #223-D: function "W25X_BlockErase" declared implicitly
+src\uffs\example\flash-interface-example.c(286): warning:  #177-D: variable "val" was declared but never referenced
+src\uffs\example\flash-interface-example.c(287): warning:  #177-D: variable "chip" was declared but never referenced
+src\uffs\example\flash-interface-example.c(331): warning:  #177-D: variable "chip" was declared but never referenced
+src\uffs\example\flash-interface-example.c(393): warning:  #177-D: variable "demo_device_2" was declared but never referenced
+src\uffs\example\flash-interface-example.c(406): warning:  #177-D: function "init_nand_chip" was declared but never referenced
+compiling test_cmds.c...
+src\uffs\emu\cmdline.h(60): warning:  #1295-D: Deprecated declaration cliMain - give arg types
+src\uffs\emu\test_cmds.c(577): warning:  #177-D: variable "stat_buf" was declared but never referenced
+compiling cmdline.c...
+src\uffs\emu\cmdline.h(60): warning:  #1295-D: Deprecated declaration cliMain - give arg types
+linking...
+Program Size: Code=110048 RO-data=22216 RW-data=1212 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 231 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(143): error:  #32: expression must have arithmetic type
+src\http\HTTP_CGI.c(150): warning:  #223-D: function "uffs_open" declared implicitly
+src\http\HTTP_CGI.c(150): error:  #20: identifier "UO_RDWR" is undefined
+src\http\HTTP_CGI.c(150): error:  #20: identifier "UO_CREATE" is undefined
+src\http\HTTP_CGI.c(183): warning:  #223-D: function "uffs_write" declared implicitly
+src\http\HTTP_CGI.c(200): warning:  #223-D: function "uffs_close" declared implicitly
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(337): error:  #20: identifier "uffs_DIR" is undefined
+src\http\HTTP_CGI.c(340): warning:  #223-D: function "uffs_opendir" declared implicitly
+src\http\HTTP_CGI.c(340): error:  #513: a value of type "int" cannot be assigned to an entity of type "<error-type> *"
+src\http\HTTP_CGI.c(342): warning:  #223-D: function "uffs_readdir" declared implicitly
+src\http\HTTP_CGI.c(342): error:  #513: a value of type "int" cannot be assigned to an entity of type "struct uffs_dirent *"
+src\http\HTTP_CGI.c(347): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(350): warning:  #223-D: function "uffs_closedir" declared implicitly
+src\http\HTTP_CGI.c(384): error:  #20: identifier "uffs_DIR" is undefined
+src\http\HTTP_CGI.c(387): warning:  #223-D: function "uffs_opendir" declared implicitly
+src\http\HTTP_CGI.c(387): error:  #513: a value of type "int" cannot be assigned to an entity of type "<error-type> *"
+src\http\HTTP_CGI.c(389): warning:  #223-D: function "uffs_readdir" declared implicitly
+src\http\HTTP_CGI.c(389): error:  #513: a value of type "int" cannot be assigned to an entity of type "struct uffs_dirent *"
+src\http\HTTP_CGI.c(394): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(397): warning:  #223-D: function "uffs_closedir" declared implicitly
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(143): error:  #32: expression must have arithmetic type
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(347): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(394): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling HTTP_upload.c...
+src\http\HTTP_upload.c(74): warning:  #223-D: function "spi_init" declared implicitly
+src\http\HTTP_upload.c(83): warning:  #223-D: function "uffs_flash_interface_init" declared implicitly
+src\http\HTTP_upload.c(85): warning:  #223-D: function "cmdTest2" declared implicitly
+src\http\HTTP_upload.c(87): warning:  #223-D: function "rtc_init" declared implicitly
+src\http\HTTP_upload.c(90): warning:  #223-D: function "access_init" declared implicitly
+src\http\HTTP_upload.c(418): warning:  #223-D: function "main_loop" declared implicitly
+compiling Web.c...
+compiling W25X32.c...
+src\device\W25X32.c(399): warning:  #223-D: function "spi_ss" declared implicitly
+src\device\W25X32.c(404): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(409): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(415): warning:  #223-D: function "spi_ss" declared implicitly
+compiling Device.c...
+compiling RTC.c...
+compiling Trace.c...
+src\os\Trace.c(68): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(96): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(101): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(121): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(139): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(140): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(142): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(156): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(160): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(163): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(173): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(194): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(198): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(200): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(212): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(223): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(233): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(358): warning:  #940-D: missing return statement at end of non-void function "Uart1_GetChar"
+src\os\Trace.c(363): warning:  #223-D: function "Uart1_PutByte" declared implicitly
+src\os\Trace.c(366): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutChar"
+src\os\Trace.c(372): warning:  #940-D: missing return statement at end of non-void function "Uart1_Print"
+src\os\Trace.c(380): warning:  #223-D: function "sendchar" declared implicitly
+src\os\Trace.c(381): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutByte"
+src\os\Trace.c(385): warning:  #177-D: variable "e" was declared but never referenced
+compiling test.c...
+src\os\test.c(84): warning:  #117-D: non-void function "file_test" should return a value
+src\os\test.c(90): warning:  #940-D: missing return statement at end of non-void function "file_test"
+src\os\test.c(105): warning:  #111-D: statement is unreachable
+src\os\test.c(176): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(178): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(179): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(186): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(188): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(189): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(196): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(198): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(199): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(205): warning:  #111-D: statement is unreachable
+src\os\test.c(207): warning:  #111-D: statement is unreachable
+src\os\test.c(133): warning:  #550-D: variable "st" was set but never used
+compiling t_cmd.c...
+src\os\t_cmd\t_cmd.c(25): warning:  #223-D: function "atoi" declared implicitly
+src\os\t_cmd\t_cmd.c(71): warning:  #550-D: variable "kc" was set but never used
+src\os\t_cmd\t_cmd.c(73): warning:  #177-D: variable "skc" was declared but never referenced
+src\os\t_cmd\t_cmd.c(74): warning:  #177-D: variable "ski" was declared but never referenced
+compiling app_main.c...
+src\os\app_main.c(12): warning:  #223-D: function "access_loop" declared implicitly
+src\os\app_main.c(13): warning:  #940-D: missing return statement at end of non-void function "main_loop"
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(545): warning:  #117-D: non-void function "read_file" should return a value
+src\os\access_main.c(557): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(648): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+compiling system_value.c...
+src\os\system_value.c(32): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+compiling txt_file_index.c...
+src\os\vfs\txt_file_index.c(26): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+src\os\vfs\txt_file_index.c(20): warning:  #550-D: variable "uc" was set but never used
+src\os\vfs\txt_file_index.c(76): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(111): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(120): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(149): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(158): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(263): warning:  #177-D: variable "line_pointer_size" was declared but never referenced
+src\os\vfs\txt_file_index.c(463): warning:  #223-D: function "rand" declared implicitly
+src\os\vfs\txt_file_index.c(468): warning:  #940-D: missing return statement at end of non-void function "test_create_index"
+compiling mp_misc.c...
+src\lib\mp_misc.c(29): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\lib\mp_misc.c(308): warning:  #223-D: function "atoi" declared implicitly
+src\lib\mp_misc.c(317): warning:  #223-D: function "atol" declared implicitly
+src\lib\mp_misc.c(542): warning:  #111-D: statement is unreachable
+compiling TextTools.c...
+compiling Font.c...
+compiling GraphTools.c...
+compiling Bitmap.c...
+compiling gui_if.c...
+src\gui4\gui_if.c(23): warning:  #223-D: function "s_chop" declared implicitly
+src\gui4\gui_if.c(10): warning:  #177-D: variable "pos" was declared but never referenced
+src\gui4\gui_if.c(50): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(54): warning:  #223-D: function "system_string_value" declared implicitly
+src\gui4\gui_if.c(62): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(31): warning:  #550-D: variable "kc" was set but never used
+src\gui4\gui_if.c(33): warning:  #550-D: variable "skc" was set but never used
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(143): error:  #32: expression must have arithmetic type
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(347): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(394): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(143): error:  #32: expression must have arithmetic type
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(394): error:  #154: expression must have struct or union type
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(143): error:  #32: expression must have arithmetic type
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(308): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(265): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(409): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=110428 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 8 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling test_cmds.c...
+src\uffs\emu\cmdline.h(60): warning:  #1295-D: Deprecated declaration cliMain - give arg types
+src\uffs\emu\test_cmds.c(578): warning:  #177-D: variable "stat_buf" was declared but never referenced
+linking...
+Program Size: Code=110436 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 2 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling test_cmds.c...
+src\uffs\emu\cmdline.h(60): warning:  #1295-D: Deprecated declaration cliMain - give arg types
+src\uffs\emu\test_cmds.c(580): warning:  #177-D: variable "stat_buf" was declared but never referenced
+linking...
+Program Size: Code=110440 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 2 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(80): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(91): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(312): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(313): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(269): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(270): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(271): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(413): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+compiling test_cmds.c...
+src\uffs\emu\cmdline.h(60): warning:  #1295-D: Deprecated declaration cliMain - give arg types
+src\uffs\emu\test_cmds.c(583): warning:  #177-D: variable "stat_buf" was declared but never referenced
+linking...
+Program Size: Code=110480 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 10 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(77): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(88): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(309): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(310): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(266): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(268): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(410): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling HTTP_upload.c...
+src\http\HTTP_upload.c(74): warning:  #223-D: function "spi_init" declared implicitly
+src\http\HTTP_upload.c(83): warning:  #223-D: function "uffs_flash_interface_init" declared implicitly
+src\http\HTTP_upload.c(85): warning:  #223-D: function "cmdTest2" declared implicitly
+src\http\HTTP_upload.c(87): warning:  #223-D: function "rtc_init" declared implicitly
+src\http\HTTP_upload.c(90): warning:  #223-D: function "access_init" declared implicitly
+src\http\HTTP_upload.c(418): warning:  #223-D: function "main_loop" declared implicitly
+compiling Web.c...
+compiling HTTP_uif.c...
+src\http\HTTP_uif.c(31): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *restrict"
+src\http\HTTP_uif.c(78): warning:  #111-D: statement is unreachable
+src\http\HTTP_uif.c(104): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *restrict"
+compiling W25X32.c...
+src\device\W25X32.c(399): warning:  #223-D: function "spi_ss" declared implicitly
+src\device\W25X32.c(404): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(409): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(415): warning:  #223-D: function "spi_ss" declared implicitly
+compiling Device.c...
+compiling RTC.c...
+compiling Trace.c...
+src\os\Trace.c(68): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(96): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(101): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(121): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(139): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(140): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(142): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(156): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(160): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(163): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(173): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(194): warning:  #223-D: function "Uart1_Print" declared implicitly
+src\os\Trace.c(198): warning:  #223-D: function "Uart1_GetReceiveCount" declared implicitly
+src\os\Trace.c(200): warning:  #223-D: function "Uart1_Read" declared implicitly
+src\os\Trace.c(212): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(223): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(233): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\os\Trace.c(358): warning:  #940-D: missing return statement at end of non-void function "Uart1_GetChar"
+src\os\Trace.c(363): warning:  #223-D: function "Uart1_PutByte" declared implicitly
+src\os\Trace.c(366): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutChar"
+src\os\Trace.c(372): warning:  #940-D: missing return statement at end of non-void function "Uart1_Print"
+src\os\Trace.c(380): warning:  #223-D: function "sendchar" declared implicitly
+src\os\Trace.c(381): warning:  #940-D: missing return statement at end of non-void function "Uart1_PutByte"
+src\os\Trace.c(385): warning:  #177-D: variable "e" was declared but never referenced
+compiling test.c...
+src\os\test.c(84): warning:  #117-D: non-void function "file_test" should return a value
+src\os\test.c(90): warning:  #940-D: missing return statement at end of non-void function "file_test"
+src\os\test.c(105): warning:  #111-D: statement is unreachable
+src\os\test.c(176): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(178): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(179): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(186): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(188): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(189): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(196): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(198): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(199): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\os\test.c(205): warning:  #111-D: statement is unreachable
+src\os\test.c(207): warning:  #111-D: statement is unreachable
+src\os\test.c(133): warning:  #550-D: variable "st" was set but never used
+compiling t_cmd.c...
+src\os\t_cmd\t_cmd.c(25): warning:  #223-D: function "atoi" declared implicitly
+src\os\t_cmd\t_cmd.c(71): warning:  #550-D: variable "kc" was set but never used
+src\os\t_cmd\t_cmd.c(73): warning:  #177-D: variable "skc" was declared but never referenced
+src\os\t_cmd\t_cmd.c(74): warning:  #177-D: variable "ski" was declared but never referenced
+compiling app_main.c...
+src\os\app_main.c(12): warning:  #223-D: function "access_loop" declared implicitly
+src\os\app_main.c(13): warning:  #940-D: missing return statement at end of non-void function "main_loop"
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(545): warning:  #117-D: non-void function "read_file" should return a value
+src\os\access_main.c(557): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(648): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+compiling system_value.c...
+src\os\system_value.c(32): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+compiling txt_file_index.c...
+src\os\vfs\txt_file_index.c(26): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+src\os\vfs\txt_file_index.c(20): warning:  #550-D: variable "uc" was set but never used
+src\os\vfs\txt_file_index.c(76): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(111): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(120): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(149): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(158): warning:  #223-D: function "_error_message" declared implicitly
+src\os\vfs\txt_file_index.c(263): warning:  #177-D: variable "line_pointer_size" was declared but never referenced
+src\os\vfs\txt_file_index.c(463): warning:  #223-D: function "rand" declared implicitly
+src\os\vfs\txt_file_index.c(468): warning:  #940-D: missing return statement at end of non-void function "test_create_index"
+compiling DataTran.c...
+src\lib\DataTran.c(272): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(330): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(331): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(333): warning:  #223-D: function "strcat" declared implicitly
+src\lib\DataTran.c(546): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(547): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(572): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(591): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(654): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(760): warning:  #223-D: function "atoi" declared implicitly
+src\lib\DataTran.c(779): warning:  #223-D: function "strlen" declared implicitly
+src\lib\DataTran.c(780): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(783): warning:  #223-D: function "strcat" declared implicitly
+src\lib\DataTran.c(785): warning:  #223-D: function "atoi" declared implicitly
+src\lib\DataTran.c(857): warning:  #223-D: function "strcpy" declared implicitly
+src\lib\DataTran.c(866): warning:  #223-D: function "strlen" declared implicitly
+compiling mp_misc.c...
+src\lib\mp_misc.c(29): warning:  #223-D: function "Uart1_PutChar" declared implicitly
+src\lib\mp_misc.c(308): warning:  #223-D: function "atoi" declared implicitly
+src\lib\mp_misc.c(317): warning:  #223-D: function "atol" declared implicitly
+src\lib\mp_misc.c(542): warning:  #111-D: statement is unreachable
+compiling TextTools.c...
+compiling Font.c...
+compiling GraphTools.c...
+compiling Bitmap.c...
+compiling gui_if.c...
+src\gui4\gui_if.c(23): warning:  #223-D: function "s_chop" declared implicitly
+src\gui4\gui_if.c(10): warning:  #177-D: variable "pos" was declared but never referenced
+src\gui4\gui_if.c(50): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(54): warning:  #223-D: function "system_string_value" declared implicitly
+src\gui4\gui_if.c(62): warning:  #223-D: function "atoi" declared implicitly
+src\gui4\gui_if.c(31): warning:  #550-D: variable "kc" was set but never used
+src\gui4\gui_if.c(33): warning:  #550-D: variable "skc" was set but never used
+linking...
+Program Size: Code=109440 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 161 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling HTTP_uif.c...
+src\http\HTTP_uif.c(32): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *restrict"
+src\http\HTTP_uif.c(82): warning:  #111-D: statement is unreachable
+src\http\HTTP_uif.c(108): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *restrict"
+linking...
+Program Size: Code=109452 RO-data=22216 RW-data=1220 ZI-data=39580  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 3 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_upload.c...
+src\http\HTTP_upload.c(75): warning:  #223-D: function "spi_init" declared implicitly
+src\http\HTTP_upload.c(85): warning:  #223-D: function "uffs_flash_interface_init" declared implicitly
+src\http\HTTP_upload.c(87): warning:  #223-D: function "cmdTest2" declared implicitly
+src\http\HTTP_upload.c(89): warning:  #223-D: function "rtc_init" declared implicitly
+src\http\HTTP_upload.c(92): warning:  #223-D: function "access_init" declared implicitly
+src\http\HTTP_upload.c(420): warning:  #223-D: function "main_loop" declared implicitly
+compiling Web.c...
+linking...
+Program Size: Code=109468 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 6 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(310): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(311): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(339): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(341): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(268): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(269): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(414): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=109440 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 10 Warning(s).
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+linking...
+Program Size: Code=109440 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 0 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(545): warning:  #117-D: non-void function "read_file" should return a value
+src\os\access_main.c(557): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(599): warning:  #186-D: pointless comparison of unsigned integer with zero
+src\os\access_main.c(648): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+linking...
+Program Size: Code=109444 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 17 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(310): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(311): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(339): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(341): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(267): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(268): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(269): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(414): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=109444 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 10 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling system_value.c...
+src\os\system_value.c(32): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(33): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(34): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(35): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(36): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(37): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(38): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(39): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(40): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(41): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(42): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(43): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(44): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+src\os\system_value.c(45): warning:  #870-D: invalid multibyte character sequence
+compiling Font.c...
+linking...
+Program Size: Code=109504 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 42 Warning(s).
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+linking...
+Program Size: Code=109504 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 0 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(148): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(313): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(314): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(342): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(344): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(270): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(271): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(272): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(417): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=109512 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 11 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(148): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(313): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(314): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(342): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(344): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(270): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(271): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(272): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(417): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+compiling Font.c...
+linking...
+Program Size: Code=109512 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 11 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(148): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(186): warning:  #223-D: function "w25x_read" declared implicitly
+src\http\HTTP_CGI.c(314): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(315): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(343): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(345): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(271): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(272): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(273): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(418): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+.\Obj\dlc_four.axf: Error: L6218E: Undefined symbol w25x_read (referred from http_cgi.o).
+Target not created
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(148): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(314): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(315): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(343): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(345): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(271): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(272): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(273): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(418): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=109524 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 11 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling HTTP_CGI.c...
+src\http\HTTP_CGI.c(78): warning:  #223-D: function "t_cmd_main" declared implicitly
+src\http\HTTP_CGI.c(89): warning:  #223-D: function "demo_test" declared implicitly
+src\http\HTTP_CGI.c(148): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(184): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(187): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "BYTE *"
+src\http\HTTP_CGI.c(315): warning:  #223-D: function "system_string_value" declared implicitly
+src\http\HTTP_CGI.c(316): warning:  #167-D: argument of type "U8 *" is incompatible with parameter of type "const char *"
+src\http\HTTP_CGI.c(344): warning:  #177-D: variable "i" was declared but never referenced
+src\http\HTTP_CGI.c(346): warning:  #177-D: variable "d" was declared but never referenced
+src\http\HTTP_CGI.c(272): warning:  #177-D: variable "mask" was declared but never referenced
+src\http\HTTP_CGI.c(273): warning:  #177-D: variable "info" was declared but never referenced
+src\http\HTTP_CGI.c(274): warning:  #177-D: variable "temp" was declared but never referenced
+src\http\HTTP_CGI.c(419): warning:  #177-D: function "dot_format" was declared but never referenced
+compiling Web.c...
+linking...
+Program Size: Code=109536 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 13 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling W25X32.c...
+src\device\W25X32.c(399): warning:  #223-D: function "spi_ss" declared implicitly
+src\device\W25X32.c(404): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(409): warning:  #223-D: function "spi_send" declared implicitly
+src\device\W25X32.c(415): warning:  #223-D: function "spi_ss" declared implicitly
+linking...
+Program Size: Code=109536 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 4 Warning(s).
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+linking...
+Program Size: Code=109536 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 0 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(567): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(609): warning:  #186-D: pointless comparison of unsigned integer with zero
+src\os\access_main.c(658): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+linking...
+Program Size: Code=109524 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 16 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'DEBUG JLINK'
+custom translating Web.inp...
+Custom: C:\Keil\ARM\bin\fcarm @Web\Web.inp
+FCARM file converter V2.11
+Converted 14 File(s), Compression 93%
+compiling Web.c...
+compiling access_main.c...
+src\os\access_main.c(74): warning:  #177-D: variable "tstr" was declared but never referenced
+src\os\access_main.c(122): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(133): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(130): warning:  #177-D: variable "no" was declared but never referenced
+src\os\access_main.c(151): warning:  #223-D: function "txt_file_read_line" declared implicitly
+src\os\access_main.c(212): warning:  #223-D: function "txt_file_search_line" declared implicitly
+src\os\access_main.c(235): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(299): warning:  #177-D: variable "i" was declared but never referenced
+src\os\access_main.c(300): warning:  #177-D: variable "card_id" was declared but never referenced
+src\os\access_main.c(348): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(362): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(377): warning:  #223-D: function "_error_message" declared implicitly
+src\os\access_main.c(494): warning:  #223-D: function "txt_file_create_line_pointer" declared implicitly
+src\os\access_main.c(567): warning:  #223-D: function "gui_show_page" declared implicitly
+src\os\access_main.c(609): warning:  #186-D: pointless comparison of unsigned integer with zero
+src\os\access_main.c(658): warning:  #940-D: missing return statement at end of non-void function "access_loop"
+linking...
+Program Size: Code=109524 RO-data=22216 RW-data=1224 ZI-data=39584  
+FromELF: creating hex file...
+".\Obj\dlc_four.axf" - 0 Error(s), 16 Warning(s).
+Load "D:\\pro\\termial4\\dlc_four\\Obj\\dlc_four.AXF" 
+VTarget = 3.300V
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+DLL version V4.08b, compiled Jun 30 2009 19:10:31
+Firmware: J-Link ARM-OB STM32 compiled Mar 01 2010 17:00:09
+Hardware: V7.00
+Hardware-Breakpoints: 6
+Software-Breakpoints: 2048
+Watchpoints:          0
+Found 1 JTAG device, Total IRLen = 4:
+ Id of device #0: 0x3BA00477
+Cortex-M3 identified.
+JTAG speed: 5 kHz
+Info: TotalIRLen = 4, IRPrint = 0x01
+Info: Found Cortex-M3 r1p1, Little endian.
+Info: TPIU fitted.
+Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+JTAG speed: 1000 kHz
+Erase Done.
+Programming Done.
+Verify OK.

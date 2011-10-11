@@ -127,4 +127,12 @@
 
 #endif
 
+
+
+// modules define
+
+#define _d_sd 0
+#define _d_uffs 1
+
+
 #endif

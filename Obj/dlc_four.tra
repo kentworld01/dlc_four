@@ -94,7 +94,7 @@
 ### ADS-LD Output File: '.\Obj\dlc_four.axf'
 ### ADS-LD Command File: '.\Obj\dlc_four.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x00000D14
+### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x00000594
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Obj\dlc_four.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

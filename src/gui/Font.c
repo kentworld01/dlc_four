@@ -30,7 +30,8 @@ extern const unsigned char fnt_fonts_arial_bold_12x16[];
 
 #define SIZE_OF_GBK_FONT				(0x00063000)
 
-unsigned ADDR_GBK_FONT = ((DWORD)(0x00004000));
+unsigned ADDR_GBK_FONT = ((DWORD)( 3*1024*1024 + 64*1024 ));
+//unsigned ADDR_GBK_FONT = ((DWORD)(0x00004000));
 
 static FNT Fnt[FT_END];
 static BYTE EngFontSelect = FT_ENG_06X12;
@@ -85,7 +86,8 @@ void Font_Load(WORD CodeSet, WORD FontType, FNT *Fnt)
 #ifndef _d_dir_file_modules
 		// Load from FLASH		// the old font_load method.
 		//Flash_Read(ADDR_GBK_FONT, (void *)buf, sizeof(FNT));
-		//pFntData = (BYTE *)(ADDR_GBK_FONT + sizeof(FNT));
+		W25X_ReadData(ADDR_GBK_FONT, (void *)buf, sizeof(FNT));
+		pFntData = (BYTE *)(ADDR_GBK_FONT + sizeof(FNT));
 #else
 		// use file location the address.
 		{
@@ -196,7 +198,8 @@ void Font_GetPixelData(WORD CodeSet, WCHAR wc, BYTE *Data)
 		if ((fontaddr >= ADDR_GBK_FONT) && ((fontaddr + fontbytes) <= (ADDR_GBK_FONT + SIZE_OF_GBK_FONT)))
 		{
 			//Flash_Read(fontaddr, (void *)Data, fontbytes);
-			//is_load_success = TRUE;
+			W25X_ReadData(fontaddr, (void *)Data, fontbytes);
+			is_load_success = TRUE;
 		}
 	}
 

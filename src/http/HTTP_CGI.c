@@ -1,6 +1,3 @@
-#define _d_sd		0
-#define _d_uufs		1
-
 /*----------------------------------------------------------------------------
  *      R T L  -  T C P N E T
  *----------------------------------------------------------------------------
@@ -47,6 +44,7 @@ static S8 label[12] = "SD_CARD";
 typedef struct {
 	U16 xcnt;
 	U16 unused;
+	uffs_DIR *d;
 } MY_BUF;
 #define MYBUF(p)        ((MY_BUF *)p)
 
@@ -111,6 +109,7 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 	U8 *var,*p;
 	U32 n;
 	BOOL do_format;
+	char fn[64];
 
 	switch (code) {
 		case 0:
@@ -140,14 +139,20 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 			f = fopen ((const char *)var,"w");
 #elif _d_uffs
 			if( strcmp( (char*)var, "fonts.dat" ) == 0 ){
-				f = (FILE*) 3*1024*1024; // set 3 m address
+				u32 addr;
+				f = (FILE*) (void*)(3*1024*1024 + 64*1024); // set 3 m address
 				// erase 3m - 4m block
 				for( n=0; n<16; n++ ){
-					W25X_BlockErase( 3*1024*1024 + 64*1024*n );
+					addr = ( 3*1024*1024 + 64*1024*n );
+					W25X_BlockErase( addr );
+					W25X_ReadData( addr, fn, sizeof(fn) );
 				}
 			}
-			else
-				f = (FILE*)uffs_open( (const char *)var, UO_RDWR|UO_CREATE);
+			else{
+				strcpy( fn, "/" );
+				strcat( fn, (char*)var );
+				f = (FILE*)uffs_open( fn, UO_RDWR|UO_CREATE);
+			}
 #else
 			f = NULL;
 #endif
@@ -174,10 +179,12 @@ void cgi_process_data (U8 code, U8 *dat, U16 len)
 #if _d_sd
 					fwrite (dat,1,n,f);
 #elif _d_uffs
-					if( 3*1024*1024 <= (u32)f && (u32)f >= 4*1024*1024 ){
+					if( 3*1024*1024 <= (u32)f && (u32)f < 4*1024*1024 ){
 						// in 3m - 4m 
+						W25X_ReadData( 0x310000, fn, 64 );
 						w25x_program( (u32)f, dat, n );
 						f = (FILE*)( (u32)f + n );
+						W25X_ReadData( 0x310000, fn, 64 );
 					}
 					else{
 						uffs_write ((int)f,dat,n);
@@ -334,20 +341,23 @@ U16 cgi_func (U8 *env, U8 *buf, U16 buflen, U32 *pcgi)
 			// uffs_readdir
 			//struct uffs_dirent * uffs_readdir(uffs_DIR *dirp)
 			{
-				static uffs_DIR *d;
 				int i;
 				struct uffs_dirent *ud;
-				d = uffs_opendir( "/" );
-				for( i=0; i<= MYBUF(pcgi)->xcnt; i++ ){
-					ud = uffs_readdir( d );
-					if( ud == NULL )
-						break;
+				static uffs_DIR *d;
+				if( MYBUF(pcgi)->xcnt == 0 ){
+					MYBUF(pcgi)->d = uffs_opendir( "/" );
 				}
-				if( ud ){
-					len += sprintf( (char*)buf, "%s\n", ud.d_name );
-					len |= 0x8000;
+//MYBUF(pcgi)->d
+				if( MYBUF(pcgi)->d ){
+					ud = uffs_readdir( MYBUF(pcgi)->d );
+					if( ud ){
+						len += sprintf( (char*)buf, "%s\n", ud->d_name );
+						len |= 0x8000;
+					}
+					else{
+						uffs_closedir( MYBUF(pcgi)->d );
+					}
 				}
-				uffs_closedir( d );
 				MYBUF(pcgi)->xcnt++;
 			}
 #endif
@@ -378,6 +388,25 @@ U16 cgi_func (U8 *env, U8 *buf, U16 buflen, U32 *pcgi)
 				len |= 0x8000;
 			}
 #elif _d_uffs
+			// uffs_readdir
+			//struct uffs_dirent * uffs_readdir(uffs_DIR *dirp)
+			{
+				static uffs_DIR *d;
+				int i;
+				struct uffs_dirent *ud;
+				d = uffs_opendir( "/" );
+				for( i=0; i<= MYBUF(pcgi)->xcnt; i++ ){
+					ud = uffs_readdir( d );
+					if( ud == NULL )
+						break;
+				}
+				if( ud ){
+					len += sprintf( (char*)buf, "%s\n", ud->d_name );
+					len |= 0x8000;
+				}
+				uffs_closedir( d );
+				MYBUF(pcgi)->xcnt++;
+			}
 #endif
 			break;
 	}

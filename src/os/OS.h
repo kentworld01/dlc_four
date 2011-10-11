@@ -17,6 +17,10 @@
 
 #include "DataTran.h"
 
+#include "uffs/inc/uffs/uffs_config.h"
+#include "uffs/inc/uffs/uffs_fs.h"
+#include "uffs/inc/uffs/uffs_fd.h"
+#include "uffs/inc/uffs/uffs_utils.h"
 
 //#include "Queue.h"
 //#include "Event.h"

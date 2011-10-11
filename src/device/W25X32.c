@@ -147,8 +147,8 @@ void W25X_PageProgram(DWORD address, BYTE *data, DWORD count)
 		W25X_SPIWrite(*data++);					// Send data
 
 
-	W25X_WaitForReady();
 	_flash_deselect();
+	W25X_WaitForReady();
 }
 
 void W25X_ChipErase(void)

@@ -237,21 +237,27 @@ static URET DoTest2(void)
 		uffs_close(fd);
 	}
 	
-	fd = uffs_open("/abc/test.txt", UO_RDWR|UO_CREATE);
-	if (fd < 0) {
-		MSGLN("Can't open /abc/test.txt");
-		goto exit_test;
-	}
-
 	sprintf(buf, "123456789ABCDEF");
-	ret = uffs_write(fd, buf, strlen(buf));
-	MSGLN("write %d bytes to file, content: %s", ret, buf);
+	fd = uffs_open("/abc/test.txt", UO_RDONLY);
+	if( fd < 0 ){
+		fd = uffs_open("/abc/test.txt", UO_RDWR|UO_CREATE);
+		if (fd < 0) {
+			MSGLN("Can't open /abc/test.txt");
+			goto exit_test;
+		}
 
-	ret = uffs_seek(fd, 3, USEEK_SET);
-	MSGLN("new file position: %d", ret);
+		ret = uffs_write(fd, buf, strlen(buf));
+		MSGLN("write %d bytes to file, content: %s", ret, buf);
 
-	memset(buf_1, 0, sizeof(buf_1));
-	ret = uffs_read(fd, buf_1, 5);
+		ret = uffs_seek(fd, 3, USEEK_SET);
+		MSGLN("new file position: %d", ret);
+
+		memset(buf_1, 0, sizeof(buf_1));
+	}
+	else{
+		ret = uffs_seek(fd, 3, USEEK_SET);
+		ret = uffs_read(fd, buf_1, 5);
+	}
 	MSGLN("read %d bytes, content: %s", ret, buf_1);
 
 	if (memcmp(buf + 3, buf_1, 5) != 0) {

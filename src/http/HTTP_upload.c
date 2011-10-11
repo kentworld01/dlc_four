@@ -53,6 +53,7 @@ int sendchar (int ch);
 
 /*--------------------------- init ------------------------------------------*/
 
+u8 flash_clear_flag = 0;
 static void init () {
 	/* Add System initialisation code here */ 
 
@@ -63,7 +64,7 @@ static void init () {
 		sendchar( 'A' );
 	}
 #endif   
-	//init_TcpNet ();
+	init_TcpNet ();
 
 	/* Setup and enable the SysTick timer for 100ms. */
 	SysTickPeriodSet(SysCtlClockGet() / 10);
@@ -79,7 +80,8 @@ static void init () {
 
 	//w25x_test();
 
-	//W25X_ChipErase();
+	if( flash_clear_flag == 1 )
+		W25X_ChipErase();
 	uffs_flash_interface_init();
 	//cmdTest1();
 	cmdTest2();

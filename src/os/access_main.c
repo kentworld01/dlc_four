@@ -540,6 +540,7 @@ int g_page_keep_second = 0;
 
 int read_file( char* fn, char *buf, int max_buf_size)
 {
+#if _d_sd
 	FILE *f;
 	if (finit() != 0) 
 		return;
@@ -549,6 +550,15 @@ int read_file( char* fn, char *buf, int max_buf_size)
 	fread (buf,1,max_buf_size,f);
 	fclose (f);
 	return 1;
+#elif _d_uffs
+	int f;
+	f = uffs_open ( fn , UO_RDONLY );
+	if( f == -1 )
+		return 0;
+	uffs_read (f,buf,max_buf_size);
+	uffs_close (f);
+	return 1;
+#endif
 }
 
 int show_main_page()
@@ -559,25 +569,25 @@ int show_main_page()
 }
 int set_main_page()
 {
-	if( read_file( "main_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
+	if( read_file( "/main_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
 		strcpy( g_main_page , _s_main_page );
 	return 0;
 }
 int set_illegal_card_page()
 {
-	if( read_file( "illegal_card_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
+	if( read_file( "/illegal_card_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
 		strcpy( g_main_page , _s_illegal_card_page );
 	return 0;
 }
 int set_forbid_enter_page()
 {
-	if( read_file( "forbid_enter_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
+	if( read_file( "/forbid_enter_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
 		strcpy( g_main_page , _s_forbid_enter_page );
 	return 0;
 }
 int set_allow_enter_page()
 {
-	if( read_file( "allow_enter_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
+	if( read_file( "/allow_enter_page.txt", g_main_page, sizeof( g_main_page ) ) <= 0 )
 		strcpy( g_main_page , _s_allow_enter_page );
 	return 0;
 }
@@ -596,7 +606,7 @@ int timer_process()
 {
 	static unsigned second = 0;
 	unsigned val = RTC_Get();
-	if( second != val ){
+	if( val - second >= 2 || val - second < 0 ){
 		if( g_page_keep_second > 0 ){
 			g_page_keep_second -= val - second;
 			if( g_page_keep_second <= 0 ){
