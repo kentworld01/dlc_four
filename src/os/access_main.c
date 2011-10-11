@@ -7,6 +7,7 @@
 
 
 int g_device_no = 888;
+int g_record_id = 1;
 char g_card_man[32];
 char g_card_group[32];
 
@@ -27,29 +28,54 @@ void* df_create( char*name, int flag, char* value )
 
 void* df_open( char* fn, int flag )
 {
+#if _d_sd
 	FILE *fp;
 	fp = fopen( fn, "rb" );
 	return (void*)fp;
+#elif _d_uffs
+	int fp;
+	fp = uffs_open( fn, UO_RDONLY );
+#endif
 }
 int df_read( void* h, char* buf, int size )
 {
+#if _d_sd
 	return fread( buf, 1, size, (FILE*)h );
+#elif _d_uffs
+	return uffs_read( (int)h, buf, size );
+#endif
 }
 int df_write( void* h, char* buf, int size )
 {
+#if _d_sd
 	return fwrite( buf, 1, size, (FILE*)h );
+#elif _d_uffs
+	return uffs_write( (int)h, buf, size );
+#endif
 }
 int df_close( void* h )
 {
+#if _d_sd
 	return fclose( h );
+#elif _d_uffs
+	return uffs_close( (int)h );
+#endif
 }
 int df_delete( char* name, int flag )
 {
+#if _d_sd
 	return fdelete( name );
+#elif _d_uffs
+	return uffs_remove( name );
+#endif
 }
 int df_seek( void* h, int offset, int pos )
 {
+#if _d_sd
 	return fseek( (FILE*)h, offset, pos );
+#elif _d_uffs
+	return uffs_seek( (int)h, offset, pos );
+#endif
 }
 int df_get_file_size( char* name )
 {
@@ -521,6 +547,147 @@ char* get_card_group()
 	return g_card_group;	
 }
 
+
+
+
+
+
+
+#define _ds_record_format "machine_no,date,time,sys_tick,record_id,card_id,ok_flag"
+int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
+{
+	extern UCHAR  Host_ipaddr[5];	
+	extern UINT  HOST_PORT;
+	int len;
+	DATETIME dt;
+	char tmp_buf[32];
+	char record_format[64];
+	extern int g_machine_no;
+	int kc;
+	char *ki[15];
+	int i;
+
+	RelatvieToDateTime( &dt, time );
+
+	// get card info string.
+	{
+		buf[0] = 0;
+		// get prop string
+		if( node_prop_get_value( "/p/record_format", record_format, sizeof( record_format ) ) < 0 )
+			strcpy( record_format, _ds_record_format );
+		// loop key and gen the info string to buf.
+		kc = analysis_string_to_strings_by_decollator( record_format, ", ", ki, 15 );
+		for( i=0; i<kc; i++ ){
+			if( strcmp( ki[i], "machine_no" ) == 0 ){
+				s_sprintf( tmp_buf, "%d", g_machine_no );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "date" ) == 0 ){
+				s_sprintf( tmp_buf, "%4d-%02d-%02d", dt.year, dt.month, dt.day );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "time" ) == 0 ){
+				s_sprintf( tmp_buf, "%02d:%02d:%02d", dt.hour, dt.minute, dt.second );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "sys_tick" ) == 0 ){
+				s_sprintf( tmp_buf, "%d", sys_tick );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "record_id" ) == 0 ){
+				s_sprintf( tmp_buf, "%d", record_id );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "card_id" ) == 0 ){
+				s_sprintf( tmp_buf, "%u", card_id );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "ok_flag" ) == 0 ){
+				s_sprintf( tmp_buf, "%d", ok_flag );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "reader_id" ) == 0 ){
+				extern void *g_reader_id_handle;
+				DWORD reader_id = 0;
+				df_read( g_reader_id_handle, (char*)&reader_id, 4 );
+				s_sprintf( tmp_buf, "%d", reader_id );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "ip" ) == 0 ){
+				extern UCHAR Host_ipaddr[5] ;
+				char *po = Host_ipaddr;
+				s_sprintf( tmp_buf, "%d.%d.%d.%d", po[0], po[1], po[2], po[3] );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "mac" ) == 0 ){
+				extern UCHAR my_hwaddr[6] ;
+				char *po = my_hwaddr;
+				s_sprintf( tmp_buf,"%02x.%02x.%02x.%02x.%02x.%02x", po[0], po[1], po[2], po[3], po[4], po[5] );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "card_group_flag" ) == 0 ){
+				extern int g_card_group_count;
+				s_sprintf( tmp_buf, "%d", g_card_group_count );
+				strcat( buf, tmp_buf );
+			}
+			else if( strcmp( ki[i], "card_group_list" ) == 0 ){
+				extern DWORD *g_card_group_list;
+				int i;
+				for( i=0; i<g_card_group_count; i++ ){
+					s_sprintf( tmp_buf, "%d", g_card_group_list[i] );
+					strcat( buf, tmp_buf );
+					if( i < g_card_group_count - 1 )
+						strcat( buf, ";" );
+				}
+			}
+			strcat( buf, " " );
+		}
+	}
+	_d_str( buf );
+	return 0;
+}
+
+
+int send_card_info_by_tcmd( DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
+{
+	char buf[64];
+	gen_record_string( buf, time, sys_tick, record_id, card_id, ok_flag );
+	return system_send_buf_to_host( buf );
+}
+int send_card_info_by_dlc( DWORD time, DWORD cardid)
+{
+	extern UCHAR  Host_ipaddr[5];	
+	extern UINT  HOST_PORT;
+	int len;
+	BYTE *p = _dlc_gsxx_on_show_card( time, cardid );
+	STREAM_AddDWord(p, DSF_NOEXTRA);					// 无附加字段类型
+	GSDLC_PutPacket( (COMMUNENV *)&commun_env_tcpclient, 0, GSDLC_FRAME, GSDLC_DataPacketLength(p));
+	return 0;
+}
+
+int send_card_info( DWORD card_id, int ok_flag )
+{
+	extern int g_record_id;
+	extern int g_host_type;
+
+	switch( g_host_type ){
+		case 1:
+			return send_card_info_by_tcmd( RTC_GetCounter(), GetTickCount(), g_record_id, card_id, ok_flag );
+			break;
+		case 2:
+			return send_card_info_by_dlc( RTC_GetCounter(), GetTickCount() );
+			break;
+	}
+	return 0;
+}
+int save_card_info( DWORD card_id, int ok_cam_flag, int ok_send_flag )
+{
+	// here use rand file save the record.
+	// record format :
+	// 
+	return 0;
+}
+
 int send_record()
 {
 	return 0;
@@ -631,28 +798,34 @@ int access_init()
 int access_loop()
 {
 	int rel;
+	int ok_cam_flag;
+	int ok_send_flag;
 	if( check_card_action() > 0 ){
 		g_deal_card_no = g_card_no;
 		g_card_no = 0;
 
-		rel = do_cam();
-		if( rel <= -2 ){
+		ok_cam_flag = do_cam();
+		if( ok_cam_flag <= -2 ){
 			// invailed card
 			set_illegal_card_page();
 			set_page_keep_second( 5 );
 		}
-		else if( rel == -1 ){
+		else if( ok_cam_flag == -1 ){
 			// disable enter
 			set_forbid_enter_page();
 			set_page_keep_second( 5 );
 		}
-		else if( rel == 1 ){
+		else if( ok_cam_flag == 1 ){
 			set_allow_enter_page();
 			set_page_keep_second( 5 );
 		}
-		send_record();
-		save_record();
+		//send_record();
+		ok_send_flag = send_card_info( g_deal_card_no, ok_cam_flag );
+		rel = save_card_info( g_deal_card_no, ok_cam_flag, ok_send_flag );
+		//save_record( rel );
 		show_main_page();
+		g_record_id ++;
 	}
 	timer_process();
 }
+
