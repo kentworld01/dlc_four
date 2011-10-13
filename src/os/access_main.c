@@ -163,17 +163,6 @@ int today_is_holiday( int group_id, int year, int month, int day )
 	return 0;
 }
 
-int cam_read_group_id_from_white_name_record( DWORD card_id, char* buf, int buf_size )
-{
-	char card_id_str[15];
-	//int no;
-	s_sprintf( card_id_str, "%u", card_id );
-	//_d_str( card_id_str );
-	if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
-		return 1;
-	}
-	return -1;
-}
 int cam_read_time_area_from_time_area_file( int time_area_no, DWORD* begin_time, DWORD* end_time )
 {
 	char key[16];
@@ -254,67 +243,6 @@ int cam_read_time_area_list_from_week_table( int group_id, DWORD time, char* buf
 	return -1;
 }
 
-int white_name_list_get_value( char* buf, int *group_id, int* allow_id, int* not_allow_id, int *password )
-{
-	//withe name struct
-	// 0 card_id
-	// 1 group_id
-	// 2 allow_id
-	// 3 not_allow_id
-	// 4 name
-	// 5 password
-	// 6 othe command
-	int kc;
-	char *ki[15];
-	int skc;
-	char *ski[15];
-
-	kc = analysis_string_to_strings_by_decollator( buf, ", ", ki, 15 );
-	if( kc < 7 ){
-		error_message( "white_name format error", kc );
-		return -1;
-	}
-	if( group_id ){
-		*group_id = atoi( ki[1] );
-		//_d_int( *group_id );
-	}
-	if( allow_id ){
-		*allow_id = atoi( ki[2] );
-		//_d_int( *allow_id );
-	}
-	if( not_allow_id ){
-		*not_allow_id = atoi( ki[3] );
-		//_d_int( *not_allow_id );
-	}
-	if( password ){
-		*password = atoi( ki[5] );
-		//_d_int( *password );
-	}
-	strcpy( g_card_man, ki[4] );
-	strcpy( g_card_group, ki[5] );
-
-	if( kc >= 7 ){
-		int i;
-		for( i=6; i<kc; i++ ){
-			if( ki[i][0] == 'w' ){
-				// many card operate.
-				skc = analysis_string_to_strings_by_decollator( ki[i], ", ", ski, 15 );
-				if( skc >= 2 && (skc-1) < _d_card_group_max_count ){
-					int j;
-					g_card_group_count = skc-1;
-					for( j=0; j<g_card_group_count; j++ ){
-						g_card_group_list[j] = atoi( ski[j+1] );
-						g_card_group_flag[j] = 0;
-					}
-				}
-			}
-			else if( ki[i][0] == '0' ){
-			}
-		}
-	}
-
-	return 0;
-}
 
 int card_group_operate_key_deal()
 {
@@ -518,9 +446,11 @@ int df_file_exist( char* fn )
 }
 int do_cam_check_file()
 {
-	char *fn[] = { "white_name.txt","time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
+	char *fn[] = { "time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
+	//char *fn[] = { "white_name.txt","time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
 #define _d_fn_count (sizeof( fn ) /sizeof(char*))
-	char *lpfn[] = { "white_name.txt.lp","time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
+	char *lpfn[] = { "time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
+	//char *lpfn[] = { "white_name.txt.lp","time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
 #define _d_lpfn_count (sizeof( lpfn ) /sizeof(char*))
 	int i;
 	for( i=0; i<_d_fn_count; i++ ){
@@ -575,105 +505,6 @@ int get_sys_tick()
 }
 
 
-#define _ds_record_format "machine_no,date,time,sys_tick,record_id,card_id,ok_flag"
-int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
-{
-	//extern UCHAR  Host_ipaddr[5];	
-	//extern UINT  HOST_PORT;
-	int len;
-	DATETIME dt;
-	char tmp_buf[32];
-	char record_format[64];
-	extern int g_machine_no;
-	int kc;
-	char *ki[15];
-	int i;
-
-	RelatvieToDateTime( &dt, time );
-
-	// get card info string.
-	{
-		buf[0] = 0;
-		// get prop string
-#if 0
-		if( node_prop_get_value( "/p/record_format", record_format, sizeof( record_format ) ) < 0 )
-#endif
-			strcpy( record_format, _ds_record_format );
-		// loop key and gen the info string to buf.
-		kc = analysis_string_to_strings_by_decollator( record_format, ", ", ki, 15 );
-		for( i=0; i<kc; i++ ){
-			if( strcmp( ki[i], "machine_no" ) == 0 ){
-				s_sprintf( tmp_buf, "%d", g_machine_no );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "date" ) == 0 ){
-				s_sprintf( tmp_buf, "%4d-%02d-%02d", dt.year, dt.month, dt.day );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "time" ) == 0 ){
-				s_sprintf( tmp_buf, "%02d:%02d:%02d", dt.hour, dt.minute, dt.second );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "sys_tick" ) == 0 ){
-				s_sprintf( tmp_buf, "%d", sys_tick );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "record_id" ) == 0 ){
-				s_sprintf( tmp_buf, "%d", record_id );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "card_id" ) == 0 ){
-				s_sprintf( tmp_buf, "%u", card_id );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "ok_flag" ) == 0 ){
-				s_sprintf( tmp_buf, "%d", ok_flag );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "reader_id" ) == 0 ){
-				extern int g_reader_id;
-				s_sprintf( tmp_buf, "%d", g_reader_id );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "ip" ) == 0 ){
-				extern UCHAR Host_ipaddr[5] ;
-				char *po = g_send_package_socket_ip;
-				s_sprintf( tmp_buf, "%d.%d.%d.%d", po[0], po[1], po[2], po[3] );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "mac" ) == 0 ){
-#if 0
-				extern UCHAR my_hwaddr[6] ;
-				char *po = my_hwaddr;
-				s_sprintf( tmp_buf,"%02x.%02x.%02x.%02x.%02x.%02x", po[0], po[1], po[2], po[3], po[4], po[5] );
-				strcat( buf, tmp_buf );
-#else
-				strcpy( tmp_buf, "01.02.03.04.05.06" );
-#endif
-			}
-			else if( strcmp( ki[i], "card_group_flag" ) == 0 ){
-				extern int g_card_group_count;
-				s_sprintf( tmp_buf, "%d", g_card_group_count );
-				strcat( buf, tmp_buf );
-			}
-			else if( strcmp( ki[i], "card_group_list" ) == 0 ){
-#if 0
-				extern DWORD *g_card_group_list;
-				int i;
-				for( i=0; i<g_card_group_count; i++ ){
-					s_sprintf( tmp_buf, "%d", g_card_group_list[i] );
-					strcat( buf, tmp_buf );
-					if( i < g_card_group_count - 1 )
-						strcat( buf, ";" );
-				}
-#endif
-			}
-			strcat( buf, " " );
-		}
-	}
-	_d_str( buf );
-	return 0;
-}
 
 
 
@@ -708,10 +539,10 @@ int system_send_buf_to_host( char* buf, int buf_size )
 			}
 		}
 		else{
-			return -1;
+			return -2;
 		}
 	}
-	else	return -2;
+	else	return -3;
 	return 0;
 }
 
@@ -747,13 +578,6 @@ int send_card_info( DWORD card_id, int ok_flag )
 			return send_card_info_by_dlc( RTC_Get(), get_sys_tick() );
 			break;
 	}
-	return 0;
-}
-int save_card_info( DWORD card_id, int ok_cam_flag, int ok_send_flag )
-{
-	// here use rand file save the record.
-	// record format :
-	// 
 	return 0;
 }
 
@@ -898,6 +722,8 @@ int access_loop()
 	//int rel;
 	int ok_cam_flag;
 	int ok_send_flag;
+	u32 time, tick;
+	char record_buf[64];
 	if( check_card_action() > 0 ){
 		g_deal_card_no = g_card_no;
 		g_card_no = 0;
@@ -917,8 +743,12 @@ int access_loop()
 			set_allow_enter_page();
 			set_page_keep_second( 5 );
 		}
-		ok_send_flag = send_card_info( g_deal_card_no, ok_cam_flag );
-		save_card_info( g_deal_card_no, ok_cam_flag, ok_send_flag );
+		time = RTC_Get();
+		tick = get_sys_tick();
+		gen_record_string( record_buf, time, tick, g_record_id, g_deal_card_no, ok_cam_flag );
+		//ok_send_flag = send_card_info( buf );
+		ok_send_flag = system_send_buf_to_host( record_buf, strlen( record_buf ) );
+		save_card_info( g_record_id, record_buf, ok_send_flag );
 		show_main_page();
 		g_record_id ++;
 	}

@@ -26,7 +26,7 @@ int g_net_time_out = 500;
 
 
 
-char *g_property_file_name = "/property.tr";
+char *g_property_file_name = "/property.rf";
 int g_property_rand_file_pos = -1;
 
 
@@ -286,7 +286,7 @@ int property_get( char* key, char* value )
 	int index;
 	if( g_property_rand_file_pos < 0 )
 		return -1;
-	index = rand_file_find( g_property_rand_file_pos, key, 0, strlen(key), 0 );
+	index = rand_file_find( g_property_rand_file_pos, key, 0, strlen(key), 1/*memcmp*/ );
 	if( index >= 0 ){
 		rand_file_get( g_property_rand_file_pos, index, tbuf, sizeof(tbuf) );
 		if( value ){

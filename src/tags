@@ -1981,8 +1981,13 @@ _d_lcd_h_	device\lcd.h	3;"	d
 _d_line	os\Trace.h	95;"	d
 _d_line	os\vfs\index.c	24;"	d	file:
 _d_lpfn_count	os\access_main.c	524;"	d	file:
+_d_max_propery	os\record.c	4;"	d	file:
 _d_max_rand_file_info	os\vfs\rand_file.h	7;"	d
 _d_max_rand_file_record_size	os\vfs\rand_file.h	8;"	d
+_d_max_record_count	os\record.h	7;"	d
+_d_max_record_size	os\record.h	8;"	d
+_d_max_white_name_count	os\white_name.h	7;"	d
+_d_max_white_name_size	os\white_name.h	8;"	d
 _d_misc_h	lib\mp_misc.h	3;"	d
 _d_net_modules	os\config.h	124;"	d
 _d_node_flash_h_	os\vfs\node_flash.h	3;"	d
@@ -2001,6 +2006,7 @@ _d_property_h_	os\property.h	3;"	d
 _d_property_record_value_offset	os\property.c	281;"	d	file:
 _d_rand_file_h	os\vfs\rand_file.h	3;"	d
 _d_record_file_record_flag_count	os\vfs\index.c	125;"	d	file:
+_d_record_h_	os\record.h	3;"	d
 _d_record_max_count	os\vfs\index.c	136;"	d	file:
 _d_record_position	os\vfs\card_record.c	48;"	d	file:
 _d_sd	os\config.h	134;"	d
@@ -2013,9 +2019,9 @@ _d_swap_dword	os\typedef.h	46;"	d
 _d_swap_word	os\typedef.h	45;"	d
 _d_system_value_list_count	os\system_value.c	109;"	d	file:
 _d_t_cmd_h_	os\t_cmd\t_cmd.h	4;"	d
-_d_t_cmd_item	os\t_cmd\t_cmd.c	84;"	d	file:
+_d_t_cmd_item	os\t_cmd\t_cmd.c	105;"	d	file:
 _d_t_cmd_item	os\t_cmd\t_cmd.h	/^}_d_t_cmd_item;$/;"	t	typeref:struct:__anon23
-_d_t_cmd_item_count	os\t_cmd\t_cmd.c	97;"	d	file:
+_d_t_cmd_item_count	os\t_cmd\t_cmd.c	122;"	d	file:
 _d_text	os\Trace.h	101;"	d
 _d_text	os\vfs\index.c	30;"	d	file:
 _d_try_read_size	os\access_main.c	109;"	d	file:
@@ -2027,11 +2033,12 @@ _d_uffs	os\config.h	135;"	d
 _d_use_flash_manager_version	os\config.h	75;"	d
 _d_w25x_block_size	uffs\example\flash-interface-example.c	50;"	d	file:
 _d_w25x_page_size	uffs\example\flash-interface-example.c	49;"	d	file:
+_d_white_name_h	os\white_name.h	3;"	d
 _device_init	device\Device.c	/^void _device_init(void)$/;"	f
 _dir_pool	uffs\uffs_fd.c	/^static uffs_Pool _dir_pool;$/;"	v	file:
 _dir_pool_data	uffs\uffs_fd.c	/^static int _dir_pool_data[sizeof(uffs_DIR) * MAX_DIR_HANDLE \/ sizeof(int)];$/;"	v	file:
 _dirty	uffs\inc\uffs\uffs_public.h	/^	u8 _dirty:1;			\/\/!< raw data, before doing ecc correction$/;"	m	struct:uffs_TagsSt
-_ds_record_format	os\access_main.c	578;"	d	file:
+_ds_record_format	os\record.c	10;"	d	file:
 _error_message	lib\mp_misc.c	/^int _error_message( char* str, int val, int line_no, char* file_name )$/;"	f
 _error_message	os\vfs\index.c	/^int _error_message( char* str, int val, int line_no, const char* file_name )$/;"	f
 _fblock	os\FlashFS\SRC\File_Config.h	/^   U16   _fblock;                       \/* Current Flash Block index         *\/$/;"	m	struct:iob
@@ -2809,11 +2816,13 @@ g_node_rom_device_struct	os\vfs\node_rom.c	/^const _s_node_rom_device_struct g_n
 g_node_rom_items	os\vfs\node_rom.c	/^const _s_node_rom_item g_node_rom_items[_d_node_rom_item_max_count]={$/;"	v
 g_page_buf	uffs\emu\uffs_fileem_share.c	/^static u8 g_page_buf[UFFS_MAX_PAGE_SIZE + UFFS_MAX_SPARE_SIZE];$/;"	v	file:
 g_page_keep_second	os\access_main.c	/^int g_page_keep_second = 0;$/;"	v
-g_property_file_name	os\property.c	/^char *g_property_file_name = "\/property.tr";$/;"	v
+g_property_file_name	os\property.c	/^char *g_property_file_name = "\/property.rf";$/;"	v
 g_property_rand_file_pos	os\property.c	/^int g_property_rand_file_pos = -1;$/;"	v
 g_rand_file_info	os\vfs\rand_file.c	/^struct _s_rand_file_info g_rand_file_info[ _d_max_rand_file_info ] = {0};$/;"	v	typeref:struct:_s_rand_file_info
 g_reader_id	os\property.c	/^int g_reader_id = 0;$/;"	v
+g_record_file_name	os\record.c	/^char *g_record_file_name = "\/record.rf";$/;"	v
 g_record_id	os\access_main.c	/^int g_record_id = 1;$/;"	v
+g_record_rand_file_pos	os\record.c	/^int g_record_rand_file_pos = -1;$/;"	v
 g_sdata_buf	uffs\emu\uffs_fileem_ecc_hw_auto.c	/^static u8 g_sdata_buf[PAGE_FULL_SIZE];	\/\/ emulating LPC32x0's 528-bytes serial data buffer$/;"	v	file:
 g_sdata_buf_pointer	uffs\emu\uffs_fileem_ecc_hw_auto.c	/^static int g_sdata_buf_pointer = 0;$/;"	v	file:
 g_send_package_socket	os\access_main.c	/^u8 g_send_package_socket = 0;$/;"	v
@@ -2823,7 +2832,9 @@ g_sys_tick	os\access_main.c	/^u32 g_sys_tick = 0;$/;"	v
 g_system_value_list	os\system_value.c	/^_s_system_value_list g_system_value_list[]={$/;"	v
 g_t_cmd_item	os\t_cmd\t_cmd.c	/^_d_t_cmd_item g_t_cmd_item[]={$/;"	v
 g_t_cmd_result_buffer	os\t_cmd\t_cmd.c	/^char g_t_cmd_result_buffer[ 128 ];$/;"	v
-gen_record_string	os\access_main.c	/^int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )$/;"	f
+g_white_name_file_name	os\white_name.c	/^char *g_white_name_file_name = "\/white_name.rf";$/;"	v
+g_white_name_rand_file_pos	os\white_name.c	/^int g_white_name_rand_file_pos = -1;$/;"	v
+gen_record_string	os\record.c	/^int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )$/;"	f
 get_EOC	os\FlashFS\SRC\fs_fat.c	/^static U32 get_EOC (void) {$/;"	f	file:
 get_bootrec	os\FlashFS\SRC\fs_fat.c	/^static BOOL get_bootrec (void) {$/;"	f	file:
 get_card_group	os\access_main.c	/^char* get_card_group()$/;"	f
@@ -3421,6 +3432,11 @@ read_file	os\access_main.c	/^int read_file( char* fn, char *buf, int max_buf_siz
 read_last_entry	os\FlashFS\SRC\fs_fat.c	/^static BOOL read_last_entry (IOB *fcb, FILEREC *filerec) {$/;"	f	file:
 read_sector	os\FlashFS\SRC\fs_fat.c	/^static BOOL read_sector (U32 sect) {$/;"	f	file:
 record_count	os\vfs\rand_file.h	/^	int record_count;$/;"	m	struct:_s_rand_file_info
+record_del_unsend_index	os\record.c	/^int record_del_unsend_index( int index )$/;"	f
+record_get	os\record.c	/^int record_get( u32 id, char* buf, int max_buf_size )$/;"	f
+record_get_first_unsend	os\record.c	/^int record_get_first_unsend( char* buf, int max_buf_size )$/;"	f
+record_get_unsend_index	os\record.c	/^int record_get_unsend_index()$/;"	f
+record_init	os\record.c	/^int record_init()$/;"	f
 record_map	os\vfs\card_record.c	/^char *record_map="dtc";$/;"	v
 record_size	os\vfs\card_record.c	/^int record_size=16;$/;"	v
 record_size	os\vfs\index.h	/^	int record_size;$/;"	m	struct:__anon30
@@ -3476,7 +3492,7 @@ s_sprintf	os\vfs\index.c	31;"	d	file:
 s_strcmp	lib\DataTran.c	/^int s_strcmp(char *p1, char *p2)$/;"	f
 s_strncmp	lib\DataTran.c	/^int s_strncmp(char *p1, char *p2, int size)$/;"	f
 s_upcase	lib\DataTran.c	/^char s_upcase(char c)$/;"	f
-save_card_info	os\access_main.c	/^int save_card_info( DWORD card_id, int ok_cam_flag, int ok_send_flag )$/;"	f
+save_card_info	os\record.c	/^int save_card_info( u32 id, char* buf, int ok_send_flag )$/;"	f
 save_record	os\access_main.c	/^int save_record()$/;"	f
 search_for_name	os\FlashFS\SRC\fs_fat.c	/^static BOOL search_for_name (const char *name, IOB *fcb, U8 type, U8 keep_fcb) {$/;"	f	file:
 second	os\typedef.h	/^	char second;$/;"	m	struct:__anon22
@@ -3621,6 +3637,8 @@ t_flash_uffs_erase	os\t_cmd\t_cmd.c	/^unsigned t_flash_uffs_erase( char **ki, ch
 t_fremove	os\t_cmd\t_cmd.c	/^unsigned t_fremove( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_property_get	os\t_cmd\t_cmd.c	/^unsigned t_property_get( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_property_set	os\t_cmd\t_cmd.c	/^unsigned t_property_set( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
+t_record_del_first_unsend	os\t_cmd\t_cmd.c	/^unsigned t_record_del_first_unsend ( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
+t_record_get_first_unsend	os\t_cmd\t_cmd.c	/^unsigned t_record_get_first_unsend( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_time_get	os\t_cmd\t_cmd.c	/^unsigned t_time_get( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_time_set	os\t_cmd\t_cmd.c	/^unsigned t_time_set( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 tag	uffs\inc\uffs\uffs_blockinfo.h	/^	uffs_Tags tag;			\/\/!< page tag$/;"	m	struct:uffs_PageSpareSt
@@ -4064,6 +4082,8 @@ web_atol	lib\mp_misc.c	/^ULONG web_atol(UCHAR * buf)$/;"	f
 web_itoa	lib\mp_misc.c	/^void web_itoa(UCHAR * buf,UINT value)		 $/;"	f
 web_ltoa	lib\mp_misc.c	/^void web_ltoa(UCHAR * buf,ULONG value)		 $/;"	f
 weekday	os\typedef.h	/^	char weekday;$/;"	m	struct:__anon22
+white_name_check_cark	os\white_name.c	/^int white_name_check_cark( u32 card_no )$/;"	f
+white_name_init	os\white_name.c	/^int white_name_init()$/;"	f
 white_name_list_get_value	os\access_main.c	/^int white_name_list_get_value( char* buf, int *group_id, int* allow_id, int* not_allow_id, int *password )$/;"	f
 width	gui\Bitmap.h	/^	DWORD width;$/;"	m	struct:__anon5
 width	gui\GUI.h	/^	BYTE width;$/;"	m	struct:__anon14

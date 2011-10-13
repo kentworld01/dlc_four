@@ -250,8 +250,12 @@ int rand_file_find( int p, char* buf, int start, int len, int type )
 			continue;
 		uffs_seek( rfi->f, i * rfi->record_size + start, USEEK_SET );
 		uffs_read( rfi->f, tbuf, len );
-		if( memcmp( tbuf, buf, len ) == 0 )
-			return i;
+		switch( type ){
+			case 1: /*memcmpy*/
+				if( memcmp( tbuf, buf, len ) == 0 )
+					return i;
+				break;
+		}
 	}
 	return -1;
 }
@@ -265,6 +269,10 @@ int rand_file_find( int p, char* buf, int start, int len, int type )
  * 	open
  * 	resort
  * 	find
+ *
+ * 	add
+ * 	get
+ * 	del
  *
  *
  */

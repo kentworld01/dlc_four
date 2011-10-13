@@ -12,6 +12,27 @@ char* t_cmd_result_buffer = g_t_cmd_result_buffer;
 
 //typedef unsigned (*t_cmd_function)( char** param, char* rel_buf, int max_rel_buf_size );
 
+unsigned t_record_get_first_unsend( char **ki, char *rel_buf, int max_rel_buf_size )
+{
+	int index;
+	index = record_get_first_unsend( rel_buf, max_rel_buf_size );
+	if( index == -1 )
+		sprintf( rel_buf, "failed" );
+	return 0;
+}
+unsigned t_record_del_first_unsend ( char **ki, char *rel_buf, int max_rel_buf_size )
+{
+	int index;
+	index =  record_get_unsend_index();
+	if( index == -1 ){
+		sprintf( rel_buf, "failed" );
+	}
+	else{
+		record_del_unsend_index( index );
+		sprintf( rel_buf, "del unsend %d ok", index );
+	}
+	return 0;
+}
 unsigned t_property_get( char **ki, char *rel_buf, int max_rel_buf_size )
 {
 	property_get( ki[2], rel_buf );
@@ -91,6 +112,10 @@ _d_t_cmd_item g_t_cmd_item[]={
 	_d_t_cmd_item( flash_uffs_erase ),
 	_d_t_cmd_item( property_get ),
 	_d_t_cmd_item( property_set ),
+	_d_t_cmd_item( record_get ),
+	_d_t_cmd_item( record_get_first_unsend ),
+	//_d_t_cmd_item( record_del_unsend_index ),
+	_d_t_cmd_item( record_del_first_unsend ),
 	//_d_t_cmd_item( ),
 	//{	0,				0,		0,		0,		0			}
 };
