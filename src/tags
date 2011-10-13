@@ -5,7 +5,6 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 $$FlashFS$$version	os\FlashFS\SRC\fs_finit.c	/^__asm void $$FlashFS$$version (void) {$/;"	f
-ABT_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^ABT_Stack_Size  EQU     0x00000000$/;"	d
 ACT_KEEPFCB	os\FlashFS\SRC\fs_fat.c	21;"	d	file:
 ACT_NONE	os\FlashFS\SRC\fs_fat.c	20;"	d	file:
 ADDR_GBK_FONT	gui\Font.c	/^unsigned ADDR_GBK_FONT = ((DWORD)( 3*1024*1024 + 64*1024 ));$/;"	v
@@ -51,21 +50,9 @@ BANK_SEC_MASK	os\FlashFS\Flash\STR91x\FS_FlashPrg.c	49;"	d	file:
 BANK_SEC_SZ	os\FlashFS\Flash\STR91x\FS_FlashPrg.c	41;"	d	file:
 BANK_SEC_SZ	os\FlashFS\Flash\STR91x\FS_FlashPrg.c	48;"	d	file:
 BCDToByte	lib\DataTran.c	/^BYTE BCDToByte(BYTE c)$/;"	f
-BCFG0_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG0_OFS       EQU     0x00            ; BCFG0 Offset$/;"	d
-BCFG0_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG0_SETUP EQU         0$/;"	d
-BCFG0_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG0_Val   EQU         0x0000FBEF$/;"	d
-BCFG1_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG1_OFS       EQU     0x04            ; BCFG1 Offset$/;"	d
-BCFG1_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG1_SETUP EQU         0$/;"	d
-BCFG1_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG1_Val   EQU         0x0000FBEF$/;"	d
-BCFG2_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG2_OFS       EQU     0x08            ; BCFG2 Offset$/;"	d
-BCFG2_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG2_SETUP EQU         0$/;"	d
-BCFG2_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG2_Val   EQU         0x0000FBEF$/;"	d
-BCFG3_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG3_OFS       EQU     0x0C            ; BCFG3 Offset$/;"	d
-BCFG3_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG3_SETUP EQU         0$/;"	d
-BCFG3_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^BCFG3_Val   EQU         0x0000FBEF$/;"	d
 BINARY	os\typedef.h	/^typedef unsigned char		BINARY;               \/\/ Data type used for microcontroller$/;"	t
 BITMAP_H	gui\Bitmap.h	2;"	d
-BLOCK_DATA_SIZE	uffs\example\flash-interface-example.c	385;"	d	file:
+BLOCK_DATA_SIZE	uffs\example\flash-interface-example.c	56;"	d	file:
 BLOCK_DATA_SIZE	uffs\example\static-mem-allocate.c	70;"	d	file:
 BLOCK_SIZE	uffs\example\static-mem-allocate.c	72;"	d	file:
 BLOCK_SZ	os\FlashFS\Flash\AT45DB321C\FS_SPI_FlashPrg.c	15;"	d	file:
@@ -101,14 +88,14 @@ CBUFLEN	os\FlashFS\SRC\fs_fdefrag.c	22;"	d	file:
 CCLK	os\FlashFS\Flash\LPC_IAP_128\FS_FlashPrg.c	/^U32 CCLK;                      \/\/ CCLK in kHz$/;"	v
 CCLK	os\FlashFS\Flash\LPC_IAP_256\FS_FlashPrg.c	/^U32 CCLK;                      \/\/ CCLK in kHz$/;"	v
 CHAR	os\typedef.h	/^typedef signed char		CHAR;$/;"	t
-CHIP_BUSY	uffs\example\flash-interface-example.c	93;"	d	file:
-CHIP_CLR_ALE	uffs\example\flash-interface-example.c	90;"	d	file:
-CHIP_CLR_CLE	uffs\example\flash-interface-example.c	88;"	d	file:
-CHIP_CLR_NCS	uffs\example\flash-interface-example.c	92;"	d	file:
-CHIP_READY	uffs\example\flash-interface-example.c	94;"	d	file:
-CHIP_SET_ALE	uffs\example\flash-interface-example.c	89;"	d	file:
-CHIP_SET_CLE	uffs\example\flash-interface-example.c	87;"	d	file:
-CHIP_SET_NCS	uffs\example\flash-interface-example.c	91;"	d	file:
+CHIP_BUSY	uffs\example\flash-interface-example.c	107;"	d	file:
+CHIP_CLR_ALE	uffs\example\flash-interface-example.c	104;"	d	file:
+CHIP_CLR_CLE	uffs\example\flash-interface-example.c	102;"	d	file:
+CHIP_CLR_NCS	uffs\example\flash-interface-example.c	106;"	d	file:
+CHIP_READY	uffs\example\flash-interface-example.c	108;"	d	file:
+CHIP_SET_ALE	uffs\example\flash-interface-example.c	103;"	d	file:
+CHIP_SET_CLE	uffs\example\flash-interface-example.c	101;"	d	file:
+CHIP_SET_NCS	uffs\example\flash-interface-example.c	105;"	d	file:
 CHK_DIR_LOCK	uffs\uffs_fd.c	90;"	d	file:
 CHK_DIR_VOID_LOCK	uffs\uffs_fd.c	108;"	d	file:
 CHK_OBJ_LOCK	uffs\uffs_fd.c	62;"	d	file:
@@ -158,13 +145,7 @@ CPU_Exit_Critical	device\lcd.c	/^int CPU_Exit_Critical()$/;"	f
 CR	http\HTTP_upload.c	266;"	d	file:
 CR	os\FlashFS\Examples\File_ex1\Getline.c	19;"	d	file:
 CR	os\FlashFS\Examples\File_ex1\Serial.c	14;"	d	file:
-CRC16	lib\CRC16.C	/^WORD CRC16(WORD CRC16, BYTE c)$/;"	f
-CRC16_Calc	lib\CRC16.C	/^void CRC16_Calc(WORD *CRC16, BYTE uc)$/;"	f
-CRC16_Clear	lib\CRC16.C	/^void CRC16_Clear(WORD *CRC16)$/;"	f
-CRC16_Get	lib\CRC16.C	/^WORD CRC16_Get(BYTE *Data, DWORD Count)$/;"	f
 CRC16_H	lib\CRC16.h	3;"	d
-CRC16_Reset	lib\CRC16.C	/^WORD CRC16_Reset(void)$/;"	f
-CRC16_Table	lib\CRC16.C	/^static const WORD CRC16_Table[256]=$/;"	v	file:
 CRC_ON_OFF	os\FlashFS\SRC\fs_mmc.c	26;"	d	file:
 CS_ENG	gui\Font.h	/^	CS_ENG = 0x01$/;"	e	enum:__anon12
 CS_GBK	gui\Font.h	/^	CS_GBK = 0x00,$/;"	e	enum:__anon12
@@ -192,8 +173,6 @@ DATATRAN_H	lib\DataTran.h	2;"	d
 DATA_NODE_ENTRY_LEN	uffs\inc\uffs\uffs_tree.h	156;"	d
 DATA_NODE_HASH_MASK	uffs\inc\uffs\uffs_tree.h	155;"	d
 DATETIME	os\typedef.h	/^} DATETIME;$/;"	t	typeref:struct:__anon22
-DAbt_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^DAbt_Addr       DCD     DAbt_Handler$/;"	l
-DAbt_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^DAbt_Handler    B       DAbt_Handler$/;"	l
 DBG_ClearAnotherPort	os\Trace.h	12;"	d
 DBG_ClearAnotherPort	os\Trace.h	23;"	d
 DBG_ClearReceiveBuffer	os\Trace.h	11;"	d
@@ -324,8 +303,6 @@ EDITOR	gui\GUI.h	/^typedef struct EDITOR$/;"	s
 EDITOR	gui\GUI.h	/^} EDITOR;$/;"	t	typeref:struct:EDITOR
 EDITOR_H	gui\Editor.h	2;"	d
 EMAC_Regs	lib\LM3S_EMAC.h	/^} EMAC_Regs;$/;"	t	typeref:struct:__anon17
-EMC_BASE	os\FlashFS\Examples\File_ex1\Startup.s	/^EMC_BASE        EQU     0xFFE00000      ; EMC Base Address$/;"	d
-EMC_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^EMC_SETUP       EQU     0$/;"	d
 EMPTY_NODE	uffs\inc\uffs\uffs_tree.h	141;"	d
 ENABLE_DEBUG	uffs\uffs_debug.c	108;"	d	file:
 ENABLE_DEBUG	uffs\uffs_debug.c	45;"	d	file:
@@ -405,9 +382,6 @@ FILE_ATTR_DIR	uffs\inc\uffs\uffs.h	103;"	d
 FILE_ATTR_WRITE	uffs\inc\uffs\uffs.h	104;"	d
 FILE_NODE_ENTRY_LEN	uffs\inc\uffs\uffs_tree.h	153;"	d
 FILE_NODE_HASH_MASK	uffs\inc\uffs\uffs_tree.h	152;"	d
-FIQ_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^FIQ_Addr        DCD     FIQ_Handler$/;"	l
-FIQ_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^FIQ_Handler     B       FIQ_Handler$/;"	l
-FIQ_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^FIQ_Stack_Size  EQU     0x00000000$/;"	d
 FLASH_BANK_COUNT	os\config.h	77;"	d
 FLASH_DEVICE	os\FlashFS\Flash\AM29x800BB\FS_FlashDev.h	10;"	d
 FLASH_DEVICE	os\FlashFS\Flash\AM29x800BBx2\FS_FlashDev.h	10;"	d
@@ -477,7 +451,6 @@ FT_ENG_ARIAL_B_12X16	gui\Font.h	/^	FT_ENG_ARIAL_B_12X16		= 0x03,$/;"	e	enum:__an
 FT_ENG_ARIAL_B_8X12	gui\Font.h	/^	FT_ENG_ARIAL_B_8X12		= 0x02,$/;"	e	enum:__anon13
 FT_ENG_VT100_5X7	gui\Font.h	/^	FT_ENG_VT100_5X7			= 0x01,$/;"	e	enum:__anon13
 FT_GBK	gui\Font.h	/^	FT_GBK						= 0x00,$/;"	e	enum:__anon13
-F_Bit	os\FlashFS\Examples\File_ex1\Startup.s	/^F_Bit           EQU     0x40            ; when F bit is set, FIQ is disabled$/;"	d
 F_FORMPROC	gui\Form.h	/^typedef bool (*F_FORMPROC)(FORM *, void *);$/;"	t
 F_INPUT_DIALOG_PROC	gui\DialogBox.h	/^typedef bool (*F_INPUT_DIALOG_PROC)(struct INPUTDIALOG *, void *);$/;"	t
 F_LIST_ONDRAWITEM	gui\List.h	/^typedef void (*F_LIST_ONDRAWITEM)(LIST *list, RECT *itemrect, DWORD itemindex);$/;"	t
@@ -618,18 +591,12 @@ HeapMem	os\Startup.s	/^HeapMem$/;"	l
 HeapMm	uffs\inc\uffs\uffs_mem.h	/^} HeapMm;$/;"	t	typeref:struct:HeapManagementNodeSt
 HeapNode	uffs\uffs_mem.c	/^} HeapNode;$/;"	t	typeref:struct:HeapNodeSt	file:
 HeapNodeSt	uffs\uffs_mem.c	/^typedef struct HeapNodeSt {$/;"	s	file:
-Heap_Mem	os\FlashFS\Examples\File_ex1\Startup.s	/^Heap_Mem        SPACE   Heap_Size$/;"	l
-Heap_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^Heap_Size       EQU     0x00001000$/;"	d
 Height	gui\Font.h	/^	WORD Height;$/;"	m	struct:__anon11
 HexToMem	lib\DataTran.c	/^int HexToMem(BYTE *mem, char *s)$/;"	f
 HexToNibble	lib\DataTran.c	/^BYTE HexToNibble(char c)$/;"	f
 HiByte	lib\DataTran.h	63;"	d
 IAP	os\FlashFS\Flash\LPC_IAP_128\FS_FlashPrg.c	/^} IAP;$/;"	v	typeref:struct:sIAP
 IAP	os\FlashFS\Flash\LPC_IAP_256\FS_FlashPrg.c	/^} IAP;$/;"	v	typeref:struct:sIAP
-IAP_Execute	os\FlashFS\Flash\LPC_IAP_128\IAP.s	/^IAP_Execute     STMFD   SP!,{LR}               ; Save Return Address$/;"	l
-IAP_Execute	os\FlashFS\Flash\LPC_IAP_256\IAP.s	/^IAP_Execute     STMFD   SP!,{LR}               ; Save Return Address$/;"	l
-IAP_Exit	os\FlashFS\Flash\LPC_IAP_128\IAP.s	/^IAP_Exit        LDMFD   SP!,{LR}               ; Restore Return Address$/;"	l
-IAP_Exit	os\FlashFS\Flash\LPC_IAP_256\IAP.s	/^IAP_Exit        LDMFD   SP!,{LR}               ; Restore Return Address$/;"	l
 IAR0	lib\LM3S_EMAC.h	/^   U32 IAR0;                            \/* Individual Address Register 0     *\/$/;"	m	struct:__anon17
 IAR1	lib\LM3S_EMAC.h	/^   U32 IAR1;                            \/* Individual Address Register 1     *\/$/;"	m	struct:__anon17
 IEN	lib\LM3S_EMAC.h	/^   U32 IEN;                             \/* Interrupt Enable Mask             *\/$/;"	m	struct:__anon17
@@ -662,11 +629,7 @@ IPDialog_RuleCheck	gui\DialogBox.c	/^void IPDialog_RuleCheck(IPDIALOG *dlg, BYTE
 IPToString	lib\DataTran.c	/^void IPToString(char *s, DWORD IP)$/;"	f
 IP_AllHosts	http\Net_Config.c	/^  U8  const IP_AllHosts[IP_ADRLEN] = {224, 0, 0, 1 };$/;"	v
 IP_Broadcast	http\Net_Config.c	/^U8 const IP_Broadcast[IP_ADRLEN]  = { 255, 255, 255, 255 };$/;"	v
-IRQ_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^IRQ_Addr        DCD     IRQ_Handler$/;"	l
-IRQ_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^IRQ_Handler     B       IRQ_Handler$/;"	l
-IRQ_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^IRQ_Stack_Size  EQU     0x00000040$/;"	d
 ISR	lib\LM3S_EMAC.h	/^   U32 ISR;                             \/* Interrupt Status\/Acknowledge      *\/$/;"	m	struct:__anon17
-ISR_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^ISR_Stack_Size  EQU     (UND_Stack_Size + SVC_Stack_Size + ABT_Stack_Size + \\$/;"	d
 IS_FAIL	uffs\inc\uffs\uffs_types.h	142;"	d
 IS_IN_FLASH	os\config.h	90;"	d
 IS_IN_RAM	os\config.h	89;"	d
@@ -676,7 +639,6 @@ ITP_DIGITAL	gui\Editor.c	/^	ITP_DIGITAL					= 0,$/;"	e	enum:__anon10	file:
 ITP_END	gui\Editor.c	/^	ITP_END$/;"	e	enum:__anon10	file:
 ITP_LETTER_LOW	gui\Editor.c	/^	ITP_LETTER_LOW,$/;"	e	enum:__anon10	file:
 ITP_LETTER_UP	gui\Editor.c	/^	ITP_LETTER_UP,$/;"	e	enum:__anon10	file:
-I_Bit	os\FlashFS\Examples\File_ex1\Startup.s	/^I_Bit           EQU     0x80            ; when I bit is set, IRQ is disabled$/;"	d
 IniDevCfg	os\FlashFS\SRC\fs_fat.c	/^static const DEVPAR IniDevCfg[10] = {$/;"	v	file:
 Init	uffs\inc\uffs\uffs_device.h	/^	URET (*Init)(uffs_Device *dev);				\/\/!< low level initialisation$/;"	m	struct:uffs_DeviceSt
 InitFlash	uffs\inc\uffs\uffs_flash.h	/^	int (*InitFlash)(uffs_Device *dev);$/;"	m	struct:uffs_FlashOpsSt
@@ -834,12 +796,6 @@ M8	os\FlashFS\Flash\SST39x320x\FS_FlashPrg.c	14;"	d	file:
 M8	os\FlashFS\Flash\STR91x\FS_FlashPrg.c	13;"	d	file:
 MAC_Broadcast	http\Net_Config.c	/^  U8 const MAC_Broadcast[ETH_ADRLEN] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };$/;"	v
 MADR	lib\LM3S_EMAC.h	/^   U32 MADR;                            \/* Management Address                *\/$/;"	m	struct:__anon17
-MAMCR_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^MAMCR_OFS       EQU     0x00            ; MAM Control Offset$/;"	d
-MAMCR_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^MAMCR_Val       EQU     0x00000002$/;"	d
-MAMTIM_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^MAMTIM_OFS      EQU     0x04            ; MAM Timing Offset$/;"	d
-MAMTIM_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^MAMTIM_Val      EQU     0x00000004$/;"	d
-MAM_BASE	os\FlashFS\Examples\File_ex1\Startup.s	/^MAM_BASE        EQU     0xE01FC000      ; MAM Base Address$/;"	d
-MAM_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^MAM_SETUP       EQU     1$/;"	d
 MAX_CACHED_BLOCK_INFO	uffs\inc\uffs\uffs_config.h	64;"	d
 MAX_DIRTY_BUF_GROUPS	uffs\inc\uffs\uffs_config.h	105;"	d
 MAX_DIRTY_PAGES_IN_A_BLOCK	uffs\inc\uffs\uffs_config.h	99;"	d
@@ -901,7 +857,6 @@ MC_DEV	os\FlashFS\SRC\File_Config.c	88;"	d	file:
 MC_RELOC	http\File_Config.c	101;"	d	file:
 MC_RELOC	os\FlashFS\Examples\File_ex1\File_Config.c	101;"	d	file:
 MC_RELOC	os\FlashFS\SRC\File_Config.c	101;"	d	file:
-MEMMAP	os\FlashFS\Examples\File_ex1\Startup.s	/^MEMMAP          EQU     0xE01FC040      ; Memory Mapping Control$/;"	d
 MEM_SIZE	http\Net_Config.c	33;"	d	file:
 MENU	gui\Menu.h	/^} MENU;$/;"	t	typeref:struct:MENU_t
 MENUITEM	gui\Menu.h	/^} MENUITEM;$/;"	t	typeref:struct:__anon15
@@ -1022,13 +977,6 @@ Menu_OnSelection	gui\Menu.c	/^void Menu_OnSelection(LIST *list, DWORD itemindex)
 Menu_SetModal	gui\Menu.c	/^DWORD Menu_SetModal(MENU *menu)$/;"	f
 Menu_SetSelect	gui\Menu.c	/^void Menu_SetSelect(MENU *menu, DWORD Selection)$/;"	f
 MessageBox	gui\DialogBox.c	/^void MessageBox(MSGBOX *MsgBox, WCHAR *Title, WCHAR *Message, DWORD RemainTime)$/;"	f
-Mode_ABT	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_ABT        EQU     0x17$/;"	d
-Mode_FIQ	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_FIQ        EQU     0x11$/;"	d
-Mode_IRQ	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_IRQ        EQU     0x12$/;"	d
-Mode_SVC	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_SVC        EQU     0x13$/;"	d
-Mode_SYS	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_SYS        EQU     0x1F$/;"	d
-Mode_UND	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_UND        EQU     0x1B$/;"	d
-Mode_USR	os\FlashFS\Examples\File_ex1\Startup.s	/^Mode_USR        EQU     0x10$/;"	d
 MoneyStringToInt	lib\DataTran.c	/^DWORD MoneyStringToInt(char *Money)$/;"	f
 MoneyWStringToInt	lib\DataTran.c	/^DWORD MoneyWStringToInt(WCHAR *Money)$/;"	f
 MonoBmp_GetPixel	gui\Bitmap.c	/^BYTE MonoBmp_GetPixel(MONOBMP *bmp, WORD x, WORD y)$/;"	f
@@ -1037,22 +985,22 @@ MonoBmp_Load	gui\Bitmap.c	/^bool MonoBmp_Load(MONOBMP *bmp, BYTE *BmpData)$/;"	f
 MonthName	lib\DataTran.c	/^static const char MonthName[12][4] = $/;"	v	file:
 MsgBox_OnDraw	gui\DialogBox.c	/^void MsgBox_OnDraw(MSGBOX *MsgBox)$/;"	f
 MsgBox_Proc	gui\DialogBox.c	/^BOOL MsgBox_Proc(MSGBOX *MsgBox, EVENT *Event)$/;"	f
-NAND_CMD_ERASE1	uffs\example\flash-interface-example.c	62;"	d	file:
-NAND_CMD_ERASE2	uffs\example\flash-interface-example.c	68;"	d	file:
-NAND_CMD_PAGEPROG	uffs\example\flash-interface-example.c	60;"	d	file:
-NAND_CMD_READ0	uffs\example\flash-interface-example.c	57;"	d	file:
-NAND_CMD_READ1	uffs\example\flash-interface-example.c	58;"	d	file:
-NAND_CMD_READID	uffs\example\flash-interface-example.c	67;"	d	file:
-NAND_CMD_READOOB	uffs\example\flash-interface-example.c	61;"	d	file:
-NAND_CMD_RESET	uffs\example\flash-interface-example.c	69;"	d	file:
-NAND_CMD_RNDIN	uffs\example\flash-interface-example.c	66;"	d	file:
-NAND_CMD_RNDOUT	uffs\example\flash-interface-example.c	59;"	d	file:
-NAND_CMD_SEQIN	uffs\example\flash-interface-example.c	65;"	d	file:
-NAND_CMD_STATUS	uffs\example\flash-interface-example.c	63;"	d	file:
-NAND_CMD_STATUS_MULTI	uffs\example\flash-interface-example.c	64;"	d	file:
+NAND_CMD_ERASE1	uffs\example\flash-interface-example.c	76;"	d	file:
+NAND_CMD_ERASE2	uffs\example\flash-interface-example.c	82;"	d	file:
+NAND_CMD_PAGEPROG	uffs\example\flash-interface-example.c	74;"	d	file:
+NAND_CMD_READ0	uffs\example\flash-interface-example.c	71;"	d	file:
+NAND_CMD_READ1	uffs\example\flash-interface-example.c	72;"	d	file:
+NAND_CMD_READID	uffs\example\flash-interface-example.c	81;"	d	file:
+NAND_CMD_READOOB	uffs\example\flash-interface-example.c	75;"	d	file:
+NAND_CMD_RESET	uffs\example\flash-interface-example.c	83;"	d	file:
+NAND_CMD_RNDIN	uffs\example\flash-interface-example.c	80;"	d	file:
+NAND_CMD_RNDOUT	uffs\example\flash-interface-example.c	73;"	d	file:
+NAND_CMD_SEQIN	uffs\example\flash-interface-example.c	79;"	d	file:
+NAND_CMD_STATUS	uffs\example\flash-interface-example.c	77;"	d	file:
+NAND_CMD_STATUS_MULTI	uffs\example\flash-interface-example.c	78;"	d	file:
 NBNS_ENABLE	http\Net_Config.c	223;"	d	file:
 NOMINAL_ECC_SIZE	uffs\uffs_flash.c	52;"	d	file:
-NR_PARTITION	uffs\example\flash-interface-example.c	386;"	d	file:
+NR_PARTITION	uffs\example\flash-interface-example.c	57;"	d	file:
 NTRsvd	os\FlashFS\SRC\File_Config.h	/^   U8  NTRsvd;                          \/* NT Reserved                       *\/$/;"	m	struct:filerec
 NULL	uffs\inc\uffs\uffs_types.h	148;"	d
 NibbleToHex	lib\DataTran.c	/^char NibbleToHex(BYTE n)$/;"	f
@@ -1074,17 +1022,17 @@ Offset_BuildNumber	os\OS.h	/^	DWORD Offset_BuildNumber;$/;"	m	struct:__anon20
 Offset_ProductName	os\OS.h	/^	DWORD Offset_ProductName;$/;"	m	struct:__anon20
 Offset_Version	os\OS.h	/^	DWORD Offset_Version;$/;"	m	struct:__anon20
 Ordinal	os\FlashFS\SRC\File_Config.h	/^   U8  Ordinal;                         \/* Ordinal field                     *\/$/;"	m	struct:lfn_filerec
-PAGES_PER_BLOCK	uffs\example\flash-interface-example.c	383;"	d	file:
+PAGES_PER_BLOCK	uffs\example\flash-interface-example.c	54;"	d	file:
 PAGES_PER_BLOCK	uffs\example\static-mem-allocate.c	66;"	d	file:
 PAGE_DATA_SIZE	uffs\emu\uffs_fileem_ecc_hw_auto.c	67;"	d	file:
-PAGE_DATA_SIZE	uffs\example\flash-interface-example.c	382;"	d	file:
+PAGE_DATA_SIZE	uffs\example\flash-interface-example.c	53;"	d	file:
 PAGE_DATA_SIZE	uffs\example\static-mem-allocate.c	64;"	d	file:
 PAGE_DATA_WRITE_COUNT_LIMIT	uffs\emu\uffs_fileem.h	52;"	d
 PAGE_FULL_SIZE	uffs\emu\uffs_fileem_ecc_hw_auto.c	69;"	d	file:
-PAGE_SIZE	uffs\example\flash-interface-example.c	384;"	d	file:
+PAGE_SIZE	uffs\example\flash-interface-example.c	55;"	d	file:
 PAGE_SIZE	uffs\example\static-mem-allocate.c	69;"	d	file:
 PAGE_SPARE_SIZE	uffs\emu\uffs_fileem_ecc_hw_auto.c	68;"	d	file:
-PAGE_SPARE_SIZE	uffs\example\flash-interface-example.c	381;"	d	file:
+PAGE_SPARE_SIZE	uffs\example\flash-interface-example.c	52;"	d	file:
 PAGE_SPARE_SIZE	uffs\example\static-mem-allocate.c	65;"	d	file:
 PAGE_SPARE_WRITE_COUNT_LIMIT	uffs\emu\uffs_fileem.h	53;"	d
 PAGE_SZ	device\FS_SPI_FlashPrg.c	14;"	d	file:
@@ -1100,10 +1048,8 @@ PARITY	device\Uart.h	/^} PARITY;$/;"	t	typeref:enum:tagPARITY
 PARITY_EVEN	device\Uart.h	/^	PARITY_EVEN$/;"	e	enum:tagPARITY
 PARITY_NONE	device\Uart.h	/^	PARITY_NONE = 0,$/;"	e	enum:tagPARITY
 PARITY_ODD	device\Uart.h	/^	PARITY_ODD,$/;"	e	enum:tagPARITY
-PARSE_STATUS	uffs\example\flash-interface-example.c	101;"	d	file:
-PAR_1_BLOCKS	uffs\example\flash-interface-example.c	387;"	d	file:
-PAbt_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^PAbt_Addr       DCD     PAbt_Handler$/;"	l
-PAbt_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^PAbt_Handler    B       PAbt_Handler$/;"	l
+PARSE_STATUS	uffs\example\flash-interface-example.c	115;"	d	file:
+PAR_1_BLOCKS	uffs\example\flash-interface-example.c	58;"	d	file:
 PECS	os\FlashFS\Flash\STR91x\FS_FlashPrg.c	80;"	d	file:
 PFX	uffs\emu\helper_cmds.c	53;"	d	file:
 PFX	uffs\emu\test_cmds.c	51;"	d	file:
@@ -1150,8 +1096,6 @@ PHY_REG_MDIX	lib\LM3S_EMAC.h	97;"	d
 PHY_REG_STAT	lib\LM3S_EMAC.h	86;"	d
 PHY_REG_TRANC	lib\LM3S_EMAC.h	95;"	d
 PHY_REG_VSP	lib\LM3S_EMAC.h	92;"	d
-PINSEL2	os\FlashFS\Examples\File_ex1\Startup.s	/^PINSEL2         EQU     0xE002C014      ; PINSEL2 Address$/;"	d
-PINSEL2_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^PINSEL2_Val     EQU     0x0E6149E4      ; CS0..3, OE, WE, BLS0..3, $/;"	d
 PKT_ALL_TRANSMIT_V1	lib\protect_code.h	/^	PKT_ALL_TRANSMIT_V1,$/;"	e	enum:__anon18
 PKT_ALL_TRANSMIT_V2	lib\protect_code.h	/^	PKT_ALL_TRANSMIT_V2,$/;"	e	enum:__anon18
 PKT_APP_TRANSMIT_V2	lib\protect_code.h	/^	PKT_APP_TRANSMIT_V2,$/;"	e	enum:__anon18
@@ -1161,19 +1105,6 @@ PKT_NONE	lib\protect_code.h	/^	PKT_NONE						= 0x00,$/;"	e	enum:__anon18
 PKT_SAFE_CONNECT_V2	lib\protect_code.h	/^	PKT_SAFE_CONNECT_V2,$/;"	e	enum:__anon18
 PLATFORM_HARDWARE_GS05	os\config.h	22;"	d
 PLATFORM_MSMTECH_A0106	os\config.h	4;"	d
-PLLCFG_MSEL	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCFG_MSEL     EQU     (0x1F<<0)       ; PLL Multiplier$/;"	d
-PLLCFG_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCFG_OFS      EQU     0x04            ; PLL Configuration Offset$/;"	d
-PLLCFG_PSEL	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCFG_PSEL     EQU     (0x03<<5)       ; PLL Divider$/;"	d
-PLLCFG_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCFG_Val      EQU     0x00000024$/;"	d
-PLLCON_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCON_OFS      EQU     0x00            ; PLL Control Offset$/;"	d
-PLLCON_PLLC	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCON_PLLC     EQU     (1<<1)          ; PLL Connect$/;"	d
-PLLCON_PLLE	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLCON_PLLE     EQU     (1<<0)          ; PLL Enable$/;"	d
-PLLFEED_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLFEED_OFS     EQU     0x0C            ; PLL Feed Offset$/;"	d
-PLLSTAT_OFS	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLSTAT_OFS     EQU     0x08            ; PLL Status Offset$/;"	d
-PLLSTAT_PLOCK	os\FlashFS\Examples\File_ex1\Startup.s	/^PLLSTAT_PLOCK   EQU     (1<<10)         ; PLL Lock Status$/;"	d
-PLL_BASE	os\FlashFS\Examples\File_ex1\Startup.s	/^PLL_BASE        EQU     0xE01FC080      ; PLL Base Address$/;"	d
-PLL_Loop	os\FlashFS\Examples\File_ex1\Startup.s	/^PLL_Loop        LDR     R3, [R0, #PLLSTAT_OFS]$/;"	l
-PLL_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^PLL_SETUP       EQU     1$/;"	d
 PPP_DEFGW	http\Net_Config.c	333;"	d	file:
 PPP_ENABLE	http\Net_Config.c	239;"	d	file:
 PPP_GETIP	http\Net_Config.c	326;"	d	file:
@@ -1224,7 +1155,7 @@ RBS	http\File_Config.c	179;"	d	file:
 RBS	os\FlashFS\Examples\File_ex1\File_Config.c	179;"	d	file:
 RBS	os\FlashFS\SRC\File_Config.c	179;"	d	file:
 READ_BLOCK	os\FlashFS\SRC\fs_mmc.c	21;"	d	file:
-READ_DATA	uffs\example\flash-interface-example.c	99;"	d	file:
+READ_DATA	uffs\example\flash-interface-example.c	113;"	d	file:
 READ_MULT_BLOCK	os\FlashFS\SRC\fs_mmc.c	22;"	d	file:
 RECT	gui\GUI.h	/^} RECT;$/;"	t	typeref:struct:__anon14
 RESET	os\FlashFS\Flash\AM29x800BB\FS_FlashPrg.c	22;"	d	file:
@@ -1274,8 +1205,6 @@ Release	uffs\inc\uffs\uffs_device.h	/^	URET (*Release)(uffs_Device *dev);			\/\/
 ReleaseFlash	uffs\inc\uffs\uffs_flash.h	/^	int (*ReleaseFlash)(uffs_Device *dev);$/;"	m	struct:uffs_FlashOpsSt
 ReleaseHeap	uffs\uffs_mem.c	/^static int ReleaseHeap(uffs_MemAllocator *mem, HeapHashTable *hash_tbl)$/;"	f	file:
 ResetFindInfo	uffs\uffs_find.c	/^static void ResetFindInfo(uffs_FindInfo *f)$/;"	f	file:
-Reset_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^Reset_Addr      DCD     Reset_Handler$/;"	l
-Reset_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^Reset_Handler   $/;"	l
 Reset_Handler	os\Startup.s	/^Reset_Handler$/;"	l
 RootDirAddr	os\FlashFS\SRC\File_Config.h	/^   U16 RootDirAddr;                     \/* Root Dir First Sector             *\/$/;"	m	struct:fatinfo
 RootEntCnt	os\FlashFS\SRC\File_Config.h	/^   U16 RootEntCnt;                      \/* Maximum Root Directory entries    *\/$/;"	m	struct:fatinfo
@@ -1418,9 +1347,6 @@ STREAM_GetLength	lib\DataTran.h	61;"	d
 STREAM_GetWord	lib\DataTran.h	37;"	d
 STREAM_GetWord_BE	lib\DataTran.h	41;"	d
 STREAM_GetWord_LE	lib\DataTran.h	45;"	d
-SVC_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^SVC_Stack_Size  EQU     0x00000020$/;"	d
-SWI_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^SWI_Addr        DCD     SWI_Handler$/;"	l
-SWI_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^SWI_Handler     B       SWI_Handler$/;"	l
 SYSTEMINFO_BASE	device\Device.h	114;"	d
 SecClus	os\FlashFS\SRC\File_Config.h	/^   U8  SecClus;                         \/* Number of Sectors per Cluster     *\/$/;"	m	struct:devpar
 SecClus32	os\FlashFS\SRC\File_Config.h	/^   U8  SecClus32;                       \/* Sectors per Cluster for FAT32     *\/$/;"	m	struct:devpar
@@ -1447,8 +1373,6 @@ SpiDev	os\FlashFS\SRC\File_Config.c	/^ DEVCONF const SpiDev [1] = {0,0};$/;"	v
 SpiDev	os\FlashFS\SRC\File_Config.c	/^ struct DevConf const SpiDev [SF_NSECT] =  { SPI_FLASH_DEVICE };$/;"	v
 Stack	os\Startup.s	/^Stack   EQU     0x00000400$/;"	d
 StackMem	os\Startup.s	/^StackMem$/;"	l
-Stack_Mem	os\FlashFS\Examples\File_ex1\Startup.s	/^Stack_Mem       SPACE   USR_Stack_Size$/;"	l
-Stack_Top	os\FlashFS\Examples\File_ex1\Startup.s	/^Stack_Top$/;"	l
 StartCode	gui\Font.h	/^	WORD StartCode;$/;"	m	struct:__anon11
 Static_Draw	gui\Label.c	/^void Static_Draw($/;"	f
 StrReverse	lib\DataTran.c	/^void StrReverse(char *s)$/;"	f
@@ -1491,7 +1415,7 @@ TNET_ENABLE	http\Net_Config.c	584;"	d	file:
 TNET_ENAUTH	http\Net_Config.c	602;"	d	file:
 TNET_NUMSESS	http\Net_Config.c	591;"	d	file:
 TNET_PORTNUM	http\Net_Config.c	596;"	d	file:
-TOTAL_BLOCKS	uffs\example\flash-interface-example.c	380;"	d	file:
+TOTAL_BLOCKS	uffs\example\flash-interface-example.c	51;"	d	file:
 TOTAL_BLOCKS	uffs\example\static-mem-allocate.c	67;"	d	file:
 TOTAL_DATA_SIZE	uffs\example\static-mem-allocate.c	71;"	d	file:
 TOTAL_SIZE	uffs\example\static-mem-allocate.c	73;"	d	file:
@@ -1598,7 +1522,7 @@ UFFS_INVALID_PAGE	uffs\inc\uffs\uffs_public.h	173;"	d
 UFFS_LAYOUT_FLASH	uffs\inc\uffs\uffs_flash.h	63;"	d
 UFFS_LAYOUT_UFFS	uffs\inc\uffs\uffs_flash.h	62;"	d
 UFFS_MAX_ECC_SIZE	uffs\inc\uffs\uffs_config.h	57;"	d
-UFFS_MAX_PAGE_SIZE	uffs\inc\uffs\uffs_config.h	46;"	d
+UFFS_MAX_PAGE_SIZE	uffs\inc\uffs\uffs_config.h	47;"	d
 UFFS_MAX_SPARE_SIZE	uffs\inc\uffs\uffs_config.h	52;"	d
 UFFS_PAGE_BUFFER_SIZE	uffs\inc\uffs\uffs_config.h	249;"	d
 UFFS_PAGE_GET_DSUM	uffs\inc\uffs\uffs_flash.h	88;"	d
@@ -1620,7 +1544,6 @@ UFFS_TYPE_RESV	uffs\inc\uffs\uffs_tree.h	48;"	d
 UFFS_VERSION	uffs\inc\uffs\uffs_version.h	41;"	d
 UINT	os\typedef.h	/^typedef unsigned int	UINT;$/;"	t
 ULONG	os\typedef.h	/^typedef unsigned long	ULONG;$/;"	t
-UND_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^UND_Stack_Size  EQU     0x00000000$/;"	d
 UO_APPEND	uffs\inc\uffs\uffs.h	50;"	d
 UO_BINARY	uffs\inc\uffs\uffs.h	52;"	d
 UO_CREATE	uffs\inc\uffs\uffs.h	54;"	d
@@ -1635,7 +1558,6 @@ USEEK_CUR	uffs\inc\uffs\uffs.h	89;"	d
 USEEK_END	uffs\inc\uffs\uffs.h	91;"	d
 USEEK_SET	uffs\inc\uffs\uffs.h	90;"	d
 USHORT	os\typedef.h	/^typedef unsigned short	USHORT;$/;"	t
-USR_Stack_Size	os\FlashFS\Examples\File_ex1\Startup.s	/^USR_Stack_Size  EQU     0x00000400$/;"	d
 US_IFDIR	uffs\inc\uffs\uffs_fd.h	60;"	d
 US_IFLNK	uffs\inc\uffs\uffs_fd.h	59;"	d
 US_IFMT	uffs\inc\uffs\uffs_fd.h	57;"	d
@@ -1704,17 +1626,11 @@ Uart1_WaitForSend	device\Uart.h	80;"	d
 Uart1_Write	device\Uart.c	/^DWORD Uart1_Write(char *buffer, int size)$/;"	f
 UartSetting	device\Uart.h	/^typedef  struct  UartSetting$/;"	s
 Uart_GetFlagStatus	device\Uart.h	51;"	d
-Undef_Addr	os\FlashFS\Examples\File_ex1\Startup.s	/^Undef_Addr      DCD     Undef_Handler$/;"	l
-Undef_Handler	os\FlashFS\Examples\File_ex1\Startup.s	/^Undef_Handler   B       Undef_Handler$/;"	l
 Unichar0	os\FlashFS\SRC\File_Config.h	/^   U8  Unichar0[10];                    \/* Unicode characters 1  ..  5       *\/$/;"	m	struct:lfn_filerec
 Unichar1	os\FlashFS\SRC\File_Config.h	/^   U8  Unichar1[12];                    \/* Unicode characters 6  .. 11       *\/$/;"	m	struct:lfn_filerec
 Unichar2	os\FlashFS\SRC\File_Config.h	/^   U8  Unichar2[4];                     \/* Unicode characters 12 .. 13       *\/$/;"	m	struct:lfn_filerec
 VCOBJECT	gui\GUI.h	/^typedef struct VCOBJECT$/;"	s
 VCOBJECT	gui\GUI.h	/^} VCOBJECT;$/;"	t	typeref:struct:VCOBJECT
-VPBDIV	os\FlashFS\Examples\File_ex1\Startup.s	/^VPBDIV          EQU     0xE01FC100      ; VPBDIV Address$/;"	d
-VPBDIV_SETUP	os\FlashFS\Examples\File_ex1\Startup.s	/^VPBDIV_SETUP    EQU     0$/;"	d
-VPBDIV_Val	os\FlashFS\Examples\File_ex1\Startup.s	/^VPBDIV_Val      EQU     0x00000000$/;"	d
-Vectors	os\FlashFS\Examples\File_ex1\Startup.s	/^Vectors         LDR     PC, Reset_Addr         $/;"	l
 Version	os\OS.h	/^	char *Version;$/;"	m	struct:__anon19
 W25Q16_JEDECID	device\W25X32.h	14;"	d
 W25Q32_JEDECID	device\W25X32.h	20;"	d
@@ -1776,10 +1692,10 @@ WDT_Clear	device\W25X32.c	/^int WDT_Clear()$/;"	f
 WORD	http\HTTP_upload.c	/^typedef unsigned short WORD;$/;"	t	file:
 WORD	os\typedef.h	/^typedef unsigned short		WORD;$/;"	t
 WRITE_BLOCK	os\FlashFS\SRC\fs_mmc.c	23;"	d	file:
-WRITE_COMMAND	uffs\example\flash-interface-example.c	95;"	d	file:
-WRITE_DATA	uffs\example\flash-interface-example.c	98;"	d	file:
-WRITE_DATA_ADDR	uffs\example\flash-interface-example.c	96;"	d	file:
-WRITE_ERASE_ADDR	uffs\example\flash-interface-example.c	97;"	d	file:
+WRITE_COMMAND	uffs\example\flash-interface-example.c	109;"	d	file:
+WRITE_DATA	uffs\example\flash-interface-example.c	112;"	d	file:
+WRITE_DATA_ADDR	uffs\example\flash-interface-example.c	110;"	d	file:
+WRITE_ERASE_ADDR	uffs\example\flash-interface-example.c	111;"	d	file:
 WRITE_MULT_BLOCK	os\FlashFS\SRC\fs_mmc.c	24;"	d	file:
 WR_TOUT	os\FlashFS\SRC\fs_mmc.c	30;"	d	file:
 WS_ALIGN_BOTTOM	gui\GUI.h	57;"	d
@@ -1995,11 +1911,8 @@ __flushbuf	os\FlashFS\SRC\_fs_flushbuf.c	/^int __flushbuf (int handle) {$/;"	f
 __fopen	os\FlashFS\SRC\_fs_fopen.c	/^int __fopen (const char *fname, int openmode) {$/;"	f
 __get_flen	os\FlashFS\SRC\File_Config.h	237;"	d
 __getfsize	os\FlashFS\SRC\_fs_getfsize.c	/^U32 __getfsize (IOB *fcb, BOOL set_fidx) {$/;"	f
-__heap_base	os\FlashFS\Examples\File_ex1\Startup.s	/^__heap_base$/;"	l
 __heap_base	os\Startup.s	/^__heap_base$/;"	l
-__heap_limit	os\FlashFS\Examples\File_ex1\Startup.s	/^__heap_limit$/;"	l
 __heap_limit	os\Startup.s	/^__heap_limit$/;"	l
-__initial_sp	os\FlashFS\Examples\File_ex1\Startup.s	/^__initial_sp    SPACE   ISR_Stack_Size$/;"	l
 __initial_sp	os\Startup.s	/^__initial_sp$/;"	l
 __read	os\FlashFS\SRC\_fs_read.c	/^int __read (int handle, U8 *buf, U32 len) {$/;"	f
 __setfpos	os\FlashFS\SRC\_fs_setfpos.c	/^int __setfpos (int handle, U32 pos) {$/;"	f
@@ -2016,7 +1929,6 @@ __ucalloc	uffs\uffs_mem.c	/^static void *__ucalloc(uffs_MemAllocator *mem,$/;"	f
 __ufree	uffs\uffs_mem.c	/^static int __ufree(uffs_MemAllocator *mem, void *p, HeapHashTable *hash_tbl)$/;"	f	file:
 __umalloc	uffs\uffs_mem.c	/^static void *__umalloc(uffs_MemAllocator *mem,$/;"	f	file:
 __urealloc	uffs\uffs_mem.c	/^static void *__urealloc(uffs_MemAllocator *mem,$/;"	f	file:
-__user_initial_stackheap	os\FlashFS\Examples\File_ex1\Startup.s	/^__user_initial_stackheap$/;"	l
 __user_initial_stackheap	os\Startup.s	/^__user_initial_stackheap$/;"	l
 __write	os\FlashFS\SRC\_fs_write.c	/^int __write (int handle, const U8 *buf, U32 len) {$/;"	f
 _currDatClus	os\FlashFS\SRC\File_Config.h	/^   U32   _currDatClus;                  \/* FAT Current Data Cluster          *\/$/;"	m	struct:iob
@@ -2101,9 +2013,9 @@ _d_swap_dword	os\typedef.h	46;"	d
 _d_swap_word	os\typedef.h	45;"	d
 _d_system_value_list_count	os\system_value.c	109;"	d	file:
 _d_t_cmd_h_	os\t_cmd\t_cmd.h	4;"	d
-_d_t_cmd_item	os\t_cmd\t_cmd.c	73;"	d	file:
+_d_t_cmd_item	os\t_cmd\t_cmd.c	84;"	d	file:
 _d_t_cmd_item	os\t_cmd\t_cmd.h	/^}_d_t_cmd_item;$/;"	t	typeref:struct:__anon23
-_d_t_cmd_item_count	os\t_cmd\t_cmd.c	84;"	d	file:
+_d_t_cmd_item_count	os\t_cmd\t_cmd.c	97;"	d	file:
 _d_text	os\Trace.h	101;"	d
 _d_text	os\vfs\index.c	30;"	d	file:
 _d_try_read_size	os\access_main.c	109;"	d	file:
@@ -2113,6 +2025,8 @@ _d_u	os\Trace.h	98;"	d
 _d_u	os\vfs\index.c	27;"	d	file:
 _d_uffs	os\config.h	135;"	d
 _d_use_flash_manager_version	os\config.h	75;"	d
+_d_w25x_block_size	uffs\example\flash-interface-example.c	50;"	d	file:
+_d_w25x_page_size	uffs\example\flash-interface-example.c	49;"	d	file:
 _device_init	device\Device.c	/^void _device_init(void)$/;"	f
 _dir_pool	uffs\uffs_fd.c	/^static uffs_Pool _dir_pool;$/;"	v	file:
 _dir_pool_data	uffs\uffs_fd.c	/^static int _dir_pool_data[sizeof(uffs_DIR) * MAX_DIR_HANDLE \/ sizeof(int)];$/;"	v	file:
@@ -3243,7 +3157,7 @@ mmc_write_sect	os\FlashFS\SRC\fs_mmc.c	/^BOOL mmc_write_sect (U32 sect, U8 *buf,
 mmcfg	os\FlashFS\SRC\File_Config.h	/^typedef struct mmcfg {$/;"	s
 modal	gui\GUI.h	/^	bit modal:					1;$/;"	m	struct:FORM
 modules_test	os\test.c	/^int modules_test()$/;"	f
-modules_test_entry	os\test.c	/^int modules_test_entry = 7;$/;"	v
+modules_test_entry	os\test.c	/^int modules_test_entry = 0;$/;"	v
 month	os\typedef.h	/^	char month;$/;"	m	struct:__anon22
 mount	uffs\inc\uffs\uffs_mtb.h	/^	const char *mount;$/;"	m	struct:uffs_MountTableEntrySt
 mploader_find_mpl_header	os\OS.c	/^MPL_HEADER *mploader_find_mpl_header(DWORD *buffer, DWORD length)$/;"	f
@@ -3705,6 +3619,8 @@ t_cmd_result_buffer	os\t_cmd\t_cmd.c	/^char* t_cmd_result_buffer = g_t_cmd_resul
 t_flash_chip_erase	os\t_cmd\t_cmd.c	/^unsigned t_flash_chip_erase( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_flash_uffs_erase	os\t_cmd\t_cmd.c	/^unsigned t_flash_uffs_erase( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_fremove	os\t_cmd\t_cmd.c	/^unsigned t_fremove( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
+t_property_get	os\t_cmd\t_cmd.c	/^unsigned t_property_get( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
+t_property_set	os\t_cmd\t_cmd.c	/^unsigned t_property_set( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_time_get	os\t_cmd\t_cmd.c	/^unsigned t_time_get( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 t_time_set	os\t_cmd\t_cmd.c	/^unsigned t_time_set( char **ki, char *rel_buf, int max_rel_buf_size )$/;"	f
 tag	uffs\inc\uffs\uffs_blockinfo.h	/^	uffs_Tags tag;			\/\/!< page tag$/;"	m	struct:uffs_PageSpareSt
