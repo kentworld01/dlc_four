@@ -602,18 +602,42 @@ void utf8_to_unicode_test()
 	_d_hex( uc[2] );
 }
 
-_error_message( char* str, int val, int line_no, char* file_name )
+int _error_message( char* str, int val, int line_no, char* file_name )
 {
 	TRACE("\tError Message\n");
 	TRACE("%d\t%s\t%s\t%d\n", line_no, file_name, str, val );
 	//while( 1 );
 	return 0;
 }
-_message( char* str, int val, int line_no, char* file_name )
+int _message( char* str, int val, int line_no, char* file_name )
 {
 	TRACE("\tMessage\n");
 	TRACE("%d\t%s\t%s\t%d\n", line_no, file_name, str, val );
 	//while( 1 );
 	return 0;
 }
+
+int end_swith( char* fn, char* ext_name )
+{
+	char buf[32+3];
+	int ext_name_len = 0;
+	int fn_len = 0;
+	ext_name_len = strlen( ext_name );
+	if( ext_name_len >= sizeof(buf)-3 )
+		return 0;
+	buf[0] = '.';
+	buf[1] = 0;
+	strcat( buf, ext_name );
+	ext_name_len ++;
+	fn_len = strlen( fn );
+	if( fn_len < ext_name_len )
+		return 0;
+	return strcmp( &fn[ fn_len-ext_name_len ], ext_name );
+}
+
+int uffs_read_line( int f, char *buf, int max_buf_size )
+{
+	return df_read_line( (f+1), buf, max_buf_size );
+}
+
 

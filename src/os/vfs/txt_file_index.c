@@ -70,7 +70,11 @@ int sub_txt_file_read_line( void* h, void* lph, int line_no, char* buf, int buf_
 	pos = line_no * 4;
 	//_d_hex( pos );
 	offset = df_seek( lph, pos, 0 );
+#if _d_sd
 	offset = ftell( lph );
+#elif _d_uffs
+	offset = uffs_tell( (int)lph-1 );
+#endif
 	//_d_hex( offset );
 	if( offset < pos ){
 		error_message( "set position is big file length", pos );

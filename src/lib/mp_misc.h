@@ -62,5 +62,12 @@ unsigned utf8_to_unicode( char* utf8, unsigned short *unicode );
 int _string_utf8_to_unicode( char* utf8, int ut8_size, unsigned short *unicode, int unicode_size );
 int string_utf8_to_unicode( char* utf8, unsigned short *unicode, int );
 
+
+//int _error_message( char* str, int val, int line_no, char* file_name );
+//int _message( char* str, int val, int line_no, char* file_name );
+
+int end_swith( char* fn, char* ext_name );
+int uffs_read_line( int f, char *buf, int max_buf_size );
+
 #endif
 

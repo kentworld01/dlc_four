@@ -1,15 +1,17 @@
 
 #include "os.h"
-#include "gui4/gui_if.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
 
-int g_device_no = 888;
+
 int g_record_id = 1;
 char g_card_man[32];
 char g_card_group[32];
+
+u8 g_send_package_socket = 0;
+
 
 
 #define _d_card_group_max_count 1
@@ -21,9 +23,15 @@ int g_card_group_count = 0;
 
 void* df_create( char*name, int flag, char* value )
 {
+#if _d_sd
 	FILE *fp;
 	fp = fopen( name, "wb" );
 	return (void*)fp;
+#elif _d_uffs
+	int fp;
+	fp = uffs_open( name, UO_RDWR | UO_CREATE );
+	return (void*)(fp+1);
+#endif
 }
 
 void* df_open( char* fn, int flag )
@@ -35,6 +43,7 @@ void* df_open( char* fn, int flag )
 #elif _d_uffs
 	int fp;
 	fp = uffs_open( fn, UO_RDONLY );
+	return (void*)(fp+1);
 #endif
 }
 int df_read( void* h, char* buf, int size )
@@ -42,7 +51,7 @@ int df_read( void* h, char* buf, int size )
 #if _d_sd
 	return fread( buf, 1, size, (FILE*)h );
 #elif _d_uffs
-	return uffs_read( (int)h, buf, size );
+	return uffs_read( (int)h-1, buf, size );
 #endif
 }
 int df_write( void* h, char* buf, int size )
@@ -50,7 +59,7 @@ int df_write( void* h, char* buf, int size )
 #if _d_sd
 	return fwrite( buf, 1, size, (FILE*)h );
 #elif _d_uffs
-	return uffs_write( (int)h, buf, size );
+	return uffs_write( (int)h-1, buf, size );
 #endif
 }
 int df_close( void* h )
@@ -58,7 +67,7 @@ int df_close( void* h )
 #if _d_sd
 	return fclose( h );
 #elif _d_uffs
-	return uffs_close( (int)h );
+	return uffs_close( (int)h-1 );
 #endif
 }
 int df_delete( char* name, int flag )
@@ -74,7 +83,7 @@ int df_seek( void* h, int offset, int pos )
 #if _d_sd
 	return fseek( (FILE*)h, offset, pos );
 #elif _d_uffs
-	return uffs_seek( (int)h, offset, pos );
+	return uffs_seek( (int)h-1, offset, pos );
 #endif
 }
 int df_get_file_size( char* name )
@@ -84,8 +93,12 @@ int df_get_file_size( char* name )
 	h = df_open( name , 0 );
 	if( h == 0 )
 		return 0;
-	size = df_seek( h, 0, 2 );
+	size = df_seek( h, 0, _SEEK_END );
+#if _d_sd
 	size = ftell( h );
+#else
+	size = uffs_tell( (int)h-1 );
+#endif
 	if( size <= 0 )
 		return 0;
 	df_close( h );
@@ -93,11 +106,11 @@ int df_get_file_size( char* name )
 }
 int df_read_line( void* h, char* buf, int max_size )
 {
-	#define _d_try_read_size 50
+#define _d_try_read_size 50
 	int base = 0;
 	int pos;
 	int size;
-	char *tstr = "\n";
+	//char *tstr = "\n";
 	int try_size = _d_try_read_size;
 	if( try_size > max_size )
 		try_size = max_size;
@@ -120,7 +133,7 @@ int df_read_line( void* h, char* buf, int max_size )
 		for( pos = 0; pos < base; pos ++ ){
 			if( buf[pos] == '\n' )
 				break;
-			}
+		}
 		//_d_int( pos );
 		if( pos == base )
 			continue;
@@ -128,10 +141,10 @@ int df_read_line( void* h, char* buf, int max_size )
 		// get the pos, and fix the offset.
 		if( pos > base )
 			while( 1 ) _d_line();
-		df_seek( h, pos-base+1, 1 );
+		df_seek( h, pos-base+1, _SEEK_CUR );
 		buf[pos] = 0;
 		return pos;
-		}
+	}
 	return -1;
 }
 
@@ -153,7 +166,7 @@ int today_is_holiday( int group_id, int year, int month, int day )
 int cam_read_group_id_from_white_name_record( DWORD card_id, char* buf, int buf_size )
 {
 	char card_id_str[15];
-	int no;
+	//int no;
 	s_sprintf( card_id_str, "%u", card_id );
 	//_d_str( card_id_str );
 	if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
@@ -169,7 +182,7 @@ int cam_read_time_area_from_time_area_file( int time_area_no, DWORD* begin_time,
 	int hour;
 	int minute;
 	DATETIME dt;
-	
+
 	buf_size = sizeof( buf );
 	//s_sprintf( key, "%02d", time_area_no );
 	RTC_GetTime( &dt );
@@ -244,18 +257,18 @@ int cam_read_time_area_list_from_week_table( int group_id, DWORD time, char* buf
 int white_name_list_get_value( char* buf, int *group_id, int* allow_id, int* not_allow_id, int *password )
 {
 	//withe name struct
-		// 0 card_id
-		// 1 group_id
-		// 2 allow_id
-		// 3 not_allow_id
-		// 4 name
-		// 5 password
-		// 6 othe command
+	// 0 card_id
+	// 1 group_id
+	// 2 allow_id
+	// 3 not_allow_id
+	// 4 name
+	// 5 password
+	// 6 othe command
 	int kc;
 	char *ki[15];
 	int skc;
 	char *ski[15];
-	
+
 	kc = analysis_string_to_strings_by_decollator( buf, ", ", ki, 15 );
 	if( kc < 7 ){
 		error_message( "white_name format error", kc );
@@ -322,8 +335,8 @@ int card_group_operate_key_deal()
 
 int card_group_operate()
 {
-	int i;
-	DWORD card_id;
+	//int i;
+	//DWORD card_id;
 	if( g_card_group_count <= 0 )
 		return 0;
 #if 0
@@ -367,11 +380,11 @@ int sub_do_cam( int device_no, DWORD card_id, DWORD time, char* show_buf, int ma
 	int no, time_area_no;
 	DWORD begin_time, end_time;
 	int password = 0;
-	
+
 	//cam_read_white_name_record( card_id, buf );
 	_d_u( card_id );
 	if( cam_read_group_id_from_white_name_record( card_id, buf, sizeof(buf) ) < 0 ){
-		error_message( "can not search this card_id", card_id );
+		error_message( (char*)"can not search this card_id", card_id );
 		goto do_cam_error_exit;
 	}
 	//old design: 职员工号，职员姓名，物理卡号，组别，用户密码，反潜会控制
@@ -381,11 +394,11 @@ int sub_do_cam( int device_no, DWORD card_id, DWORD time, char* show_buf, int ma
 	_d_str( white_name_content );
 	if( white_name_list_get_value( buf, &group_id, &allow_id, &not_allow_id, &password ) < 0 )
 		goto not_allow_enter;
-		//goto do_cam_error_exit;
-	
+	//goto do_cam_error_exit;
+
 	//_d_str( white_name_content );
 	if( cam_read_time_area_list_from_week_table( group_id, time, time_area_list, sizeof(time_area_list) ) < 0 ){
-		error_message( "read time_area_list error", group_id );
+		error_message( (char*)"read time_area_list error", group_id );
 		goto not_allow_enter;
 		//goto do_cam_error_exit;
 	}
@@ -400,7 +413,7 @@ int sub_do_cam( int device_no, DWORD card_id, DWORD time, char* show_buf, int ma
 		_d_int( time_area_no );
 		//get time area, and check ok.
 		if( cam_read_time_area_from_time_area_file( time_area_no, &begin_time, &end_time ) < 0 ){
-			error_message( "read time_area from time_area_file error", time_area_no );
+			error_message( (char*)"read time_area from time_area_file error", time_area_no );
 			break;
 		}
 		_d_int( begin_time );
@@ -459,7 +472,7 @@ not_allow_enter:
 	}
 #endif
 	return -1;
-	
+
 do_cam_error_exit: 	
 	_d_line();
 #if 0	
@@ -506,9 +519,9 @@ int df_file_exist( char* fn )
 int do_cam_check_file()
 {
 	char *fn[] = { "white_name.txt","time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
-	#define _d_fn_count (sizeof( fn ) /sizeof(char*))
+#define _d_fn_count (sizeof( fn ) /sizeof(char*))
 	char *lpfn[] = { "white_name.txt.lp","time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
-	#define _d_lpfn_count (sizeof( lpfn ) /sizeof(char*))
+#define _d_lpfn_count (sizeof( lpfn ) /sizeof(char*))
 	int i;
 	for( i=0; i<_d_fn_count; i++ ){
 		if( df_file_exist( fn[i] ) == 0 ){
@@ -551,13 +564,22 @@ char* get_card_group()
 
 
 
+u32 g_sys_tick = 0;
+int sys_tick_once()
+{
+	g_sys_tick ++;
+}
+int get_sys_tick()
+{
+	return g_sys_tick;
+}
 
 
 #define _ds_record_format "machine_no,date,time,sys_tick,record_id,card_id,ok_flag"
 int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
 {
-	extern UCHAR  Host_ipaddr[5];	
-	extern UINT  HOST_PORT;
+	//extern UCHAR  Host_ipaddr[5];	
+	//extern UINT  HOST_PORT;
 	int len;
 	DATETIME dt;
 	char tmp_buf[32];
@@ -573,7 +595,9 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 	{
 		buf[0] = 0;
 		// get prop string
+#if 0
 		if( node_prop_get_value( "/p/record_format", record_format, sizeof( record_format ) ) < 0 )
+#endif
 			strcpy( record_format, _ds_record_format );
 		// loop key and gen the info string to buf.
 		kc = analysis_string_to_strings_by_decollator( record_format, ", ", ki, 15 );
@@ -607,23 +631,25 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 				strcat( buf, tmp_buf );
 			}
 			else if( strcmp( ki[i], "reader_id" ) == 0 ){
-				extern void *g_reader_id_handle;
-				DWORD reader_id = 0;
-				df_read( g_reader_id_handle, (char*)&reader_id, 4 );
-				s_sprintf( tmp_buf, "%d", reader_id );
+				extern int g_reader_id;
+				s_sprintf( tmp_buf, "%d", g_reader_id );
 				strcat( buf, tmp_buf );
 			}
 			else if( strcmp( ki[i], "ip" ) == 0 ){
 				extern UCHAR Host_ipaddr[5] ;
-				char *po = Host_ipaddr;
+				char *po = g_send_package_socket_ip;
 				s_sprintf( tmp_buf, "%d.%d.%d.%d", po[0], po[1], po[2], po[3] );
 				strcat( buf, tmp_buf );
 			}
 			else if( strcmp( ki[i], "mac" ) == 0 ){
+#if 0
 				extern UCHAR my_hwaddr[6] ;
 				char *po = my_hwaddr;
 				s_sprintf( tmp_buf,"%02x.%02x.%02x.%02x.%02x.%02x", po[0], po[1], po[2], po[3], po[4], po[5] );
 				strcat( buf, tmp_buf );
+#else
+				strcpy( tmp_buf, "01.02.03.04.05.06" );
+#endif
 			}
 			else if( strcmp( ki[i], "card_group_flag" ) == 0 ){
 				extern int g_card_group_count;
@@ -631,6 +657,7 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 				strcat( buf, tmp_buf );
 			}
 			else if( strcmp( ki[i], "card_group_list" ) == 0 ){
+#if 0
 				extern DWORD *g_card_group_list;
 				int i;
 				for( i=0; i<g_card_group_count; i++ ){
@@ -639,6 +666,7 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 					if( i < g_card_group_count - 1 )
 						strcat( buf, ";" );
 				}
+#endif
 			}
 			strcat( buf, " " );
 		}
@@ -648,20 +676,61 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 }
 
 
+
+
+int system_send_buf_to_host( char* buf, int buf_size )
+{
+	char* sendbuf;
+	int stat = 0;
+	if( g_send_package_socket != 0) {
+		stat = tcp_get_state( g_send_package_socket );
+		switch ( stat ) {
+			case TCP_STATE_FREE:
+			case TCP_STATE_CLOSED:
+				tcp_connect ( g_send_package_socket, g_send_package_socket_ip, g_send_package_socket_port, 0);
+				// wait connect
+				// maybe need 
+				while( 1 ){
+					stat = tcp_get_state( g_send_package_socket );
+					timer_poll ();
+					main_TcpNet ();
+					if( stat == TCP_STATE_CONNECT )
+						break;
+				}
+				break;
+		}
+
+		if( stat  == TCP_STATE_CONNECT ) {
+			if (tcp_check_send ( g_send_package_socket) == __TRUE) {
+				sendbuf = tcp_get_buf( buf_size );
+				memcpy( sendbuf, buf, buf_size );
+				tcp_send ( g_send_package_socket, sendbuf, buf_size);
+			}
+		}
+		else{
+			return -1;
+		}
+	}
+	else	return -2;
+	return 0;
+}
+
 int send_card_info_by_tcmd( DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
 {
 	char buf[64];
 	gen_record_string( buf, time, sys_tick, record_id, card_id, ok_flag );
-	return system_send_buf_to_host( buf );
+	return system_send_buf_to_host( buf, strlen( buf ) );
 }
 int send_card_info_by_dlc( DWORD time, DWORD cardid)
 {
+#if 0
 	extern UCHAR  Host_ipaddr[5];	
 	extern UINT  HOST_PORT;
 	int len;
-	BYTE *p = _dlc_gsxx_on_show_card( time, cardid );
+	char *p = _dlc_gsxx_on_show_card( time, cardid );
 	STREAM_AddDWord(p, DSF_NOEXTRA);					// 无附加字段类型
 	GSDLC_PutPacket( (COMMUNENV *)&commun_env_tcpclient, 0, GSDLC_FRAME, GSDLC_DataPacketLength(p));
+#endif
 	return 0;
 }
 
@@ -672,10 +741,10 @@ int send_card_info( DWORD card_id, int ok_flag )
 
 	switch( g_host_type ){
 		case 1:
-			return send_card_info_by_tcmd( RTC_GetCounter(), GetTickCount(), g_record_id, card_id, ok_flag );
+			return send_card_info_by_tcmd( RTC_Get(), get_sys_tick(), g_record_id, card_id, ok_flag );
 			break;
 		case 2:
-			return send_card_info_by_dlc( RTC_GetCounter(), GetTickCount() );
+			return send_card_info_by_dlc( RTC_Get(), get_sys_tick() );
 			break;
 	}
 	return 0;
@@ -773,7 +842,7 @@ int timer_process()
 {
 	static unsigned second = 0;
 	unsigned val = RTC_Get();
-	if( val - second >= 2 || val - second < 0 ){
+	if( val - second >= 2 || (int)val - (int)second < 0 ){
 		if( g_page_keep_second > 0 ){
 			g_page_keep_second -= val - second;
 			if( g_page_keep_second <= 0 ){
@@ -788,8 +857,37 @@ int timer_process()
 }
 
 
+u16 tcp_callback (U8 soc, U8 evt, U8 *ptr, U16 par) 
+{
+	/* This function is called by the TCP module on TCP event */
+	/* Check the 'Net_Config.h' for possible events.          */
+	par = par;
+
+	if (soc != g_send_package_socket ) {
+		return (0);
+	}
+
+	switch (evt) {
+		case TCP_EVT_DATA:
+			/* TCP data frame has arrived, data is located at *par1, */
+			/* data length is par2. Allocate buffer to send reply.   */
+			//procrec(ptr);
+			break;
+
+		case TCP_EVT_CONREQ:
+			/* Remote peer requested connect, accept it */
+			return (1);
+
+		case TCP_EVT_CONNECT:
+			/* The TCP socket is connected */
+			return (1);
+	}
+	return (0);
+}
+
 int access_init()
 {
+	g_send_package_socket = tcp_get_socket (TCP_TYPE_CLIENT, 0, 10, tcp_callback);
 	set_main_page();
 	show_main_page();
 	return 0;
@@ -797,7 +895,7 @@ int access_init()
 
 int access_loop()
 {
-	int rel;
+	//int rel;
 	int ok_cam_flag;
 	int ok_send_flag;
 	if( check_card_action() > 0 ){
@@ -819,13 +917,12 @@ int access_loop()
 			set_allow_enter_page();
 			set_page_keep_second( 5 );
 		}
-		//send_record();
 		ok_send_flag = send_card_info( g_deal_card_no, ok_cam_flag );
-		rel = save_card_info( g_deal_card_no, ok_cam_flag, ok_send_flag );
-		//save_record( rel );
+		save_card_info( g_deal_card_no, ok_cam_flag, ok_send_flag );
 		show_main_page();
 		g_record_id ++;
 	}
 	timer_process();
+	return 0;
 }
 

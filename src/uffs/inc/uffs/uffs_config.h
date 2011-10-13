@@ -43,8 +43,8 @@
  * \def UFFS_MAX_PAGE_SIZE
  * \note maximum page size UFFS support
  */
-#define UFFS_MAX_PAGE_SIZE		256
-//#define UFFS_MAX_PAGE_SIZE		2048
+//#define UFFS_MAX_PAGE_SIZE		256
+#define UFFS_MAX_PAGE_SIZE		2048
 
 /**
  * \def UFFS_MAX_SPARE_SIZE
@@ -61,7 +61,7 @@
  * \note uffs cache the block info for opened directories and files,
  *       a practical value is 5 ~ MAX_OBJECT_HANDLE
  */
-#define MAX_CACHED_BLOCK_INFO	2
+#define MAX_CACHED_BLOCK_INFO	5
 //#define MAX_CACHED_BLOCK_INFO	10
 
 /** 

@@ -22,6 +22,14 @@
 #include "uffs/inc/uffs/uffs_fd.h"
 #include "uffs/inc/uffs/uffs_utils.h"
 
+
+#include "gui4/gui_if.h"
+#include "os/vfs/txt_file_index.h"
+#include "os/vfs/rand_file.h"
+
+#include "property.h"
+
+
 //#include "Queue.h"
 //#include "Event.h"
 //#include "ExtTimer.h"

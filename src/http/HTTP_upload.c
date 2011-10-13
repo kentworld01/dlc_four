@@ -54,6 +54,18 @@ int sendchar (int ch);
 /*--------------------------- init ------------------------------------------*/
 
 u8 flash_clear_flag = 0;
+int net_init()
+{
+	extern u8 g_send_package_socket;
+	u16 tcp_callback (U8 soc, U8 evt, U8 *ptr, U16 par);
+	extern u8 g_send_package_socket_ip[4] ;
+	extern u16 g_send_package_socket_port ;
+
+	init_TcpNet ();
+	g_send_package_socket = tcp_get_socket (TCP_TYPE_CLIENT, 0, 10, tcp_callback);
+	tcp_connect ( g_send_package_socket, g_send_package_socket_ip, g_send_package_socket_port, 0);
+	return 0;
+}
 static void init () {
 	/* Add System initialisation code here */ 
 
@@ -64,12 +76,12 @@ static void init () {
 		sendchar( 'A' );
 	}
 #endif   
-	init_TcpNet ();
 
 	/* Setup and enable the SysTick timer for 100ms. */
 	SysTickPeriodSet(SysCtlClockGet() / 10);
 	SysTickEnable();
 
+	net_init();
 
 	jtag_to_io();
 	spi_init ();
@@ -78,30 +90,28 @@ static void init () {
 		while( 1 );
 	}
 
-	//w25x_test();
 
-	if( flash_clear_flag == 1 )
-		W25X_ChipErase();
+	//if( flash_clear_flag == 1 ) W25X_ChipErase();
 	uffs_flash_interface_init();
-	//cmdTest1();
-	cmdTest2();
-
+	modules_test();
+	property_init();
 	rtc_init();
 	Font_Init();
-
 	access_init();
-	//modules_test();
+
+	modules_test();
 }
 
 /*--------------------------- timer_poll ------------------------------------*/
 
-static void timer_poll () {
+void timer_poll () {
 	/* System tick timer running in poll mode */
 
 	if ((HWREG (NVIC_ST_CTRL) >> 16) & 1) {
 		/* Timer tick every 100 ms */
 		timer_tick ();
 		tick = __TRUE;
+		sys_tick_once();
 	}
 }
 

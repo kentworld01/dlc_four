@@ -44,6 +44,20 @@
 
 #define PFX "nand-drv:"
 
+
+
+#define _d_w25x_page_size 2048
+#define _d_w25x_block_size (64*1024)
+#define TOTAL_BLOCKS    (3*1024/64)	// use header 3 m space.
+#define PAGE_SPARE_SIZE 16
+#define PAGE_DATA_SIZE  ( _d_w25x_page_size - PAGE_SPARE_SIZE)
+#define PAGES_PER_BLOCK ( _d_w25x_block_size / _d_w25x_page_size )
+#define PAGE_SIZE	(PAGE_DATA_SIZE + PAGE_SPARE_SIZE)
+#define BLOCK_DATA_SIZE (PAGE_DATA_SIZE * PAGES_PER_BLOCK)
+#define NR_PARTITION	1								/* total partitions */
+#define PAR_1_BLOCKS	(TOTAL_BLOCKS)	/* partition 2 */
+
+
 struct my_nand_chip {
 	void *IOR_ADDR;
 	void *IOW_ADDR;
@@ -121,7 +135,7 @@ static int nand_read_page(uffs_Device *dev, u32 block, u32 page, u8 *data, int d
 	CHIP_CLR_NCS(chip);
 	if (data && data_len > 0) {
 #if 1
-		W25X_ReadData( block*64*1024+page*256, data, data_len );
+		W25X_ReadData( block* _d_w25x_block_size +page* _d_w25x_page_size , data, data_len );
 #else
 		CHIP_SET_CLE(chip);
 		WRITE_COMMAND(chip, NAND_CMD_READ0);
@@ -138,7 +152,7 @@ static int nand_read_page(uffs_Device *dev, u32 block, u32 page, u8 *data, int d
 
 	if (spare && spare_len > 0) {
 #if 1
-		W25X_ReadData( block*64*1024+page*256 + dev->attr->page_data_size, spare, spare_len );
+		W25X_ReadData( block* _d_w25x_block_size +page* _d_w25x_page_size  + dev->attr->page_data_size, spare, spare_len );
 #else
 		CHIP_SET_CLE(chip);
 		WRITE_COMMAND(chip, NAND_CMD_READOOB);
@@ -155,7 +169,7 @@ static int nand_read_page(uffs_Device *dev, u32 block, u32 page, u8 *data, int d
 
 	if (data == NULL && spare == NULL) {
 #if 1
-		W25X_ReadData( block*64*1024+page*256 + dev->attr->page_data_size + dev->attr->block_status_offs, &val, 1 );
+		W25X_ReadData( block* _d_w25x_block_size +page* _d_w25x_page_size  + dev->attr->page_data_size + dev->attr->block_status_offs, &val, 1 );
 		ret = (val == 0xFF ? UFFS_FLASH_NO_ERR : UFFS_FLASH_BAD_BLK);
 #else
 		// read bad block mark
@@ -190,7 +204,8 @@ static int nand_write_page(uffs_Device *dev, u32 block, u32 page,
 
 	if (data && data_len > 0) {
 #if 1
-		W25X_PageProgram( block*64*1024+page*256 + 0, data, data_len );
+		w25x_program( block* _d_w25x_block_size +page* _d_w25x_page_size  + 0, data, data_len );
+		//W25X_PageProgram( block* _d_w25x_block_size +page* _d_w25x_page_size  + 0, data, data_len );
 #else
 		CHIP_SET_CLE(chip);
 		WRITE_COMMAND(chip, NAND_CMD_READ0);
@@ -224,7 +239,7 @@ static int nand_write_page(uffs_Device *dev, u32 block, u32 page,
 
 	if (spare && spare_len > 0) {
 #if 1
-		W25X_PageProgram( block*64*1024+page*256 + dev->attr->page_data_size, spare, spare_len );
+		W25X_PageProgram( block* _d_w25x_block_size +page* _d_w25x_page_size  + dev->attr->page_data_size, spare, spare_len );
 		ret = PARSE_STATUS(val);
 #else
 		if (!fall_through) {
@@ -251,7 +266,7 @@ static int nand_write_page(uffs_Device *dev, u32 block, u32 page,
 	if (data == NULL && spare == NULL) {
 #if 1
 		val = 0;
-		W25X_PageProgram( block*64*1024+page*256 + dev->attr->page_data_size+ dev->attr->block_status_offs, &val, 1 );
+		W25X_PageProgram( block* _d_w25x_block_size +page* _d_w25x_page_size  + dev->attr->page_data_size+ dev->attr->block_status_offs, &val, 1 );
 		ret = PARSE_STATUS(val);
 #else
 		// mark bad block
@@ -289,7 +304,7 @@ static int nand_erase_block(uffs_Device *dev, u32 block)
 	CHIP_CLR_NCS(chip);
 
 #if 1
-	W25X_BlockErase( block*64*1024 );
+	W25X_BlockErase( block* _d_w25x_block_size  );
 #else
 	CHIP_SET_CLE(chip);
 	WRITE_COMMAND(chip, NAND_CMD_ERASE1);
@@ -377,14 +392,6 @@ static int static_buffer_par1[UFFS_STATIC_BUFF_SIZE(PAGES_PER_BLOCK, PAGE_SIZE, 
 static int static_buffer_par2[UFFS_STATIC_BUFF_SIZE(PAGES_PER_BLOCK, PAGE_SIZE, PAR_2_BLOCKS) / sizeof(int)];;
 #else
 
-#define TOTAL_BLOCKS    (3*1024/64)	// use header 3 m space.
-#define PAGE_SPARE_SIZE 16
-#define PAGE_DATA_SIZE  (256-PAGE_SPARE_SIZE)
-#define PAGES_PER_BLOCK (64*1024/256)
-#define PAGE_SIZE	(PAGE_DATA_SIZE + PAGE_SPARE_SIZE)
-#define BLOCK_DATA_SIZE (PAGE_DATA_SIZE * PAGES_PER_BLOCK)
-#define NR_PARTITION	1								/* total partitions */
-#define PAR_1_BLOCKS	(TOTAL_BLOCKS)	/* partition 2 */
 struct my_nand_chip g_nand_chip = {0};
 static struct uffs_StorageAttrSt g_my_flash_storage = {0};
 
@@ -417,7 +424,8 @@ static void setup_flash_storage(struct uffs_StorageAttrSt *attr)
 	attr->pages_per_block = PAGES_PER_BLOCK;	/* pages per block */
 	attr->spare_size = PAGE_SPARE_SIZE;		  	/* page spare size */
 	attr->block_status_offs = 4;				/* block status offset is 5th byte in spare */
-	attr->ecc_opt = UFFS_ECC_SOFT;              /* ecc option */
+	attr->ecc_opt = 0;              /* ecc option */
+	//attr->ecc_opt = UFFS_ECC_SOFT;              /* ecc option */
 	attr->layout_opt = UFFS_LAYOUT_UFFS;        /* let UFFS do the spare layout */    
 }
 

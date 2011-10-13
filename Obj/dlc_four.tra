@@ -26,6 +26,8 @@
 ### List of Objects: adding '".\obj\access_main.o"'
 ### List of Objects: adding '".\obj\system_value.o"'
 ### List of Objects: adding '".\obj\txt_file_index.o"'
+### List of Objects: adding '".\obj\property.o"'
+### List of Objects: adding '".\obj\rand_file.o"'
 ### List of Objects: adding '".\obj\datatran.o"'
 ### List of Objects: adding '".\obj\mp_misc.o"'
 ### List of Objects: adding '".\obj\texttools.o"'
@@ -38,32 +40,6 @@
 ### List of Objects: adding '".\obj\fnt_fonts_vt100_5x7.o"'
 ### List of Objects: adding '".\obj\bmp_dlc.o"'
 ### List of Objects: adding '".\obj\gui_if.o"'
-### List of Objects: adding '".\obj\_fs_fclose.o"'
-### List of Objects: adding '".\obj\_fs_fcreate.o"'
-### List of Objects: adding '".\obj\_fs_fdelete.o"'
-### List of Objects: adding '".\obj\_fs_ffind.o"'
-### List of Objects: adding '".\obj\_fs_flashio.o"'
-### List of Objects: adding '".\obj\_fs_flushbuf.o"'
-### List of Objects: adding '".\obj\_fs_fopen.o"'
-### List of Objects: adding '".\obj\_fs_frename.o"'
-### List of Objects: adding '".\obj\_fs_getfsize.o"'
-### List of Objects: adding '".\obj\_fs_read.o"'
-### List of Objects: adding '".\obj\_fs_setfpos.o"'
-### List of Objects: adding '".\obj\_fs_write.o"'
-### List of Objects: adding '".\obj\fs_fanalyse.o"'
-### List of Objects: adding '".\obj\fs_fat.o"'
-### List of Objects: adding '".\obj\fs_fcheck.o"'
-### List of Objects: adding '".\obj\fs_fdefrag.o"'
-### List of Objects: adding '".\obj\fs_fdelete.o"'
-### List of Objects: adding '".\obj\fs_ffind.o"'
-### List of Objects: adding '".\obj\fs_fformat.o"'
-### List of Objects: adding '".\obj\fs_ffree.o"'
-### List of Objects: adding '".\obj\fs_finit.o"'
-### List of Objects: adding '".\obj\fs_flashprg.o"'
-### List of Objects: adding '".\obj\fs_frename.o"'
-### List of Objects: adding '".\obj\fs_lib.o"'
-### List of Objects: adding '".\obj\fs_mmc.o"'
-### List of Objects: adding '".\obj\fs_time.o"'
 ### List of Objects: adding '".\obj\uffs_version.o"'
 ### List of Objects: adding '".\obj\uffs_badblock.o"'
 ### List of Objects: adding '".\obj\uffs_blockinfo.o"'
@@ -87,14 +63,14 @@
 ### List of Objects: adding '".\obj\test_cmds.o"'
 ### List of Objects: adding '".\obj\cmdline.o"'
 ### ADS-LD Command completed:
---device DLM ".\obj\http_cgi.o" ".\obj\http_upload.o" ".\obj\web.o" ".\obj\retarget.o" ".\obj\file_config.o" ".\obj\http_uif.o" ".\obj\net_config.o" ".\obj\startup.o" "C:\Keil\ARM\RV31\LIB\TCP_CM3.lib" "C:\Keil\ARM\RV31\LIB\FS_CM3.lib" "C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib" ".\obj\lm3s_emac.o" ".\obj\lcd.o" ".\obj\spi_lm3s8962.o" ".\obj\w25x32.o" ".\obj\device.o" ".\obj\fs_spi_flashprg.o" ".\obj\rtc.o" ".\obj\trace.o" ".\obj\test.o" ".\obj\t_cmd.o" ".\obj\app_main.o" ".\obj\access_main.o" ".\obj\system_value.o" ".\obj\txt_file_index.o" ".\obj\datatran.o" ".\obj\mp_misc.o" ".\obj\texttools.o" ".\obj\font.o" ".\obj\graphtools.o" ".\obj\bitmap.o" ".\obj\fnt_u0612.o" ".\obj\fnt_fonts_arial_bold_8x12.o" ".\obj\fnt_fonts_arial_bold_12x16.o" ".\obj\fnt_fonts_vt100_5x7.o" ".\obj\bmp_dlc.o" ".\obj\gui_if.o" ".\obj\_fs_fclose.o" ".\obj\_fs_fcreate.o" ".\obj\_fs_fdelete.o" ".\obj\_fs_ffind.o" ".\obj\_fs_flashio.o" ".\obj\_fs_flushbuf.o" ".\obj\_fs_fopen.o" ".\obj\_fs_frename.o" ".\obj\_fs_getfsize.o" ".\obj\_fs_read.o" ".\obj\_fs_setfpos.o" ".\obj\_fs_write.o" ".\obj\fs_fanalyse.o" ".\obj\fs_fat.o" ".\obj\fs_fcheck.o" ".\obj\fs_fdefrag.o" ".\obj\fs_fdelete.o" ".\obj\fs_ffind.o" ".\obj\fs_fformat.o" ".\obj\fs_ffree.o" ".\obj\fs_finit.o" ".\obj\fs_flashprg.o" ".\obj\fs_frename.o" ".\obj\fs_lib.o" ".\obj\fs_mmc.o" ".\obj\fs_time.o" ".\obj\uffs_version.o" ".\obj\uffs_badblock.o" ".\obj\uffs_blockinfo.o" ".\obj\uffs_buf.o" ".\obj\uffs_debug.o" ".\obj\uffs_device.o" ".\obj\uffs_ecc.o" ".\obj\uffs_fd.o" ".\obj\uffs_find.o" ".\obj\uffs_flash.o" ".\obj\uffs_fs.o" ".\obj\uffs_init.o" ".\obj\uffs_mem.o" ".\obj\uffs_mtb.o" ".\obj\uffs_pool.o" ".\obj\uffs_public.o" ".\obj\uffs_tree.o" ".\obj\uffs_utils.o" ".\obj\uffs_os_posix.o" ".\obj\flash-interface-example.o" ".\obj\test_cmds.o" ".\obj\cmdline.o" --strict --scatter ".\Obj\dlc_four.sct" 
+--device DLM ".\obj\http_cgi.o" ".\obj\http_upload.o" ".\obj\web.o" ".\obj\retarget.o" ".\obj\file_config.o" ".\obj\http_uif.o" ".\obj\net_config.o" ".\obj\startup.o" "C:\Keil\ARM\RV31\LIB\TCP_CM3.lib" "C:\Keil\ARM\RV31\LIB\FS_CM3.lib" "C:\Keil\ARM\RV31\LIB\Luminary\DriverLib.lib" ".\obj\lm3s_emac.o" ".\obj\lcd.o" ".\obj\spi_lm3s8962.o" ".\obj\w25x32.o" ".\obj\device.o" ".\obj\fs_spi_flashprg.o" ".\obj\rtc.o" ".\obj\trace.o" ".\obj\test.o" ".\obj\t_cmd.o" ".\obj\app_main.o" ".\obj\access_main.o" ".\obj\system_value.o" ".\obj\txt_file_index.o" ".\obj\property.o" ".\obj\rand_file.o" ".\obj\datatran.o" ".\obj\mp_misc.o" ".\obj\texttools.o" ".\obj\font.o" ".\obj\graphtools.o" ".\obj\bitmap.o" ".\obj\fnt_u0612.o" ".\obj\fnt_fonts_arial_bold_8x12.o" ".\obj\fnt_fonts_arial_bold_12x16.o" ".\obj\fnt_fonts_vt100_5x7.o" ".\obj\bmp_dlc.o" ".\obj\gui_if.o" ".\obj\uffs_version.o" ".\obj\uffs_badblock.o" ".\obj\uffs_blockinfo.o" ".\obj\uffs_buf.o" ".\obj\uffs_debug.o" ".\obj\uffs_device.o" ".\obj\uffs_ecc.o" ".\obj\uffs_fd.o" ".\obj\uffs_find.o" ".\obj\uffs_flash.o" ".\obj\uffs_fs.o" ".\obj\uffs_init.o" ".\obj\uffs_mem.o" ".\obj\uffs_mtb.o" ".\obj\uffs_pool.o" ".\obj\uffs_public.o" ".\obj\uffs_tree.o" ".\obj\uffs_utils.o" ".\obj\uffs_os_posix.o" ".\obj\flash-interface-example.o" ".\obj\test_cmds.o" ".\obj\cmdline.o" --strict --scatter ".\Obj\dlc_four.sct" 
 --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\Lst\dlc_four.map" -o ".\Obj\dlc_four.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: '.\Obj\dlc_four.axf'
 ### ADS-LD Command File: '.\Obj\dlc_four.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x00000594
+### Creating CmdFile '.\Obj\dlc_four.lnp', Handle=0x000009F4
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Obj\dlc_four.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

@@ -88,39 +88,97 @@ int file_test()
 	fclose (f);
 	
 }
+int uffs_test()
+{
+	int f;
+	char *fn = "/test";
+	int rel = 0;
+	int i;
+	char buf[128];
+	memset( buf, 0xA5, sizeof( buf ) );
+	f = uffs_remove( fn );
+	f = uffs_open( fn, UO_RDWR | UO_CREATE );
+	if( f < 0 ){
+		rel = -1;
+	}
+	for( i=0; i<128; i++ ){
+		uffs_write( f, buf, sizeof(buf) );
+	}
+	uffs_close( f );
+	f = uffs_open( fn, UO_RDONLY );
+	if( f < 0 ){
+		rel = -2;
+	}
+	else{
+		uffs_read( f, buf, sizeof(buf));
+		uffs_close( f );
+	}
 
+	return rel;
+}
+
+int modules_test_entry = 0;
 int modules_test()
 {
 	// text
 	WCHAR wstr[10];
 	MONOBMP mb;
 	char *str="abcdef";
-	unsigned long val = 0;
+	unsigned long val = -1;
 	extern const unsigned char bmp_dlc[];
 
-	file_test();
-	return 0;
-	
-#if 1
-	Font_Init();
-	LCD_CLS( 0 );
-	string_utf8_to_unicode( str, wstr, sizeof(wstr)/2 );
-	Text_DisplayWString( 0,0,100,20, wstr );
-	LCD_Refresh();
-	
-	MonoBmp_Load( &mb, (BYTE*)&bmp_dlc );
-	Graph_PutBitmap(0,0,128,64, &mb );
-	LCD_Refresh();
-#endif
-	HibernateEnableExpClk( SysCtlClockGet() );
-	HibernateRTCEnable();
-	
-	//rtc_set_default_time();
-	val = HibernateRTCGet();
+	if( modules_test_entry == 0 )
+		return -1;
 
-	HibernateDataGet( &val, 1 );
+	switch( modules_test_entry ){
+		case 7:
+			uffs_test();
+			return 0;
+		case 6:
+			property_test();
+			return 0;
+		case 5:
+			system_send_buf_to_host( "123456", 6 );
+			return 0;
+		case 4:
+		{
+			extern u8 g_send_package_socket;
+			u16 tcp_callback (U8 soc, U8 evt, U8 *ptr, U16 par);
+			// test socket send
+			g_send_package_socket = tcp_get_socket (TCP_TYPE_CLIENT, 0, 10, tcp_callback);
 
-	HibernateDataGet( &val, 1 );
+			while( system_send_buf_to_host( "123456", 6 ) == 0 ){
+				timer_poll ();
+				main_TcpNet ();
+			}
+		}
+			return 0;
+		case 3:
+			// file test
+			file_test();
+			return 0;
+		case 2:
+			// lcd test
+			Font_Init();
+			LCD_CLS( 0 );
+			string_utf8_to_unicode( str, wstr, sizeof(wstr)/2 );
+			Text_DisplayWString( 0,0,100,20, wstr );
+			LCD_Refresh();
+
+			MonoBmp_Load( &mb, (BYTE*)&bmp_dlc );
+			Graph_PutBitmap(0,0,128,64, &mb );
+			LCD_Refresh();
+			return 0;
+		case 1:
+			// rtc test
+			HibernateEnableExpClk( SysCtlClockGet() );
+			HibernateRTCEnable();
+			//rtc_set_default_time();
+			val = HibernateRTCGet();
+			HibernateDataGet( &val, 1 );
+			HibernateDataGet( &val, 1 );
+			return 0;
+	}
 
 	return val;
 }
