@@ -178,12 +178,21 @@ int white_name_list_get_value( char* buf, int *group_id, int* allow_id, int* not
 int cam_read_group_id_from_white_name_record( DWORD card_id, char* buf, int buf_size )
 {
 	char card_id_str[15];
+	int index;
 	//int no;
 	s_sprintf( card_id_str, "%u", card_id );
 	//_d_str( card_id_str );
-	//if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
-		//return 1;
-	//}
+#if 0
+	if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
+		return 1;
+	}
+#else
+	index = rand_file_find( g_white_name_rand_file_pos, card_id, 0, strlen(card_id), 1/*memcmp*/ );
+	if( index >= 0 ){
+		white_name_get( index, buf, buf_size );
+		return 1;
+	}
+#endif
 	return -1;
 }
 int g_white_name_card_offset=0;

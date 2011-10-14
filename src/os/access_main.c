@@ -314,10 +314,10 @@ int df_file_exist( char* fn )
 }
 int do_cam_check_file()
 {
-	char *fn[] = { "time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
+	char *fn[] = { "/time_area.txt","/week_table.txt","/holiday_week_table.txt","/holiday.txt" };
 	//char *fn[] = { "white_name.txt","time_area.txt","week_table.txt","holiday_week_table.txt","holiday.txt" };
 #define _d_fn_count (sizeof( fn ) /sizeof(char*))
-	char *lpfn[] = { "time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
+	char *lpfn[] = { "/time_area.txt.lp","/week_table.txt.lp","/holiday_week_table.txt.lp","/holiday.txt.lp" };
 	//char *lpfn[] = { "white_name.txt.lp","time_area.txt.lp","week_table.txt.lp","holiday_week_table.txt.lp","holiday.txt.lp" };
 #define _d_lpfn_count (sizeof( lpfn ) /sizeof(char*))
 	int i;
