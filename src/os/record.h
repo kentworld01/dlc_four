@@ -6,6 +6,9 @@
 
 #define _d_max_record_count (1000)
 #define _d_max_record_size (96)
+#define _d_record_file_name "/record.rf"
+extern int g_record_rand_file_pos;
+extern char g_record_file_name[32];
 
 
 int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag );

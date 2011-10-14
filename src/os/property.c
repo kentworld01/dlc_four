@@ -151,11 +151,11 @@ int property_change_all_system_value()
 	int rel = -1;
 	char buf[100];
 
-	h = df_open( file, 0 );
+	h = (int)df_open( file, 0 );
 	if( h == 0 )
 		return -1;
 	while( 1 ){
-		if( df_read_line( h, buf, sizeof(buf) ) == -1 )
+		if( df_read_line( (void*)h, buf, sizeof(buf) ) == -1 )
 			break;
 		kc = analysis_string_to_strings_by_decollator( buf, "=", ki, 15 );
 		if( kc != 2 )
@@ -163,7 +163,7 @@ int property_change_all_system_value()
 		s_chop( ki[1] );
 		property_change_system_value( ki[0], ki[1] );
 	}
-	df_close( h );
+	df_close( (void*)h );
 	return rel;
 }
 #if 0
@@ -291,6 +291,7 @@ int property_get( char* key, char* value )
 		rand_file_get( g_property_rand_file_pos, index, tbuf, sizeof(tbuf) );
 		if( value ){
 			strcpy( value, &tbuf[_d_property_record_value_offset ] );
+			return 1;
 		}
 	}
 	return -1;
@@ -304,7 +305,7 @@ int property_set( char* key, char* value )
 	memset( tbuf, 0, sizeof( tbuf ) );
 	strcpy( &tbuf[0], key );
 	strcpy( &tbuf[_d_property_record_value_offset ], value );
-	index = rand_file_find( g_property_rand_file_pos, key, 0, strlen(key), 0 );
+	index = rand_file_find( g_property_rand_file_pos, key, 0, strlen(key), 1 );
 	if( index >= 0 ){
 		rand_file_del( g_property_rand_file_pos, index );
 	}

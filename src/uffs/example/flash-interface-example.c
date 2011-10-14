@@ -1,3 +1,6 @@
+#define _d_w25x_block_erase 0
+#define _d_w25x_sector_erase 1
+
 /*
   This file is part of UFFS, the Ultra-low-cost Flash File System.
   
@@ -46,9 +49,17 @@
 
 
 
+#if _d_w25x_block_erase
 #define _d_w25x_page_size 2048
 #define _d_w25x_block_size (64*1024)
 #define TOTAL_BLOCKS    (3*1024/64)	// use header 3 m space.
+#endif
+#if _d_w25x_sector_erase
+#define _d_w25x_page_size 256
+#define _d_w25x_block_size (4*1024)
+#define TOTAL_BLOCKS    (3*1024/4)	// use header 3 m space.
+#endif
+
 #define PAGE_SPARE_SIZE 16
 #define PAGE_DATA_SIZE  ( _d_w25x_page_size - PAGE_SPARE_SIZE)
 #define PAGES_PER_BLOCK ( _d_w25x_block_size / _d_w25x_page_size )
@@ -304,7 +315,12 @@ static int nand_erase_block(uffs_Device *dev, u32 block)
 	CHIP_CLR_NCS(chip);
 
 #if 1
+#if _d_w25x_block_erase
 	W25X_BlockErase( block* _d_w25x_block_size  );
+#endif
+#if _d_w25x_sector_erase
+	W25X_SectorErase( block* _d_w25x_block_size  );
+#endif
 #else
 	CHIP_SET_CLE(chip);
 	WRITE_COMMAND(chip, NAND_CMD_ERASE1);

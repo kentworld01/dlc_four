@@ -28,6 +28,8 @@
 #include "os/vfs/rand_file.h"
 
 #include "property.h"
+#include "record.h"
+#include "white_name.h"
 
 
 //#include "Queue.h"

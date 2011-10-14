@@ -637,7 +637,158 @@ int end_swith( char* fn, char* ext_name )
 
 int uffs_read_line( int f, char *buf, int max_buf_size )
 {
-	return df_read_line( (f+1), buf, max_buf_size );
+	return df_read_line( (void*)(f+1), buf, max_buf_size );
+}
+
+
+
+void* df_create( char*name, int flag, char* value )
+{
+#if _d_sd
+	FILE *fp;
+	fp = fopen( name, "wb" );
+	return (void*)fp;
+#elif _d_uffs
+	int fp;
+	fp = uffs_open( name, UO_RDWR | UO_CREATE );
+	return (void*)(fp+1);
+#endif
+}
+
+void* df_open( char* fn, int flag )
+{
+#if _d_sd
+	FILE *fp;
+	fp = fopen( fn, "rb" );
+	return (void*)fp;
+#elif _d_uffs
+	int fp;
+	fp = uffs_open( fn, UO_RDONLY );
+	return (void*)(fp+1);
+#endif
+}
+int df_read( void* h, char* buf, int size )
+{
+#if _d_sd
+	return fread( buf, 1, size, (FILE*)h );
+#elif _d_uffs
+	return uffs_read( (int)h-1, buf, size );
+#endif
+}
+int df_write( void* h, char* buf, int size )
+{
+#if _d_sd
+	return fwrite( buf, 1, size, (FILE*)h );
+#elif _d_uffs
+	return uffs_write( (int)h-1, buf, size );
+#endif
+}
+int df_close( void* h )
+{
+#if _d_sd
+	return fclose( h );
+#elif _d_uffs
+	return uffs_close( (int)h-1 );
+#endif
+}
+int df_delete( char* name, int flag )
+{
+#if _d_sd
+	return fdelete( name );
+#elif _d_uffs
+	return uffs_remove( name );
+#endif
+}
+int df_seek( void* h, int offset, int pos )
+{
+#if _d_sd
+	return fseek( (FILE*)h, offset, pos );
+#elif _d_uffs
+	return uffs_seek( (int)h-1, offset, pos );
+#endif
+}
+int df_get_file_size( char* name )
+{
+	void *h;
+	int size;
+	h = df_open( name , 0 );
+	if( h == 0 )
+		return 0;
+	size = df_seek( h, 0, _SEEK_END );
+#if _d_sd
+	size = ftell( h );
+#else
+	size = uffs_tell( (int)h-1 );
+#endif
+	if( size <= 0 )
+		return 0;
+	df_close( h );
+	return size+1;
+}
+int df_read_line( void* h, char* buf, int max_size )
+{
+#define _d_try_read_size 50
+	int base = 0;
+	int pos;
+	int size;
+	//char *tstr = "\n";
+	int try_size = _d_try_read_size;
+	if( try_size > max_size )
+		try_size = max_size;
+	while( 1 ){
+		size = df_read( h, &buf[base], try_size );
+		if( size <= 0 )		{
+			if( base > 0 ){ 
+				buf[base] = 0;
+				return base; 
+			}
+			break;
+		}
+		base += size;
+#if 0
+		pos = s_memmem(buf, base, tstr, 1 );
+		if( pos < 0 )
+			continue;
+#else
+		//_d_buf( buf, base );
+		for( pos = 0; pos < base; pos ++ ){
+			if( buf[pos] == '\n' )
+				break;
+		}
+		//_d_int( pos );
+		if( pos == base )
+			continue;
+#endif
+		// get the pos, and fix the offset.
+		if( pos > base )
+			while( 1 ) _d_line();
+		df_seek( h, pos-base+1, _SEEK_CUR );
+		buf[pos] = 0;
+		return pos;
+	}
+	return -1;
+}
+int df_exist( char *name )
+{
+	void *h;
+	h = df_open( name, 0 );
+	if( h ){
+		df_close( h );
+		return 1;
+	}
+	return 0;
+}
+int set_buf_0xff_end( char* buf, int max_buf_size )
+{
+	int i;
+	for( i=0; i<max_buf_size; i++ )
+		if( (unsigned char)buf[i] == 0xff ){
+			buf[i] = 0;
+			break;
+		}
+	if( i == max_buf_size )
+		return -1;
+	return i;
 }
 
 

@@ -69,5 +69,19 @@ int string_utf8_to_unicode( char* utf8, unsigned short *unicode, int );
 int end_swith( char* fn, char* ext_name );
 int uffs_read_line( int f, char *buf, int max_buf_size );
 
+
+void* df_create( char*name, int flag, char* value );
+void* df_open( char* fn, int flag );
+int df_read( void* h, char* buf, int size );
+int df_write( void* h, char* buf, int size );
+int df_close( void* h );
+int df_delete( char* name, int flag );
+int df_seek( void* h, int offset, int pos );
+int df_get_file_size( char* name );
+int df_read_line( void* h, char* buf, int max_size );
+int df_exist( char *name );
+
+int set_buf_0xff_end( char* buf, int max_buf_size );
+
 #endif
 

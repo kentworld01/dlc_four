@@ -85,6 +85,7 @@ unsigned char rand_file_get_record_flag( int p, int pos )
 {
 	unsigned char flag = 0;
 	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
 	uffs_seek( rfi->ri_f, pos + 8, USEEK_SET );
 	uffs_read( rfi->ri_f, &flag, 1 );
 	return flag;
@@ -92,6 +93,7 @@ unsigned char rand_file_get_record_flag( int p, int pos )
 int rand_file_set_record_flag( int p, int pos, unsigned char flag )
 {
 	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
 	uffs_seek( rfi->ri_f, pos + 8, USEEK_SET );
 	uffs_write( rfi->ri_f, &flag, 1 );
 	return 0;
@@ -131,10 +133,6 @@ int rand_file_create( char* fn, int record_count, int record_size )
 	for( i=0; i<record_count; i++ ){
 		uffs_write( f, tbuf, record_size );
 	}
-	uffs_close( f );
-	// for test
-	f = uffs_open( "/test", UO_RDWR | UO_CREATE );
-	uffs_write( f, tbuf, record_size );
 	uffs_close( f );
 	return 0;
 }
@@ -180,6 +178,7 @@ rand_file_open_failed:
 
 int rand_file_close( int p )
 {
+	if( p<0) return -1;
 	uffs_close( g_rand_file_info[p].ri_f );
 	uffs_close( g_rand_file_info[p].f );
 	rand_file_info_clear_item( p );
@@ -192,6 +191,7 @@ int rand_file_find_empty_record_pos( int p )
 	int i;
 	unsigned char flag;
 	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
 	uffs_seek( rfi->ri_f, 8, USEEK_SET );
 	for( i=0; i<rfi->record_count; i++ ){
 		uffs_read( rfi->ri_f, &flag, 1 );
@@ -200,12 +200,29 @@ int rand_file_find_empty_record_pos( int p )
 	}
 	return -1;
 }
+int rand_file_set( int p, int id, char *buf, int buf_size )
+{
+	char tbuf[ _d_max_rand_file_record_size ];
+	int size;
+	int pos;
+	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
+	memset( tbuf, 0xff, sizeof( tbuf ) );
+	size = min( _d_max_rand_file_record_size, buf_size );
+	memcpy( tbuf, buf, size );
+	pos = id;
+	uffs_seek( rfi->f, pos * rfi->record_size, USEEK_SET );
+	uffs_write( rfi->f, tbuf, size );
+	rand_file_set_record_flag( p, pos, 0x7f);
+	return pos;
+}
 int rand_file_add( int p, char *buf, int buf_size )
 {
 	char tbuf[ _d_max_rand_file_record_size ];
 	int size;
 	int pos;
 	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
 	memset( tbuf, 0xff, sizeof( tbuf ) );
 	size = min( _d_max_rand_file_record_size, buf_size );
 	memcpy( tbuf, buf, size );
@@ -226,6 +243,7 @@ int rand_file_get( int p, int pos, char* buf, int max_buf_size )
 	unsigned char flag;
 	int size;
 	struct _s_rand_file_info *rfi = &g_rand_file_info[ p ];
+	if( p<0) return -1;
 	size = min( _d_max_rand_file_record_size, max_buf_size );
 	flag = rand_file_get_record_flag( p, pos);
 	if( flag == 0xff )
@@ -242,6 +260,7 @@ int rand_file_find( int p, char* buf, int start, int len, int type )
 	int size;
 	int i;
 	unsigned char flag;
+	if( p<0) return -1;
 	if( len > _d_max_rand_file_record_size )
 	       return -1;	
 	for( i=0; i<rfi->record_count; i++ ){

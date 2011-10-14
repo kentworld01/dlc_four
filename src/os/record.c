@@ -4,7 +4,8 @@
 #define _d_max_propery
 
 int g_record_rand_file_pos = -1;
-char *g_record_file_name = "/record.rf";
+char g_record_file_name[32] = {0};
+char g_record_format[64];
 
 
 #define _ds_record_format "machine_no,date,time,sys_tick,record_id,card_id,ok_flag"
@@ -15,10 +16,10 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 	int len;
 	DATETIME dt;
 	char tmp_buf[32];
-	char record_format[64];
 	extern int g_machine_no;
 	int kc;
 	char *ki[15];
+	char record_format[64];
 	int i;
 
 	RelatvieToDateTime( &dt, time );
@@ -28,9 +29,15 @@ int gen_record_string( char *buf, DWORD time, DWORD sys_tick, DWORD record_id, D
 		buf[0] = 0;
 		// get prop string
 #if 0
-		if( node_prop_get_value( "/p/record_format", record_format, sizeof( record_format ) ) < 0 )
-#endif
+		if( property_get( "record_format", record_format ) < 0 )
 			strcpy( record_format, _ds_record_format );
+#else
+		if( g_record_format[0] == 0 ){
+			if( property_get( "record_format", g_record_format ) < 0 )
+				strcpy( g_record_format, _ds_record_format );
+		}
+		strcpy( record_format, g_record_format );
+#endif
 		// loop key and gen the info string to buf.
 		kc = analysis_string_to_strings_by_decollator( record_format, ", ", ki, 15 );
 		for( i=0; i<kc; i++ ){
@@ -116,7 +123,7 @@ int record_get_unsend_index()
 		flag = rand_file_get_record_flag( g_record_rand_file_pos, i );
 		if( flag == 0xff )
 			continue;
-		if( flag != 0 )
+		if( flag != 1/* ok send flag */ )
 			break;
 	}
 	if( i==_d_max_record_count )
@@ -125,7 +132,7 @@ int record_get_unsend_index()
 }
 int record_get( u32 id, char* buf, int max_buf_size )
 {
-	return rand_file_get( g_record_rand_file_pos, index, buf, max_buf_size );
+	return rand_file_get( g_record_rand_file_pos, id, buf, max_buf_size );
 }
 int record_get_first_unsend( char* buf, int max_buf_size )
 {
@@ -138,19 +145,24 @@ int record_get_first_unsend( char* buf, int max_buf_size )
 }
 int record_del_unsend_index( int index )
 {
-	return rand_file_set_record_flag(  g_record_rand_file_pos, index, 0 );
+	return rand_file_set_record_flag(  g_record_rand_file_pos, index, 1/*mask send sucess flag*/ );
 }
 int save_card_info( u32 id, char* buf, int ok_send_flag )
 {
 	int index = id % _d_max_record_count;
-	rand_file_del( g_record_rand_file_pos, index );
-	rand_file_add( g_record_rand_file_pos, buf, strlen(buf) );
-	rand_file_set_record_flag(  g_record_rand_file_pos, index, ok_send_file );
-	//rand_file_del( g_record_rand_file_pos, (index+1)%_d_max_record_count );
+	rand_file_set( g_record_rand_file_pos, index, buf, strlen(buf) );
+	rand_file_set_record_flag(  g_record_rand_file_pos, index, ok_send_flag );
 	return 0;
 }
 int record_init()
 {
+	if( g_record_rand_file_pos >= 0 ){
+		rand_file_close( g_record_rand_file_pos );
+		g_record_rand_file_pos = 0;
+	}
+	if( property_get( "record_file", g_record_file_name ) < 0 ){
+		strcpy( g_record_file_name, _d_record_file_name );
+	}
 	g_record_rand_file_pos = rand_file_open( g_record_file_name );
 	if( g_record_rand_file_pos < 0 ){
 		if( rand_file_create( g_record_file_name, _d_max_record_count,_d_max_record_size ) < 0 ){

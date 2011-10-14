@@ -24,6 +24,7 @@ int rand_file_remove( char* fn ) ;
 int rand_file_open( char* fn );
 int rand_file_close( int p );
 int rand_file_find_empty_record_pos( int p );
+int rand_file_set( int p, int id, char *buf, int buf_size );
 int rand_file_add( int p, char *buf, int buf_size );
 int rand_file_del( int p, int pos );
 int rand_file_get( int p, int pos, char* buf, int max_buf_size );

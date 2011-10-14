@@ -80,3 +80,14 @@ int show_logo()
 	return 0;
 }
 
+char *_ds_show_message_header = "outtextxy:20,30,";
+int gui_show_message( char* msg )
+{
+	char buf[64];
+	strcpy( buf, _ds_show_message_header );
+	strcat( buf, msg );
+	strcat( buf, "\n" );
+	gui_show_page( buf );
+	return 0;
+}
+

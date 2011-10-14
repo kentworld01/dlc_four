@@ -7,146 +7,13 @@
 
 
 int g_record_id = 1;
-char g_card_man[32];
-char g_card_group[32];
 
 u8 g_send_package_socket = 0;
 
 
 
-#define _d_card_group_max_count 1
-int g_card_group_list[_d_card_group_max_count];
-int g_card_group_flag[_d_card_group_max_count];
-int g_card_group_count = 0;
 
 
-
-void* df_create( char*name, int flag, char* value )
-{
-#if _d_sd
-	FILE *fp;
-	fp = fopen( name, "wb" );
-	return (void*)fp;
-#elif _d_uffs
-	int fp;
-	fp = uffs_open( name, UO_RDWR | UO_CREATE );
-	return (void*)(fp+1);
-#endif
-}
-
-void* df_open( char* fn, int flag )
-{
-#if _d_sd
-	FILE *fp;
-	fp = fopen( fn, "rb" );
-	return (void*)fp;
-#elif _d_uffs
-	int fp;
-	fp = uffs_open( fn, UO_RDONLY );
-	return (void*)(fp+1);
-#endif
-}
-int df_read( void* h, char* buf, int size )
-{
-#if _d_sd
-	return fread( buf, 1, size, (FILE*)h );
-#elif _d_uffs
-	return uffs_read( (int)h-1, buf, size );
-#endif
-}
-int df_write( void* h, char* buf, int size )
-{
-#if _d_sd
-	return fwrite( buf, 1, size, (FILE*)h );
-#elif _d_uffs
-	return uffs_write( (int)h-1, buf, size );
-#endif
-}
-int df_close( void* h )
-{
-#if _d_sd
-	return fclose( h );
-#elif _d_uffs
-	return uffs_close( (int)h-1 );
-#endif
-}
-int df_delete( char* name, int flag )
-{
-#if _d_sd
-	return fdelete( name );
-#elif _d_uffs
-	return uffs_remove( name );
-#endif
-}
-int df_seek( void* h, int offset, int pos )
-{
-#if _d_sd
-	return fseek( (FILE*)h, offset, pos );
-#elif _d_uffs
-	return uffs_seek( (int)h-1, offset, pos );
-#endif
-}
-int df_get_file_size( char* name )
-{
-	void *h;
-	int size;
-	h = df_open( name , 0 );
-	if( h == 0 )
-		return 0;
-	size = df_seek( h, 0, _SEEK_END );
-#if _d_sd
-	size = ftell( h );
-#else
-	size = uffs_tell( (int)h-1 );
-#endif
-	if( size <= 0 )
-		return 0;
-	df_close( h );
-	return size+1;
-}
-int df_read_line( void* h, char* buf, int max_size )
-{
-#define _d_try_read_size 50
-	int base = 0;
-	int pos;
-	int size;
-	//char *tstr = "\n";
-	int try_size = _d_try_read_size;
-	if( try_size > max_size )
-		try_size = max_size;
-	while( 1 ){
-		size = df_read( h, &buf[base], try_size );
-		if( size <= 0 )		{
-			if( base > 0 ){ 
-				buf[base] = 0;
-				return base; 
-			}
-			break;
-		}
-		base += size;
-#if 0
-		pos = s_memmem(buf, base, tstr, 1 );
-		if( pos < 0 )
-			continue;
-#else
-		//_d_buf( buf, base );
-		for( pos = 0; pos < base; pos ++ ){
-			if( buf[pos] == '\n' )
-				break;
-		}
-		//_d_int( pos );
-		if( pos == base )
-			continue;
-#endif
-		// get the pos, and fix the offset.
-		if( pos > base )
-			while( 1 ) _d_line();
-		df_seek( h, pos-base+1, _SEEK_CUR );
-		buf[pos] = 0;
-		return pos;
-	}
-	return -1;
-}
 
 
 
@@ -265,6 +132,7 @@ int card_group_operate()
 {
 	//int i;
 	//DWORD card_id;
+	extern int g_card_group_count;
 	if( g_card_group_count <= 0 )
 		return 0;
 #if 0
@@ -471,7 +339,7 @@ int do_cam()
 	char show[30];
 	extern unsigned g_deal_card_no;
 	if( do_cam_check_file() <= 0 )
-		return -1;
+		return -3;
 	return sub_do_cam( g_device_no, g_deal_card_no, RTC_Get(), show, sizeof(show) );
 }
 
@@ -481,14 +349,6 @@ int do_cam2()
 }
 
 
-char* get_card_man()
-{
-	return g_card_man;
-}
-char* get_card_group()
-{
-	return g_card_group;	
-}
 
 
 
@@ -519,6 +379,9 @@ int system_send_buf_to_host( char* buf, int buf_size )
 			case TCP_STATE_FREE:
 			case TCP_STATE_CLOSED:
 				tcp_connect ( g_send_package_socket, g_send_package_socket_ip, g_send_package_socket_port, 0);
+#if 1
+				return -2;
+#else
 				// wait connect
 				// maybe need 
 				while( 1 ){
@@ -528,22 +391,38 @@ int system_send_buf_to_host( char* buf, int buf_size )
 					if( stat == TCP_STATE_CONNECT )
 						break;
 				}
+#endif
 				break;
 		}
 
 		if( stat  == TCP_STATE_CONNECT ) {
+			while(tcp_check_send ( g_send_package_socket) != __TRUE) {
+				timer_poll ();
+				main_TcpNet ();
+			}
 			if (tcp_check_send ( g_send_package_socket) == __TRUE) {
 				sendbuf = tcp_get_buf( buf_size );
 				memcpy( sendbuf, buf, buf_size );
 				tcp_send ( g_send_package_socket, sendbuf, buf_size);
+#if 1
+				return 1;
+#else
+				while( 1 ){
+					stat = tcp_get_state( g_send_package_socket );
+					timer_poll ();
+					main_TcpNet ();
+					if( stat == TCP_STATE_CONNECT )
+						break;
+				}
+#endif
 			}
 		}
 		else{
-			return -2;
+			return -3;
 		}
 	}
-	else	return -3;
-	return 0;
+	else	return -4;
+	return -5;
 }
 
 int send_card_info_by_tcmd( DWORD time, DWORD sys_tick, DWORD record_id, DWORD card_id, int ok_flag )
@@ -665,6 +544,7 @@ int set_page_keep_second( int s )
 int timer_process()
 {
 	static unsigned second = 0;
+	static unsigned beat_second = 0;
 	unsigned val = RTC_Get();
 	if( val - second >= 2 || (int)val - (int)second < 0 ){
 		if( g_page_keep_second > 0 ){
@@ -676,6 +556,11 @@ int timer_process()
 		}
 		second = val;
 		show_main_page();
+	}
+	if( val - beat_second >= 10 || (int)val - (int)beat_second < 0 ){
+		char *buf = "beats ";
+		system_send_buf_to_host( buf, strlen( buf ) );
+		beat_second = val;
 	}
 	return 0;
 }
@@ -717,6 +602,31 @@ int access_init()
 	return 0;
 }
 
+char access_command[64] = {0};
+int access_command_set( char* buf )
+{
+	strcpy( access_command, buf );
+	return 0;
+}
+int access_command_deal()
+{
+	int kc;
+	char *ki[ 30 ];
+	int skc;
+	char *ski[ 10 ];
+	
+	if( access_command[0] == 0 )
+		return -1;
+	kc = analysis_string_to_strings_by_decollator( (char*)access_command, ",", ki, 30 );
+	if( strcmp( ki[0], "show_menu_file" ) == 0 ){
+		int mode = 0;
+		if( ki[2] != 0 )
+			mode = atoi( ki[2] );
+		show_menu_file( ki[1], mode );
+	}
+	access_command[0] = 0;
+	return 0;
+}
 int access_loop()
 {
 	//int rel;
@@ -745,14 +655,17 @@ int access_loop()
 		}
 		time = RTC_Get();
 		tick = get_sys_tick();
+		// make send record buf
 		gen_record_string( record_buf, time, tick, g_record_id, g_deal_card_no, ok_cam_flag );
-		//ok_send_flag = send_card_info( buf );
 		ok_send_flag = system_send_buf_to_host( record_buf, strlen( record_buf ) );
+		// make save file record buf
+		sprintf( &record_buf[ strlen( record_buf ) ], "%d", ok_send_flag );
 		save_card_info( g_record_id, record_buf, ok_send_flag );
 		show_main_page();
 		g_record_id ++;
 	}
 	timer_process();
+	access_command_deal();
 	return 0;
 }
 

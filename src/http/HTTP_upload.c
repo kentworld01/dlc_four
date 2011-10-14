@@ -81,24 +81,30 @@ static void init () {
 	SysTickPeriodSet(SysCtlClockGet() / 10);
 	SysTickEnable();
 
-	net_init();
 
 	jtag_to_io();
 	spi_init ();
+	Font_Init();
   	if( W25Q32_JEDECID != W25X_ReadJEDECID() ){
 		// error message :  flash chip incorrect
 		while( 1 );
 	}
-
-
+	gui_show_message( "网络初始化" );
+	net_init();
+	gui_show_message( "文件系统初始化" );
 	//if( flash_clear_flag == 1 ) W25X_ChipErase();
 	uffs_flash_interface_init();
 	modules_test();
+	gui_show_message( "属性表初始化" );
 	property_init();
+	gui_show_message( "记录初始化" );
+	record_init();
+	gui_show_message( "白名单初始化" );
+	white_name_init();
+	gui_show_message( "menu init" );
+	menu_init();
 	rtc_init();
-	Font_Init();
 	access_init();
-
 	modules_test();
 }
 

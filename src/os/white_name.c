@@ -1,8 +1,16 @@
 
+
 #include "os/white_name.h"
+#include <stdio.h>
+
 
 int g_white_name_rand_file_pos = -1;
-char *g_white_name_file_name = "/white_name.rf";
+char g_white_name_file_name[32] = {0};
+char g_card_man[32];
+char g_card_group[32];
+int g_card_group_list[_d_card_group_max_count];
+int g_card_group_flag[_d_card_group_max_count];
+int g_card_group_count = 0;
 
 #define _ds_white_name_format "u32:card_no,c8:name"
 #if 0
@@ -173,30 +181,64 @@ int cam_read_group_id_from_white_name_record( DWORD card_id, char* buf, int buf_
 	//int no;
 	s_sprintf( card_id_str, "%u", card_id );
 	//_d_str( card_id_str );
-	if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
-		return 1;
-	}
+	//if( txt_file_search_line( "white_name.txt", card_id_str, buf, buf_size ) == 1 ){
+		//return 1;
+	//}
 	return -1;
 }
 int g_white_name_card_offset=0;
 int white_name_check_card( u32 card_no )
 {
 	int index;
-	index = rand_file_find( g_white_name_rand_file_pos, &card_no, g_white_name_card_offset, 4, 1/*memcmp*/ );
+	index = rand_file_find( g_white_name_rand_file_pos, (char*)&card_no, g_white_name_card_offset, 4, 1/*memcmp*/ );
 	return index;
+}
+
+
+
+int white_name_get( u32 id, char* buf, int max_buf_size )
+{
+	return rand_file_get( g_white_name_rand_file_pos, id, buf, max_buf_size );
+}
+int white_name_set( u32 id, char* buf, int max_buf_size )
+{
+	rand_file_set( g_white_name_rand_file_pos, id, buf, max_buf_size );
+	return 0;
 }
 
 int white_name_init()
 {
+	char buf[12];
+	u32 cs;
+	if( g_white_name_rand_file_pos >= 0 ){
+		rand_file_close( g_white_name_rand_file_pos );
+		g_white_name_rand_file_pos = 0;
+	}
+	if( property_get( "white_name_file", g_white_name_file_name ) < 0 ){
+		strcpy( g_white_name_file_name, _d_white_name_file_name );
+	}
 	g_white_name_rand_file_pos = rand_file_open( g_white_name_file_name );
 	if( g_white_name_rand_file_pos < 0 ){
+		return -1;
+		// not create, because this file sync from PC.
 		if( rand_file_create( g_white_name_file_name, _d_max_white_name_count,_d_max_white_name_size ) < 0 ){
 			//while(1);
 			return -1;
 		}
 		g_white_name_rand_file_pos = rand_file_open( g_white_name_file_name );
 	}
-	return 0;
+	cs = txt_file_check_sum( g_white_name_file_name );
+	sprintf( buf, "%d", cs );
+	property_set( "white_name_cs", buf );
+	return cs;
+}
+char* get_card_man()
+{
+	return g_card_man;
+}
+char* get_card_group()
+{
+	return g_card_group;	
 }
 
 
